@@ -103,18 +103,29 @@
     <image class="view_1_2_img" src="/images/me/7.png" mode="aspectFit"></image>
   </view>
 
+   <view class="view_1_1" bindtap="runnersSettle">
+    <image class="view_1_1_img" src="/images/me/settle.png" mode="aspectFit"></image>
+    <view class="view_1_1_text">跑团入驻</view>
+    <image class="view_1_2_img" src="/images/me/7.png" mode="aspectFit"></image>
+  </view>
 
   <view class="view_1_1" bindtap="aboutUs">
     <image class="view_1_1_img" src="/images/me/5.png" mode="aspectFit"></image>
     <view class="view_1_1_text">关于我们</view>
     <image class="view_1_2_img " src="/images/me/7.png" mode="aspectFit"></image>
   </view>
+  
+  <view class="view_1_1" bindtap="aboutUs">
+    <image class="view_1_1_img" src="/images/me/manager.png" mode="aspectFit"></image>
+    <view class="view_1_1_text">团队管理</view>
+    <image class="view_1_2_img " src="/images/me/7.png" mode="aspectFit"></image>
+  </view>
 
-  <view class="view_1_1" bindtap="gotoShop">
+  <!-- <view class="view_1_1" bindtap="gotoShop">
     <image class="view_1_1_img" src="/images/me/5.png" mode="aspectFit"></image>
     <view class="view_1_1_text">runner商城</view>
     <image class="view_1_2_img " src="/images/me/7.png" mode="aspectFit"></image>
-  </view>
+  </view> -->
 
   <!-- <view class="view_1_1">
     <image class="view_1_1_img" src="/images/me/6.png" mode="aspectFit"></image>

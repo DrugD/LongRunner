@@ -241,7 +241,7 @@ Page({
         success: function(res) {
           console.log(res.data)
           if (res.data[0].user_state == 2) {
-
+            //若认证
             that.setData({
               user_state: res.data[0].user_state
             })
@@ -249,7 +249,7 @@ Page({
           } else {
 
             that.setData({
-              user_state: ""
+              user_state: "00"
             })
           }
           console.log("user_state:",that.data.user_state)
@@ -258,6 +258,24 @@ Page({
       })
 
 
+  },
+
+
+  runnersSettle:function(){
+    if (this.data.user_state=='00'){
+      wx.showModal({
+        title: '未认证',
+        content: '为了平台良好运营环境和互联网运营条例，请您先进行认证，谢谢',
+        success: function (res) {
+          
+        }
+      })
+    } else if (this.data.user_state == 2){
+      wx.navigateTo({
+        url: 'runnersSettle/runnersSettle',
+      })
+    }
+   
   },
 
 })

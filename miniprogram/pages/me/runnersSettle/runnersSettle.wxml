@@ -1,0 +1,10 @@
+<navigationBar id="navigationBar" backStyle="simple" color="#808080" title="" back="{{true}}" background="#ebecf0">
+</navigationBar>
+
+<view class="text">信息采集</view>
+
+<view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">向下方邮箱中发送以下信息</text></view>
+<view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">负责人的微信号、社团名称、社团介绍、手机号码</text></view>
+<view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">E-mail：2016302590230@whu.edu.cn</text></view>
+<view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">*我们会在1个工作日内审核并回复</text></view>
+<view style="height:30rpx;"></view>

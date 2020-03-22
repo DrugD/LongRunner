@@ -1,9 +1,7 @@
 {
   "pages": [
-    
-  "pages/two/two",
+    "pages/two/two",
     "pages/one/detail/detail",
- 
     "pages/one/index",
     "pages/me/me",
     "pages/test/test2",
@@ -28,7 +26,8 @@
     "pages/planmanage/planmanage",
     "pages/planmanage/plandetail",
     "pages/one/detail2/detail2",
-    "pages/one/detail/web"
+    "pages/one/detail/web",
+    "pages/me/runnersSettle/runnersSettle"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

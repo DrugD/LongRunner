@@ -1,0 +1,42 @@
+/* miniprogram/pages/me/aboutUs/aboutUs.wxss */
+page {
+  background-color: #ebecf0;
+  letter-spacing: -0.2px;
+}
+
+.row_line {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.column_line {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.text {
+  text-align: center;
+  font-size: 40rpx;
+  color: #babecc;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+.text_big {
+  text-align: center;
+  font-size:60rpx;
+  color: #babecc;
+  text-shadow: 1px 1px 1px #fff;
+  padding-top: 30rpx;
+}
+
+.text_small {
+  text-align: left;
+  font-size: 30rpx;
+  color: #babecc;
+  text-shadow: 1px 1px 1px #fff;
+}
