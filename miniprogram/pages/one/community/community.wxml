@@ -1,0 +1,59 @@
+
+ <navigationBar id="navigationBar" color="#fff" title="" back="{{true}}"   backStyle="simple"  background="#3c64d0" ></navigationBar>
+<view style="height:30rpx;"></view>
+<view >
+  <view class="btn_view">
+    <view class="text_big">志愿者招募信息服务中心</view>
+    <!-- <view class="btn1" bindtap="mytiezi">
+      <image style="height:58px;width:58px;" src="/images/me.png"></image>
+    </view>
+    <button class="btn2" bindtap="table_5_add">发动态</button>
+    <view class="btn3" bindtap="reload">
+      <image style="height:60rpx;width:60rpx;" src="/images/refurbish.png"></image>
+    </view> -->
+  </view>
+
+
+  <!-- <web-view src="https://mp.weixin.qq.com/s?__biz=MzA4OTMxMTk3MA==&tempkey=MTA0N19XbWd0YXA0TWc3OGJCMUQ4ZXVfT0dibEVYX05EUWgzLTd2bC11SDA0Wk5rRWh6c2JwT1RfZDR5ZzFXSWUwaHRIYnk4ZVZJNEtwTnpVaUxmM0J4bUNUeDZGZFZrVG5VQ2JXVEg0S2VyZzZwYXI3VU5rUF9QSHM2eG1uc0N3amtabkFXWGc5cWd5OXhrZjdWTmJJNURxcUx6Mk1TTlpUeWhHend2ZXRnfn4%3D&chksm=101d9e8b276a179d995f0ea37a383fad4bc2a64097fcac356a700a6dc75729777e1c3bed7024#rd"></web-view> -->
+
+
+  <block wx:for="{{dataList}}" wx:key="index">
+    <view class="itemRoot shadow" >
+    <!-- bindtap="look_detail" -->
+      <view class="userinfo">
+        <!-- <image class="userinfo_avatar" style="height:60rpx;width:60rpx;" src="{{item.user_info.avatarUrl}}"></image> -->
+        <view style="margin-left:7rpx;">{{item.name}}</view>
+        <view style="margin-left:20rpx;">报名截至{{item.signup_deadline}}</view>
+       
+      </view>
+      报名条件
+       <view style="margin-left:10rpx;" wx:for="{{item.signup_condition}}">{{index+1}}:{{item}}</view>
+      <!-- <editor read-only='true' placeholder="{{item.desc}}" class="text_content_view"> -->
+      <!-- <view class="desc"> -->
+      <!-- ></view> -->
+      <!-- </editor>
+       -->
+      <rich-text read-only='true' class="text_content_view">
+        {{item.detail}}
+      </rich-text>
+      <!-- <view class="imgRoot">
+
+        <block class="imgList" wx:for="{{item.fileIDs}}" wx:for-item="itemImg" wx:key="index">
+          <image class="img fade_in" src='{{itemImg}}' mode='aspectFill' data-img='{{[itemImg,item.fileIDs]}}' bindtap="previewImg"></image>
+        </block>
+        
+        <view class="time_info">
+          <view style="margin-left:0rpx;">{{item.date}} {{item.createTime}}</view>
+        </view>
+
+
+
+      </view> -->
+
+      <view style="height:20px;"></view>
+
+    </view>
+       <view style="height:50px;"></view>
+  </block>
+
+</view>

@@ -1,0 +1,43 @@
+<!--miniprogram/pages/one/mytiezi/mytiezi.wxml-->
+<!-- <text>miniprogram/pages/one/mytiezi/mytiezi.wxml</text> -->
+<!-- <view wx:for="{{user_data}}">{{item._openid}}</view> -->
+
+ <navigationBar id="navigationBar" color="#fff" title="" back="{{true}}" background="#3c64d0"  backStyle="simple" ></navigationBar>
+
+
+<block wx:for="{{user_data}}" wx:key="index">
+  <view class="itemRoot">
+    <view class="userinfo">
+
+      <image class="userinfo_avatar" style="height:60rpx;width:60rpx;" src="{{item.user_info.avatarUrl}}"></image>
+      <view style="margin-left:7rpx;">{{item.user_info.nickName}}</view>
+
+      <image data-id="{{item._id}}" bindtap="delete_tiezi" class="delete_tiezi" style="height:60rpx;width:60rpx;" src="/images/delete.png"></image>
+
+    </view>
+    <rich-text class="text_content_view">
+      <!-- <view class="desc"> -->
+      {{item.desc}}
+      <!-- ></view> -->
+    </rich-text>
+
+    <view class="imgRoot">
+      <block class="imgList" wx:for="{{item.fileIDs}}" wx:for-item="itemImg" wx:key="index">
+        <image bindload="onImageLoad" class="img" src='{{itemImg}}' mode='aspectFill' data-img='{{[itemImg,item.fileIDs]}}' bindtap="previewImg"></image>
+      </block>
+      <view class="time_info">
+        <view style="margin-left:0rpx;">发布于{{item.date}} {{item.createTime}}</view>
+        <!-- <view style="margin-left:10rpx;"></view> -->
+      </view>
+    </view>
+
+    <!-- <view class="time_info">
+      <view style="margin-left:0rpx;">发布于{{item.date}}</view>
+      <view style="margin-left:10rpx;">{{item.createTime}}</view>
+    </view> -->
+
+ <view style="height:30px;"></view>
+  </view>
+
+ 
+</block>

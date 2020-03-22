@@ -1,0 +1,114 @@
+<navigationBar id="navigationBar" backStyle="simple" color="#808080" title="" back="{{true}}" background="#ebecf0">
+</navigationBar>
+
+<view hidden="{{user_state==2}}">
+
+  <view class="text_big">跑者资质认证</view>
+  <view style="height:20rpx;"></view>
+  <view class="text_small">*认证后，将为您提供跑者VIP服务</view>
+  <view style="height:30rpx;"></view>
+
+
+  <!-- 输入框 -->
+  <view class="label row_line" style="heigt:300rpx;">
+    <view class="text" style="width:30%;">真实姓名:</view>
+    <input class="input_text input" style="width:65%;" placeholder="输入您的姓名" bindinput="input1" value="{{inputVal1}}"></input>
+     
+  </view>
+  <view style="height:30rpx;"></view>
+
+
+  <!-- 输入框 -->
+  <view class="label row_line" style="heigt:300rpx;">
+    <view class="text" style="width:30%;">居住城市:</view>
+    <input  class="input_text input" style="width:65%;" placeholder="输入您的住地" bindinput="input2" value="{{inputVal2}}"></input>
+  </view>
+  <view style="height:30rpx;"></view>
+
+  <!-- 输入框 -->
+  <view class="label row_line" style="heigt:300rpx;">
+    <view class="text" style="width:30%;">跑马经历:</view>
+    <textarea class="input_area_text input_area" style="maxlength:300;width:65%;height: 300rpx;padding-left: 12px;padding-right: 12px;padding-top: 12px;padding-bottom: 12px;" placeholder="输入您的跑马经历" bindinput="input3" value="{{inputVal3}}"></textarea>
+  </view>
+
+
+  <view style="height:10rpx;"></view>
+  <view class="text_small_inform" animation="{{ani}}" style="opacity:{{opacity_id}};">
+    （未参加过马拉松赛事可以填写其他比赛经历）
+  </view>
+
+  <view style="height:30rpx;"></view>
+
+
+  <!-- <view class="input" >姓名:</view>
+<input type="text" class="text1" placeholder="您的姓名..." bindinput="input1" maxlength='10' value="{{inputVal1}}" />
+<view class="text1" > 年龄:</view>
+<input type="text" class="text1" placeholder="您的年龄..." bindinput="input2" maxlength='10' value="{{inputVal2}}" /> 
+<view class="text1" >居住城市:</view>
+<input type="text " class="text1 " placeholder="您的居住城市..." bindinput="input3" maxlength='10' value="{{inputVal3}}" />
+ <view class="text1" > 跑马经历:</view> -->
+
+
+  <!-- <input type="text " class=" " placeholder="您的跑马经历..." bindinput="input4" maxlength='100' value="{{inputVal4}}" /> -->
+  <!-- <textarea  type="text " class="text2" placeholder="您的跑马经历..." bindinput="input4" maxlength='300' value="{{inputVal4}}">
+ </textarea> -->
+
+
+  <!-- <editor bindinput="inputEditor" id="editor" class="ql-container" placeholder="您的跑马经历..." bindstatuschange="onStatusChange" bindready="onEditorReady"></editor>
+
+<view class="toolbar" catchtouchend="format" hidden="{{keyboardHeight > 0 ? false : true}}" style="bottom: {{isIOS ? keyboardHeight : 0}}px">
+  <i class="iconfont icon-charutupian" catchtouchend="insertImage"></i>
+  <i class="iconfont icon-format-header-2 {{formats.header === 2 ? 'ql-active' : ''}}" data-name="header" data-value="{{2}}"></i>
+  <i class="iconfont icon-format-header-3 {{formats.header === 3 ? 'ql-active' : ''}}" data-name="header" data-value="{{3}}"></i>
+  <i class="iconfont icon-zitijiacu {{formats.bold ? 'ql-active' : ''}}" data-name="bold"></i>
+  <i class="iconfont icon-zitixieti {{formats.italic ? 'ql-active' : ''}}" data-name="italic"></i>
+  <i class="iconfont icon-zitixiahuaxian {{formats.underline ? 'ql-active' : ''}}" data-name="underline"></i>
+  <i class="iconfont icon--checklist" data-name="list" data-value="check"></i>
+  <i class="iconfont icon-youxupailie {{formats.list === 'ordered' ? 'ql-active' : ''}}" data-name="list" data-value="ordered"></i>
+  <i class="iconfont icon-wuxupailie {{formats.list === 'bullet' ? 'ql-active' : ''}}" data-name="list" data-value="bullet"></i>
+</view> -->
+
+
+
+
+
+
+  <view style="height:30rpx;"></view>
+
+
+  <!-- 上传图片 -->
+  <view class="shadow label" style="height:700rpx;width:75%;margin:auto;border-radius: 20rpx;">
+    <view bindtap="ChooseImage" wx:if="{{imgList.length==0}}" class="text_big">点击此处上传凭证</view>
+    <!-- <view class="imgList" wx:for="{{itemImg}}" wx:for-item="itemImg" wx:key="index">
+    <image bindload="onImageLoad" class="img" src='{{itemImg}}' mode='aspectFill' data-img='{{[itemImg,item.fileIDs]}}' bindtap="previewImg"></image>
+  </view> -->
+    <image class="img" src='{{imgList}}' mode='aspectFill' bindtap="previewImage" src='{{imgList}}' mode='aspectFill' data-img='{{[imgList,imgList[0].fileIDs]}}'></image>
+  </view>
+
+
+  <view style="height:30rpx;"></view>
+
+  <!-- 写字按钮 -->
+
+  <!-- <view class="row_line">
+<view class="button div " bindtap="DeleteImg" style="height:100rpx;width:180rpx;margin:auto;">删除</view>
+<view class="button div " bindtap="upload" style="height:100rpx;width:180rpx;margin:auto;">上传</view>
+</view> -->
+
+  <view style="height:30rpx;"></view>
+
+  <!-- 有图的按钮 -->
+  <!-- <view class="button div " style="height:100rpx;width:100rpx;margin:auto; border-radius: 50rpx;">
+  <image style=" border-radius: 50rpx;height:50rpx;width:50rpx;" src="../../images/two/clockin.svg"></image>
+</view> -->
+
+  <view class="button div " bindtap="upload" style="height:100rpx;width:180rpx;margin:auto;">提交</view>
+
+  <view style="height:50rpx;"></view>
+</view>
+
+<view hidden="{{user_state!=2}}">
+  <view class="text_big">您已认证，感谢您的认证</view>
+</view>
+
+

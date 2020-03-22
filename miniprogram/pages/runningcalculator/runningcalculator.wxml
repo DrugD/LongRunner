@@ -1,0 +1,157 @@
+<wxs src="../../utils/util.wxs" module="num3" />
+
+
+<!-- <view style="padding-top:{{statusBarHeight}}px;background:#fff;">
+  </view> -->
+
+
+<view class="viewAll">
+  <view class="view_left ">
+    <view style="padding-right: 0vw;" class="back_view" bindtap="goback">
+      <image style="height:37rpx;width:37rpx; " src="/images/back_black.png"></image>
+    </view>
+
+    <image style="height:45%;width:45%;padding-top: 40px;padding-left: 0rpx;" src="/images/cal/show2.png">
+    </image>
+  </view>
+  <view class="view_right shadow">
+    <!-- <image style="height:100%;width:100%;" src="/images/cal/show1.png">
+    </image> -->
+    <view style="height:30%;">
+    </view>
+    <view class="show_static">
+      <view style="height:50%;width:100%;" class="show_text_1">
+        <view class="show_text_1_1">
+          {{num3.threeNum(inputVal4)}}km
+        </view>
+        <view class="show_text_1_2">
+          奔跑总计{{num3.toFix(inputVal4*2.5)}}圈（400m赛道）
+        </view>
+      </view>
+
+      <view style="height:50%;width:100%;" class="show_text_2">
+        <view class="show_text_2_display">
+
+          <view class="show_text_2_1" style=" margin-left: 0rpx;">
+            <image src="/images/cal/circle.svg" style="width:15rpx;height:15rpx;"></image>
+            <view class="show_text_2_1_1">{{num3.toFix(inputVal4*60*1.036)}}
+            </view>
+            <view class="show_text_2_1_2" style="margin-left:10rpx;">Cals
+            </view>
+
+          </view>
+
+          <view class="show_text_2_1">
+            <image src="/images/cal/circle.svg" style="width:15rpx;height:15rpx;"></image>
+            <view class="show_text_2_1_1">{{num3.toFix(time_h*1)}}
+            </view>
+            <view class="show_text_2_1_2" style="margin-left:10rpx;">h
+            </view>
+
+          </view>
+
+        </view>
+        <view class="show_text_2_2">
+          总计消耗体能相当于：{{food_instead}}
+        </view>
+      </view>
+
+    </view>
+  </view>
+</view>
+
+<view class="total">
+  <view class="total2">
+    <view class="input shadow">
+      <!-- <view class="view_item1  " bindtap="bg4" style="background: {{bg4}};"> -->
+      <view class="view_item1  " bindtap="bg4" style="background: #EFEEEE;">
+        <view style="3vw;">距离:</view>
+        <input bindinput='input4' style=" border-bottom: 1px solid gray;" value='{{inputVal4}}' maxlength="5" class="item_1_1" placeholder=''></input>
+        <view style="1vw;">km</view>
+      </view>
+
+      <!-- <view class="view_item2 " bindtap="bg5" style="background: {{bg5}};"> -->
+      <view class="view_item2 " bindtap="bg5" style="background:#EFEEEE;">
+        <view style="5vw;">时间:</view>
+        <input bindinput='input5_1' style=" border-bottom: 1px solid gray;" value='{{inputVal5_1}}' maxlength="3" class="item_1_2" placeholder=''></input>
+        <view style="1vw;">h</view>
+        <input bindinput='input5_2' style=" border-bottom: 1px solid gray;" value='{{inputVal5_2}}' maxlength="2" class="item_1_2" placeholder=''></input>
+        <view style="2vw;">min</view>
+        <input bindinput='input5_3' style=" border-bottom: 1px solid gray;" value='{{inputVal5_3}}' maxlength="2" class="item_1_2" placeholder=''></input>
+        <view style="1vw;">s</view>
+      </view>
+    </view>
+
+
+    <view class="" style="height:50rpx;"></view>
+
+
+    <view class="result shadow">
+
+      <view class="text">计算结果</view>
+      <view class="text_small"> Calculation results</view>
+      <view bindtap="bg1" class="text11 view_item " style="background:#EFEEEE;">
+        秒速：
+        <input bindinput="bg1_cal" disabled="{{input1_flag}}" class="item_1_3" style=" border-bottom: 1px solid gray;" maxlength="10" value="{{inputVal1}}"></input>
+        m/s
+      </view>
+
+      <view bindtap="bg2" class="text12 view_item" style="background:#EFEEEE;">时速：
+        <input bindinput="bg2_cal" disabled="{{input2_flag}}" class="item_1_3" style=" border-bottom: 1px solid gray;" maxlength="10" value="{{inputVal2}}"></input>
+        km/h
+      </view>
+
+         <view bindtap="bg6" class="text13 view_item" style="background:#EFEEEE;">配速：
+        <input bindinput="bg6_cal" disabled="{{input6_flag}}" class="item_1_3" style=" border-bottom: 1px solid gray;" maxlength="10" value="{{inputVal6}}"></input>
+        /km</view>
+
+
+
+      <view bindtap="bg3" class="text13 view_item" style="background:#EFEEEE;">绕着操场400m用时：
+        <input bindinput="bg3_cal" disabled="{{input3_flag}}" class="item_1_3" style=" border-bottom: 1px solid gray;" maxlength="10" value="{{inputVal3}}"></input>
+        s</view>
+
+
+
+      <!-- <view bindtap="bg1" class="text11 view_item " style="border-bottom: 1px solid rgb(226, 224, 217);background:{{bg1}};">
+        秒速：
+        <input bindinput="bg1_cal" disabled="{{input1_flag}}" class="item_1_3" style=" border-bottom: 1px solid gray;" maxlength="10" value="{{inputVal1}}"></input>
+        m/s
+      </view>
+
+      <view bindtap="bg2" class="text12 view_item" style="border-bottom: 1px solid rgb(226, 224, 217);background:{{bg2}};">时速：
+        <input bindinput="bg2_cal" disabled="{{input2_flag}}" class="item_1_3" style=" border-bottom: 1px solid gray;" maxlength="10" value="{{inputVal2}}"></input>
+        km/h
+      </view>
+
+      <view bindtap="bg3" class="text13 view_item" style="background:{{bg3}};">绕着操场400m用时：
+        <input bindinput="bg3_cal" disabled="{{input3_flag}}" class="item_1_3" style=" border-bottom: 1px solid gray;" maxlength="10" value="{{inputVal3}}"></input>
+        s</view> -->
+
+    </view>
+
+
+    <view class="" style="height:37rpx;"></view>
+    <!-- <button class="btn_cal" style="width: 80%;margin-top: 20rpx;background-color: beige;color: black;border-radius: 98rpx; " bindtap="transform">转化({{model_flag}})</button> -->
+
+    <!-- <view class="" style="height:20rpx;"></view> -->
+
+  </view>
+  <view class="" style="height:50rpx;"></view>
+  <view style=" display: flex; align-items: center;justify-content: center;">
+    <button class="btn_cal  button" style="width: 33vw;" bindtap="toZero">重置</button>
+
+    <button class="btn_cal  button" style="width: 33vw;" bindtap="cal">计算</button>
+
+  </view>
+
+  <view class="" style="height:50rpx;"></view>
+  <view bindtap="lookIMG" class="text">
+    点击查看☞世界速度天梯图 (往下滑↓)
+  </view>
+  
+  <view class="" style="height:20rpx;"></view>
+</view>
+
+<!-- <view bindtap="">收起</view> -->
+<image class="img" style="width:95vw;height:330vh;margin: auto;" wx:if="{{img_1}}" src="{{img_1}}" mode="scaleToFill"></image>

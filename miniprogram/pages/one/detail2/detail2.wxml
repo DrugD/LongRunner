@@ -1,0 +1,5 @@
+<!--miniprogram/pages/one/detail2/detail2.wxml-->
+
+ <navigationBar id="navigationBar" color="#fff" title="" back="{{true}}" background="#3c64d0"  backStyle="simple" ></navigationBar>
+
+<text>动态详情</text>

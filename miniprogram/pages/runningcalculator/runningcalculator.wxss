@@ -1,0 +1,318 @@
+/* miniprogram/pages/runningcalculator/runningcalculator.wxss */
+@import '../../style/font.wxss';
+
+page {
+  background: #EFEEEE;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-start; */
+}
+
+.text {
+  text-align: center;
+  font-size: 40rpx;
+  color: #babecc;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+
+.shadow {
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  box-shadow: -6px -6px 16px rgba(255, 255, 255, 0.493),
+                6px 6px 16px rgba(209, 205, 199, 0.486);
+  border-bottom: 2rpx solid rgba(255, 255, 255, 0.205);
+    transition: all 0.2s ease-in-out;
+}
+
+.shadow:hover {
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+
+.shadow_btn{
+   box-shadow: -18px -6px 16px rgb(232, 236, 240),
+                6px 6px 16px rgba(214, 223, 231, 0.712);
+  border-bottom: 2rpx solid rgba(247, 241, 241, 0.205);
+}
+
+.btn_cal {
+  /* border: 2rpx outset #3E67D6; */
+ background: #EFEEEE;
+ color: #7888A2;
+}
+
+/* .shadow:hover {
+
+  box-shadow: -6px -6px 16px rgba(231, 231, 231, 0.493),
+                6px 6px 16px rgba(197, 197, 197, 0.486);
+  border-bottom: 2rpx solid rgba(255, 255, 255, 0.205);
+}
+ */
+
+
+.text11 {
+  width: 95%;
+  display: flex;
+  margin: auto;
+  border-top-left-radius: 37rpx;
+  border-top-right-radius: 37rpx;
+}
+
+.text12 {
+  width: 95%;
+  display: flex;
+  margin: auto;
+} 
+
+.text13 {
+  width: 95%;
+  display: flex;
+  margin: auto;
+  border-bottom-left-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+}
+
+.view_item {
+  flex-direction: row;
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.view_item1 {
+  flex-direction: row;
+  /* width: 100%; */
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 8rpx double rgb(226, 224, 217); */
+  /* 左上角: border-top-left-radius:
+    右上角：border-top-right-radius
+    左下角：border-bottom-left-radius
+    右下角：border-bottom-right-radius */
+  /* border-top-left-radius: 37rpx;
+  border-bottom-right-radius: 37rpx; */
+}
+
+.view_item2 {
+  flex-direction: row;
+  /* width: 100%; */
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border: 8rpx double rgb(255, 239, 168); */
+  /* border-top-right-radius: 37rpx;
+  border-bottom-left-radius: 37rpx; */
+}
+
+.item_1_1 {
+  width: 36vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5vw;
+  text-align: center;
+
+}
+
+.item_1_2 {
+  width: 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4vw;
+  text-align: center;
+}
+
+.item_1_3 {
+  width: 26vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-right: 4vw; */
+  text-align: center;
+}
+
+.input {
+  /* width: 90vw; */
+  width: 70vw;
+  margin: auto;
+ 
+}
+
+.result {
+  /* background: rgb(255, 140, 140); */
+  width: 80vw;
+  margin: auto;
+ 
+}
+
+.total {
+  /* background: linear-gradient(#f6f6f6, #6cd1df); */
+  /* background: rgb(255, 88, 88); */
+  padding: 60rpx 37rpx 120rpx 37rpx;
+  border-radius: 15rpx;
+}
+
+.total2 {
+  /* background: linear-gradient(#f6f6f6, #dce3e485); */
+  /* background: rgb(216, 216, 216); */
+  padding: 60rpx 37rpx 50rpx 37rpx;
+  border-radius: 15rpx;
+}
+
+
+
+.img_view {
+  width: 100%;
+  height: fit-content;
+}
+
+
+.viewAll {
+  width: 100%;
+  height: 65vw;
+  background: white;
+  display: flex;
+  flex-direction: row;
+}
+
+.view_left {
+  width: 28vw;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #EFEEEE;
+}
+
+.view_right {
+  width: 72vw;
+  height: 100%;
+  /* background: #3e67d6; */
+  border-radius: 0rpx 0rpx 0rpx 50rpx;
+  display: flex;
+  flex-direction: column;
+  background: #EFEEEE;
+    transition: all 0.2s ease-in-out;
+}
+
+.show_static {
+  color: #22304A;
+  font-family: 'Avenir LT Std';
+}
+
+.show_static {
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  width: 100%;
+  background: #EFEEEE;
+ 
+}
+
+.show_text_1 {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin-left: 50rpx;
+}
+
+.show_text_1_1 {
+  font-size: 50rpx;
+  font-family: "Avenir LT Std Bolder";
+}
+
+.show_text_1_2 {
+  font-size: 30rpx;
+  font-family: "Avenir LT Std Bolder";
+}
+
+.show_text_2_2 {
+  font-size: 20rpx;
+  font-family: "Avenir LT Std Bolder";
+}
+
+
+
+.show_text_2 {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  margin-left: 50rpx;
+}
+
+.show_text_2_display {
+  display: flex;
+  flex-direction: row;
+}
+
+.show_text_2_1_1 {
+  font-size: 35rpx;
+  font-family: "Avenir LT Std Bolder";
+  margin-left: 5rpx;
+}
+
+.show_text_2_1_2 {
+  font-size: 22rpx;
+  font-family: "Avenir LT Std Bolder";
+  margin-left: 5rpx;
+}
+
+.show_text_2_1 {
+  margin-left: 37rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+.back_view{
+ width: 28vw;
+height: 5vh;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-left:30px;
+}
+
+.button {
+  color: #61677c;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 45rpx;
+  /* letter-spacing:15px; *//* cursor: pointer; */
+  border-radius: 25px;
+}
+
+.button:hover {
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+
+.button:active {
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+.img{
+  display: flex;
+  justify-content: center;
+  
+}
+
+.text_small {
+  text-align: center;
+  font-size: 25rpx;
+  color: #babecc;
+  text-shadow: 1px 1px 1px #fff;
+}

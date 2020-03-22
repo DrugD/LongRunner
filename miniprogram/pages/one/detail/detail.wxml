@@ -1,0 +1,81 @@
+<!-- <view></view> -->
+<navigationBar id="navigationBar" color="#fff" title="" back="{{true}}" background="#3c64d0" backStyle="simple"></navigationBar>
+<import src="../../../wxParse/wxParse.wxml" />
+<wxs src="../../../utils/util.wxs" module="date" />
+
+<view>
+  <!-- 一张宣传图/或者几张 -->
+  <!-- <view style="height:60rpx;"></view> -->
+  <image style="width:100%;height:15vh;" mode='widthFix' src="{{content.bg_img_url}}"></image>
+
+</view>
+
+<view class="view_2">
+  <view class="view_item">
+    <view class="view_item1">
+      <image src="/images/detail/1.png" style="height:60rpx;width:50rpx;"></image>
+    </view>
+    <view class="view_item2">报名时间</view>
+    <view class="view_item3">{{content.booking_start_date}}</view>
+  </view>
+  <view class="view_item">
+    <view class="view_item1">
+      <image src="/images/detail/2.png" style="height:60rpx;width:60rpx;"></image>
+    </view>
+    <view class="view_item2">抽签时间</view>
+    <view class="view_item3">{{content.draw_time}}</view>
+  </view>
+  <view class="view_item">
+    <view class="view_item1">
+      <image src="/images/detail/3.png" style="height:60rpx;width:50rpx;"></image>
+    </view>
+    <view class="view_item2">比赛时间</view>
+    <view class="view_item3">{{content.state==0?content.malasong_time:"推迟比赛"}}</view>
+  </view>
+</view>
+
+
+
+
+<view style="height:30rpx;"></view>
+<view style="  display: flex;justify-content: center; align-items: center;padding-bottom:10rpx;">赛事项目</view>
+
+<view class="wxfor_project">
+  <view wx:for="{{content.projects}}" wx:key="item">
+    <view class="projects_item">
+      <view class="projects_item1">{{item.name}}</view>
+     
+      <view class="projects_item3">{{item.number}}人</view>
+       <view class="projects_item2">￥{{item.cost}}</view>
+    </view>
+  </view>
+</view>
+
+
+<view style="height:30rpx;"></view>
+
+<view class="boxshadow">
+  <view style="  display: flex;justify-content: center; align-items: center;padding-bottom:10rpx;">赛事信息</view>
+</view>
+
+<view class="tag">赛事介绍</view>
+<view class="malasong_introduce">{{content.malasong_introduce}}</view>
+<!-- <view class="tag">竞赛规程</view> -->
+
+
+<view class="malasong_rules">
+  <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+</view>
+
+
+
+<view style="height:70rpx;width:100%;"></view>
+<button bindtap="down">信息下载</button>
+<view style="height:50rpx;width:100%;"></view>
+
+
+<view   bindtap="down" class="add-wrap" >
+
+  <image src="/images/download.svg"></image>
+
+</view>

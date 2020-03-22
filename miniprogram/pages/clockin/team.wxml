@@ -1,0 +1,23 @@
+<navigationBar id="navigationBar" backStyle="simple" color="#808080" title="" back="{{true}}" background="#ebecf0"></navigationBar>
+
+
+<!-- 文字 -->
+
+
+<view style="height:30rpx;"></view>
+<view class="text_big">{{team_data.name}}</view>
+<view style="height:30rpx;"></view>
+<view class="text_big">团体介绍</view>
+<view class="text">团体共有{{team_data.member.length}}人，由{{team_data.member[0].user_info.nickName}}发起</view>
+<view style="height:30rpx;"></view>
+<view class="text_big">团体成员</view>
+<view class="column_line" wx:for="{{team_data.member}}">
+ 
+  <view class="row_line" style="width:100%;">
+      <view style="width:20%;"></view>
+     <image class="img_shadow" style="height:50rpx;width:50rpx;" src="{{item.user_info.avatarUrl}}"></image>
+     <view style="width:10%;"></view>
+      <view  class="text_name"  style="width:50%;">{{item.user_info.nickName}}</view>
+  </view>
+  <view style="height:20rpx;"></view>
+</view>

@@ -1,0 +1,120 @@
+<!--pages/planmanage/history.wxml-->
+
+<!-- <view >新增</view> -->
+<!-- <topbar param_barColor1='#f6f6f6' param_barColor2='#f6f6f6' param_bartitle="计划记录"  param_back_black="true" param_title_text_color="black"
+></topbar>   -->
+
+<navigationBar id="navigationBar" placeholderBg="" color="{{color}}" title="{{title}}" back="{{true}}" background="#f6f6f6" fixed="{{fixed}}"  backConfirm="{{backConfirm}}"  backStyle="simple"  backEvent="{{backEvent}}" bind:back="backEvent"  backHomeEvent="{{backHomeEvent}}" bind:backHome="backHomeEvent"></navigationBar>
+
+
+<view class="title input_text ">我组织的训练{{items.length==0?':空':''}}</view>
+ <view style='height:20rpx;'></view>
+<view wx:for='{{items}}' >
+  <view class='item input input_text  ' bindtap='plan_detail' 
+  bindlongtap="plan_longtap"
+  bindtouchstart='bindTouchStart' bindtouchend='bindTouchEnd'
+  data-plan_state="0"
+  data-joinplan__time="{{item.creatime}}" 
+  data-plan_manager="{{item.manager}}" 
+  data-plan_content="{{item.content}}" 
+  data-plan_mileage="{{item.mileage}}" 
+  data-plan_speed="{{item.speed}}" 
+  data-plan_place="{{item.place}}" 
+  data-plan_type="{{item.type}}" 
+  data-plan_time="{{item.time}}"  
+  data-plan_id="{{item._id}}" 
+  data-manager_openid="{{item.manager_openid}}"
+   >
+    <view style='height:20rpx;'></view>
+    <view class='item_1'>
+      时间：{{item.time}}
+    </view>
+
+    <!-- <view class='item_1'>
+      组织人：{{item.manager}}
+    </view> -->
+
+    <view class='item_1'>
+      类别：{{item.type}}
+    </view>
+
+    <view class='item_1'>
+      里程：{{item.mileage}}
+    </view>
+
+    <view class='item_1'>
+      配速：{{item.speed}}
+    </view>
+
+    <view class='item_1'>
+      地点：{{item.place}}
+    </view>
+
+    <view style='height:20rpx;'></view>
+    <!-- <view>
+      参与者：{{item.joinplan__user?item.joinplan__user:'无'}}
+    </view> -->
+
+  </view>
+  <view style='height:20rpx;'></view>
+  
+    <!-- <view style='height:20rpx;'></view> -->
+</view>
+
+<view class="text_small" hidden="{{!items}}">*加入自己的训练计划后不会在“-我参与的训练-”中重复显示</view>
+
+ <view style='height:50rpx;'></view>
+
+<view class="title input_text" >我参与的训练{{items2.length==0?':空':''}}</view>
+ <view style='height:20rpx;'></view>
+<view wx:for='{{items2}}' class='' >
+  <view class='item2 input input_text ' bindtap='plan_detail' 
+
+  bindlongtap="plan_longtap"
+  bindtouchstart='bindTouchStart' bindtouchend='bindTouchEnd'
+  data-plan_state="1"
+  data-plan_id="{{item.plan.plan_id}}" 
+  data-joinplan__time="{{item.creatime}}" 
+  data-plan_manager="{{item.plan.plan_manager}}" 
+  data-plan_content="{{item.plan.plan_content}}" 
+  data-plan_mileage="{{item.plan.plan_mileage}}" 
+  data-plan_speed="{{item.plan.plan_speed}}" 
+  data-plan_place="{{item.plan.plan_place}}" 
+  data-plan_type="{{item.plan.plan_type}}" 
+  data-plan_time="{{item.plan.plan_time}}"  
+
+  data-manager_openid="{{item.plan.manager_openid}}" 
+ >
+    <view style='height:20rpx;'></view>
+    <view class='item_1'>
+      时间：{{item.plan.plan_time}}
+    </view>
+
+    <view class='item_1'>
+      组织人：{{item.plan.plan_manager}}
+    </view>
+
+    <view class='item_1'>
+      类别：{{item.plan.plan_type}}
+    </view>
+
+    <view class='item_1'>
+      里程：{{item.plan.plan_mileage}}
+    </view>
+
+    <view class='item_1'>
+      配速：{{item.plan.plan_speed}}
+    </view>
+
+    <view class='item_1'>
+      地点：{{item.plan.plan_place}}
+    </view>
+
+    <view style='height:20rpx;'></view>
+    <!-- <view>
+      参与者：{{item.joinplan__user?item.joinplan__user:'无'}}
+    </view> -->
+
+  </view>
+  <view style='height:50rpx;'></view>
+</view>

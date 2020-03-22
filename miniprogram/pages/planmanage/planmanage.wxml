@@ -1,0 +1,96 @@
+<!--pages/planmanage/planmanage.wxml-->
+
+<!-- <topbar param_barColor1='#f6f6f6' param_barColor2='#f6f6f6' param_bartitle="新增"  param_back_black="true" param_title_text_color="black"
+></topbar>   -->
+
+
+<navigationBar id="navigationBar" placeholderBg="" color="{{color}}" title="{{title}}" back="{{true}}" background="#f6f6f6" fixed="{{fixed}}" backConfirm="{{backConfirm}}" backStyle="simple" backEvent="{{backEvent}}" bind:back="backEvent" backHomeEvent="{{backHomeEvent}}"
+  bind:backHome="backHomeEvent"></navigationBar>
+
+<view>
+
+
+
+  <view class='item_1'>
+    <view class='item_1_1 text'>科目：</view>
+    <input bindinput='plan_type_Input' value='{{plan_type}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入种类'></input>
+  </view>
+
+  <view style="height:30rpx;width:100%;"></view>
+
+  <view class='item_1'>
+    <view class='item_1_1 text'>配速：</view>
+    <input bindinput='plan_speed_Input' value='{{plan_speed}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入配速'></input>
+  </view>
+
+  <view style="height:30rpx;width:100%;"></view>
+
+  <view class='item_1'>
+    <view class='item_1_1 text'>距离：</view>
+    <input bindinput='plan_mileage_Input' value='{{plan_mileage}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入跑步里程'></input>
+
+  </view>
+
+  <view style="height:30rpx;width:100%;"></view>
+
+
+  <view class='item_1'>
+    <view class='item_1_1 text'>地点：</view>
+    <input bindinput='plan_place_Input' value='{{plan_place}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入训练地点'></input>
+  </view>
+
+  <view style="height:50rpx;width:100%;"></view>
+
+  <view class='item_1'>
+    <view class='item_1_1 text'>时间：</view>
+    <input bindinput='plan_time_Input' value='{{plan_time}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入训练时间'  placeholder-class="placeholder"></input>
+  </view>
+
+  <!-- <view class='item_1'>
+    <view class='item_1_1'>内容：</view>
+    <input bindinput='plan_content_Input' value='{{plan_content}}' maxlength="20" class="item_1_2" placeholder='请输入计划内容'></input>
+  </view> -->
+  <view style="height:80rpx;width:100%;"></view>
+  <view class="text">备注</view>
+  <view style="height:30rpx;width:100%;"></view>
+
+  <textarea class="textarea textarea_input input_text_small" bindinput='plan_content_Input' value="{{plan_content}}" placeholder="{{placeholder}}" placeholder-class="placeholder" maxlength="{{maxlength}}" auto-height="{{auto-height}}" show-confirm-bar="{{show-confirm-bar}}"  style="padding: 15rpx 15rpx 15rpx 15rpx;"></textarea>
+
+
+  <!-- <view class='item_1 '>
+    <view class='item_1_1'>组织者：</view>
+    <view class="item_1_2">{{userInfo_nickName}}</view>
+  </view> -->
+
+  <view class='line'></view>
+
+  <!-- <view class='item_1_1_1'>参与人员</view> -->
+
+  <!-- <scroll-view class='item_2'  scroll-y >
+
+  
+    <view class='join_people_item ' wx:for="{{join_data}}">
+      <view class='join_people_item_name'>
+        {{item.name}}
+      </view>
+      <view class='join_people_item_detail'>
+        {{item.detail}}
+      </view>
+
+    </view>
+  </scroll-view> -->
+
+</view>
+
+
+<button bindtap='save_plan'class=" btn1 change_to_my_btn button text_small" style="height:80rpx;width:100px;font-size:35rpx;"  wx:if="{{page_state==0}}">
+  确定
+</button>
+
+<button bindtap='share_plan'class=" btn1 change_to_my_btn button text_small" style="height:80rpx;width:100px;font-size:35rpx;" wx:if="{{page_state==1||page_state==2}}" open-type="share">
+  转发
+</button>
+
+<!-- <button bindtap="binding" open-type='getUserInfo' class="change_to_my_btn button text_small" style="height:80rpx;width:100px;margin-left:10rpx;font-size:35rpx;">
+  绑定
+</button> -->

@@ -1,0 +1,24 @@
+<navigationBar id="navigationBar" backStyle="simple" color="#808080" title="" back="{{true}}" background="#ebecf0">
+</navigationBar>
+
+<view class="text_big">关于我们</view>
+<view style="height:150rpx;"></view>
+
+<view class="text">我们是谁？</view>
+<view class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-indent: 2em;">我们是珞珈山下一群有趣而且有想法而且有行动力的人，有idea就想完美实施，大胆试错的人。我们热爱运动，热爱学习，热爱挑战，特别欢迎新的朋友，能迅速与其狼狈为奸。</view>
+<view style="height:50rpx;"></view>
+
+<view class="text">加入我们？</view>
+
+<view bindtap="copyText"  data-text="l6l8lk6"><text selectable='true' class="text_small" style="width:70%;  margin-left: 15%; margin-right: 15%;text-align: center;">WeChatID：l6l8lk6</text></view>
+<view bindtap="telephone"><text selectable='true' class="text_small" style="width:70%;  margin-left: 15%; margin-right: 15%;text-align: center;">Tel：15623239509（李同学）</text></view>
+<view bindtap="copyText"  data-text="2016302590230@whu.edu.cn"><text selectable='true' class="text_small" style="width:70%;  margin-left: 15%; margin-right: 15%;text-align: center;">E-mail：2016302590230@whu.edu.cn</text></view>
+<view style="height:50rpx;"></view>
+
+<view class="text">跑团入驻？</view>
+
+<view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">向下方邮箱中发送以下信息</text></view>
+<view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">负责人的微信号、社团名称、社团介绍、手机号码</text></view>
+<view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">E-mail：2016302590230@whu.edu.cn</text></view>
+<view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">*我们会在1个工作日内审核并回复</text></view>
+<view style="height:30rpx;"></view>

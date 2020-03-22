@@ -1,0 +1,67 @@
+/* miniprogram/pages/forme/forme.wxss */
+
+
+.btn_view{
+  display: flex;
+  flex-direction: row;
+}
+
+
+.item_input {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 85rpx;
+  align-items: center;
+  justify-content: center;
+  /* background: rgb(177, 121, 66) */
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+  width: 20vw;
+  height: 200rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.color_block {
+  /* border: 2rpx solid rgb(187, 187, 187); */
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.678);
+}
+
+
+/* 导航栏 */
+
+.custom{
+position: fixed;
+width: 100%;
+top: 0;
+left: 0;
+height: 45px;
+background: #2C5CFF;
+z-index: 999;
+}
+.custom text{
+color: #fff;
+font-size: 34rpx;
+font-weight: 500;
+max-width: 280rpx;
+}
+.empty_custom{
+height: 45px;
+width: 100%;
+}
+
+.title{
+  position: absolute;
+}
+
+
+.text{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}

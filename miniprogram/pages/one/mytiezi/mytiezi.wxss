@@ -1,0 +1,77 @@
+/* miniprogram/pages/one/mytiezi/mytiezi.wxss */
+
+.itemRoot {
+  margin-left: auto;
+  margin-right: auto;
+  border: 2rpx solid rgb(226, 226, 226);
+  margin-top: 37rpx;
+  border-radius: 10rpx;
+  width: 96%;
+  background: white;
+}
+
+.imgRoot {
+  margin-left: 37rpx;
+  /* display: flex;
+  flex-direction: row;
+  justify-content: center; */
+}
+
+.imgList {
+  display: inline-block;
+}
+
+.img {
+  margin: 5rpx;
+  position: relative;
+  width: 208rpx;
+  height: 208rpx;
+}
+
+.userinfo {
+  display: flex;
+  flex-direction: row;
+  height: 90rpx;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 40rpx;
+}
+
+.userinfo_avatar {
+  border-radius: 15%;
+}
+
+.desc {
+  /* margin-left: 40rpx; */
+  width: 100%;
+  /* margin: auto; */
+  height: auto;
+}
+
+.text_content_view {
+  width: 90%;
+  margin: auto;
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 120;
+  /* //设置 需要显示的行数 */
+  margin-bottom: 20rpx;
+}
+
+.delete_tiezi {
+  position: relative;
+  top: 0vh;
+  right: -60vw;
+}
+
+.time_info {
+  position: absolute;
+  /* top: 4vh;
+  left: 4vw; */
+  width: 100%;
+  font-size: 25rpx;
+}

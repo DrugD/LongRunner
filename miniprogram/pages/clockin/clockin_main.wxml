@@ -1,0 +1,143 @@
+<navigationBar id="navigationBar" backStyle="simple" color="#808080" title="" back="{{true}}" background="#ebecf0"></navigationBar>
+
+
+<view style="height:30rpx;"></view>
+
+<!-- 有图的按钮 -->
+<view class="button div row_line" style="height:100rpx;width:300rpx;margin:auto; border-radius: 50rpx;" bindtap="clockin">
+  <image style=" border-radius: 50rpx;height:50rpx;width:50rpx;" src="../../images/two/clockin.svg"></image>
+  <view class="" style="margin-left:15rpx;">去打卡</view>
+</view>
+
+<view style="height:30rpx;"></view>
+
+
+<!-- <view class="button" bindtap="refrash" style=" border-radius: 50rpx;height:150rpx;width:150rpx;">刷新</view> -->
+
+
+<!-- 输入框 -->
+<view class="label row_line" style="heigt:300rpx;">
+  <view class="text" style="width:30%;">团队名称</view>
+
+
+  <view wx:if="{{team_data.name}}" style="width:70%;" class="row_line">
+    <view class="easy_show" style="width:60%;">{{team_data.name}}</view>
+    <view bindtap="gotoTeamDetail" class="button text_small" wx:if="{{team_data.name}}" style="height:70rpx;width:70rpx;margin-left:10rpx;font-size:35rpx;">
+      <image src="/images/two/2.svg" style="width:60%;height:60%;"></image>
+    </view>
+
+  </view>
+
+
+  <view wx:if="{{!team_data}}" style="width:{{!team_data?'70%':''}};" class="row_line" animation="{{show_easy}}">
+    <input  wx:if="{{!team_data}}"  type="number" class="input_text_small input" style="width:60%;" placeholder="输入ID..." maxlength="4" bindinput="input_teambinding" value="{{input_value}}"></input>
+    <view   wx:if="{{!team_data}}" style="width:40%;">
+      <!-- <view bindtap="binding" class=" button text_small" style="height:70rpx;width:150rpx;margin-left:10rpx;font-size:35rpx;">绑定 </view> -->
+      <button bindtap="binding" open-type='getUserInfo' class="change_to_my_btn button text_small" style="height:70rpx;width:150rpx;margin-left:10rpx;font-size:35rpx;">
+        绑定
+      </button>
+    </view>
+  </view>
+  <!-- open-type='getUserInfo' bindgetuserinfo="getUserInfo" -->
+
+
+</view>
+
+<view style="height:30rpx;"></view>
+
+<!-- 输入框 -->
+<view class="label row_line" style="heigt:300rpx;" wx:if="{{team_data}}" >
+<!-- <view class="label row_line" style="heigt:300rpx;" wx:if="{{team_data.name}}"> -->
+  <view class="text" style="width:30%;">团队邀请</view>
+
+
+  <view style="width:70%;" class="row_line">
+    <view class="easy_show_" style="width:30%;font-size:37rpx;">{{team_data.team_id}}</view>
+    <view class="text" style="width:30%;">号</view>
+    <!-- <view bindtap="shareMember" class="button text_small" wx:if="{{team_data.name}}" style="height:70rpx;width:70rpx;margin-left:10rpx;font-size:35rpx;">
+      <image src="/images/two/share.svg" style="width:60%;height:60%;"></image>
+    </view> -->
+    <button bindtap="shareMember" open-type="share" class="change_to_my_btn button text_small" style="height:70rpx;width:70rpx;font-size:35rpx;">
+      <image src="/images/two/share.svg" style="width:60%;height:60%;"></image>
+    </button>
+  </view>
+
+</view>
+
+<view style="height:30rpx;"></view>
+
+<!-- 视图切换 -->
+<view style="width:100%;height:70rpx;justify-content:flex-end;" class="row_line">
+  <view class="text_small">当前视图：{{page_state==1?'个人':'团队'}}</view>
+  <view wx:if="{{!team_data.name}}"  style="height:70rpx;width:70rpx;margin-left:30rpx;font-size:35rpx;margin-right:70rpx;"></view>
+  <view bindtap="gotoTeam" class="button text_small" wx:if="{{team_data.name}}" style="height:70rpx;width:70rpx;margin-left:30rpx;font-size:35rpx;margin-right:70rpx;">
+    <image src="/images/two/change.svg" style="width:60%;height:60%;"></image>
+  </view>
+</view>
+
+
+<view style="height:30rpx;"></view>
+
+<!-- 个人打卡记录 -->
+<view class="shadow label row_line show_label" style="height:fit-content;width:95%;margin:auto;border-radius: 20rpx;padding-bottom: 15rpx;" wx:if="{{page_state==1}}">
+  <!-- <view bindtap="ChooseImage" class="text_big">时间 </view>
+   <view bindtap="ChooseImage" class="text_big"> - </view>
+  <view bindtap="ChooseImage" class="text_big"> 运动量</view> -->
+
+  <view class="column_line" style="width:40%;height:100%; justify-content: flex-start;margin-top:30rpx;">
+    <view class="text_inform">日期</view>
+    <view class="text_inform" wx:for="{{user_data}}">{{item.date}}</view>
+  </view>
+
+  <view class="column_line" style="width:60%;height:100%; justify-content: flex-start;margin-top:30rpx;">
+    <view class="text_inform" style="margin-left:20rpx;">运动情况</view>
+    <view class="column_line" style="width:100%;">
+      <view class="text_inform row_line" style="width:100%;" wx:for="{{user_data}}">
+
+        <view class="text_inform" style="width:60%;text-align: center;">{{item.sport_distance}}km</view>
+        <view class="text_inform" style="width:40%;text-align: center;">{{item.sport_time}}min</view>
+
+      </view>
+    </view>
+
+  </view>
+</view>
+
+
+<!-- 团体打卡记录 -->
+<view class="shadow label row_line show_label" style="height:fit-content;width:95%;margin:auto;border-radius: 20rpx;padding-bottom: 15rpx;" wx:if="{{page_state==2}}">
+  <!-- <view bindtap="ChooseImage" class="text_big">时间 </view>
+   <view bindtap="ChooseImage" class="text_big"> - </view>
+  <view bindtap="ChooseImage" class="text_big"> 运动量</view> -->
+
+  <view class="column_line" style="width:30%;height:100%; justify-content: flex-start;margin-top:30rpx;">
+    <view class="text_inform">成员</view>
+    <view class="text_inform" wx:for="{{team_member_inform_name}}" wx:key="index">{{item}}</view>
+  </view>
+
+  <view class="column_line" style="width:70%;height:100%; justify-content: flex-start;margin-top:30rpx;">
+    <view class="text_inform">累计运动量</view>
+
+
+    <view class="row_line" style="width:100%;">
+
+      <view class="column_line" style="width:40%;">
+        <view class="text_inform " wx:for="{{team_member_inform_clockin_time}}" wx:key="index">{{item}}次打卡</view>
+      </view>
+
+      <view class="column_line" style="width:30%;">
+        <view class="text_inform" wx:for="{{team_member_inform_distance}}" wx:key="index"> {{item}}km</view>
+      </view>
+
+      <view class="column_line" style="width:30%;">
+        <view class="text_inform " wx:for="{{team_member_inform_spent_time}}" wx:key="index"> {{item}}min</view>
+      </view>
+
+
+    </view>
+
+  </view>
+
+</view>
+
+<view style="height:30rpx;"></view>

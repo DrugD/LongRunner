@@ -1,0 +1,118 @@
+<!-- <view class="section">
+  <view class="section__title">国家：</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      当前选择：{{array[index]}}
+    </view>
+  </picker>
+</view> -->
+
+<!-- <view class="section">
+  <view class="section__title">比赛项目：</view>
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <view class="picker">
+      当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+    </view>
+  </picker>
+</view> -->
+
+<!-- <view class="section">
+  <view class="section__title">时间选择器</view>
+  <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+    <view class="picker">
+      当前选择: {{time}}
+    </view>
+  </picker>
+</view> -->
+
+
+<!-- <topbar param_barColor1='#3c64d0' param_barColor2='#3c64d0' param_bartitle="日历" param_back="true"  
+></topbar>   -->
+<navigationBar id="navigationBar" color="#fff" title="" back="{{true}}" background="#3c64d0" backStyle="simple"></navigationBar>
+
+<view class="section text_shadow">
+  <view class="section_title">
+    <view class="section__title ">日期选择器</view>
+    <view style="margin-left:50rpx;">
+      <switch style="zoom:0.7;" type="checkbox" checked="{{switchChecked1}}" bindchange="switchChange1" />不限
+    </view>
+  </view>
+</view>
+
+<view style="width: 90%;margin: auto;" class="row_line text_shadow">
+  <picker style="width:50%;margin:auto;" mode="date" value="{{olddate}}" start="2010-01-01" end="2122-01-01" bindchange="bindDateChange1">
+    <view class="picker" style="margin-right:10rpx;">
+      从: {{olddate}}
+    </view>
+  </picker>
+
+  <picker style="width:50%;margin:auto;" mode="date" value="{{newdate}}" start="2010-01-01" end="2122-01-01" bindchange="bindDateChange2">
+    <view class="picker" style="margin-left:10rpx;">
+      到: {{newdate}}
+    </view>
+  </picker>
+</view>
+
+
+<!-- <view class="section">
+  <view class="section_title">
+    <view class="section__title">（国内）省市区选择器(精确至市)</view>
+    <view style="margin-left:50rpx;">
+      <switch style="zoom:0.7;" type="checkbox" checked="{{switch2Checked}}" bindchange="switch2Change" />不限
+    </view>
+  </view>
+
+  <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+    <view class="picker">
+      当前选择：{{region[0]}} {{region[1]}}
+  
+    </view> 
+    <view>不限</view>
+  </picker>
+</view>  -->
+
+<view class="section text_shadow">
+  <view class="section_title">
+    <view class="section__title">地区选择器</view>
+    <view style="margin-left:50rpx;">
+      <switch style="zoom:0.7;" type="checkbox" checked="{{switchChecked2}}" bindchange="switchChange2" />不限
+      <switch style="zoom:1;margin-left:50rpx;" type="checkbox" checked="{{switchChecked3}}" bindchange="switchChange3" />手动输入
+    </view>
+  </view>
+  <picker wx:if="{{!input_flag}}" custom-item="不限" mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" style="width: 90%;margin: auto;">
+    <text class="picker" decode="{{true}}">
+      <!-- 当前选择：{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}} -->
+      <!-- {{multiArray[1][multiIndex[1]]=="北京"?'':multiArray[1][multiIndex[1]]}} -->
+      当前选择：{{multiArray[0][multiIndex[0]]}}&nbsp;&nbsp;&nbsp;&nbsp;{{!multiArray[1][multiIndex[1]]==multiArray[0][multiIndex[0]]?multiArray[1][multiIndex[1]]:""}}
+
+    </text>
+  </picker>
+  <input bindinput="bindKeyInput" wx:if="{{input_flag}}" class="input_view picker" maxlength="10" placeholder="请输入地名（10字内）"></input>
+</view>
+
+<view style="height:30rpx;"></view>
+<button class="button" bindtap="query">查询</button>
+
+
+
+<wxs src="../../../utils/util.wxs" module="date" />
+
+
+<view class="result_view ">
+  <view wx:for="{{queryResult}}" wx:key="item" class='malasong_item shadow row_line' bindtap='lookin' data-detail='{{index}}'>
+    <!-- <image class='malasong_img' src="{{item.bg_img_url}}" model="scaleToFill"></image> -->
+    <!-- <view style='height:10rpx;'></view> -->
+    <view class="text_big" style="width:20%;">
+      {{index+1}}
+    </view>
+    <view style="width:80%;">
+      <view class='content text'>{{item.malasong_name}}</view>
+      <view class='content_ text_small'>
+        {{item.booking_end_date&&date.fromnow_day(item.booking_end_date)?'据报名截止还有：'+date.fromnow_day(item.booking_end_date)+"天"+date.fromnow_hour(item.booking_end_date)+"小时":"报名已结束"}} 比赛时间： {{date.year(item.malasong_time)}}年{{date.month(item.malasong_time)}}月{{date.day(item.malasong_time)}}日
+      </view>
+      <view style='height:10rpx;'></view>
+    </view>
+
+  </view>
+</view>
+<!-- <view wx:for='{{queryResult}}'>{{date.format_ymd(item.malasong_time)}}</view> -->

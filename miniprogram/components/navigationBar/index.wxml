@@ -1,0 +1,29 @@
+<view class="navigation-bar" style="padding-top:{{paddingTop}}px;height:{{height}}px;line-height:{{height}}px;background:{{background}};color:{{color}};font-size:{{fontSize}};position:{{fixed&&'fixed'}};transform:translateY({{!show?-paddingTop-height+'px':'0'}});">
+  <view class="back" wx:if="{{back}}" style="padding-top:{{paddingTop}}px;height:{{height}}px;line-height:{{height}}px;">
+
+    <view class="style-simple" style="width:{{height}}px;" wx:if="{{backStyle==='simple'}}">
+      <view class="icon-fanhui icon" bind:tap="navigateBack"></view>
+      <view class="back-home icon" wx:if="{{showHomeButton}}" style="" bind:tap="navigateBackHome"></view>
+    </view>
+
+    <view class="style-normal {{navigationBarTextStyle}}" wx:if="{{backStyle==='normal'}}">
+      <view class="icon-fanhui icon" bind:tap="navigateBack"></view>
+      <view class="split"></view>
+      <view class="back-home icon" style="" bind:tap="navigateBackHome"></view>
+    </view>
+
+    <view class="style-niwu" wx:if="{{backStyle==='niwu'}}">
+      <view class="icon-fanhui icon" bind:tap="navigateBack"></view>
+      <view class="back-home icon" wx:if="{{showHomeButton}}" style="" bind:tap="navigateBackHome"></view>
+    </view>
+
+  </view>
+  <view class="title" wx:if="{{!search_flag}}">
+    {{title!='none'?title:''}}
+  </view>
+  <view class="search_view" wx:if="{{search_flag}}">
+    <image bind:tap="search_input" style="height:30rpx;width:30rpx;margin:auto;margin-left:15rpx;margin-right:15rpx;" src="/images/search_input.png"></image>
+    <input placeholder="想输入什么内容？" style="text-align: left;font-size:14px;" value="{{inputValue}}" bindinput="input_to_search"></input>
+  </view>
+</view>
+<view class="navigation-bar-holder" wx:if="{{fixed && show}}" style="background:{{placeholderBg}};padding-top:{{paddingTop}}px;height:{{height}}px;line-height:{{height}}px;width:750rpx;"></view>

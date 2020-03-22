@@ -1,0 +1,27 @@
+<!--miniprogram/pages/test/test.wxml-->
+<view style="height:200rpx;"></view>
+
+<!-- 文字 -->
+<view class="text">Sign up</view>
+
+<view style="height:100rpx;"></view>
+
+
+<!-- 输入框 -->
+<view class="label" style="heigt:300rpx;"> 
+  <input class="input_text input "     placeholder="输入文字"></input>
+</view>
+
+<view style="height:100rpx;"></view>
+
+<!-- 写字按钮 -->
+<view class="button div " style="height:100rpx;width:180rpx;margin:auto;">转发</view>
+
+
+<view style="height:100rpx;"></view>
+
+<!-- 有图的按钮 -->
+<view class="button div " style="height:100rpx;width:100rpx;margin:auto; border-radius: 50rpx;">
+  <image style=" border-radius: 50rpx;height:50rpx;width:50rpx;" src="../../images/two/clockin.svg"></image>
+</view>
+

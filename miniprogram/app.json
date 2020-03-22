@@ -1,0 +1,68 @@
+{
+  "pages": [
+    
+  "pages/two/two",
+    "pages/one/detail/detail",
+ 
+    "pages/one/index",
+    "pages/me/me",
+    "pages/test/test2",
+    "pages/me/authentication/authentication",
+    "pages/runningcalculator/runningcalculator",
+    "pages/one/community/community",
+    "pages/one/search/search",
+    "pages/me/question/question",
+    "pages/me/aboutUs/aboutUs",
+    "pages/me/shop/shop",
+    "pages/planmanage/history",
+    "pages/clockin/clockin_main",
+    "pages/clockin/team",
+    "pages/clockin/clockin",
+    "pages/test/test",
+    "pages/one/one",
+    "pages/forme/forme",
+    "pages/calendar2/calendar2",
+    "pages/one/mytiezi/mytiezi",
+    "pages/one/pengyouquan/pengyouquan",
+    "pages/one/tiezi/tiezi",
+    "pages/planmanage/planmanage",
+    "pages/planmanage/plandetail",
+    "pages/one/detail2/detail2",
+    "pages/one/detail/web"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ebecf0",
+    "navigationBarTitleText": "LD runner",
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "selectedColor": "#3c64d0",
+    "backgroundColor": "#ebecf0",
+    "color": "#61677c",
+    "list": [
+      {
+        "pagePath": "pages/one/index",
+        "text": "资讯",
+        "iconPath": "images/icon/one.png",
+        "selectedIconPath": "images/icon/one_.png"
+      },
+      {
+        "pagePath": "pages/two/two",
+        "text": "工具",
+        "iconPath": "images/icon/two.png",
+        "selectedIconPath": "images/icon/two_.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "images/icon/three.png",
+        "selectedIconPath": "images/icon/three_.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

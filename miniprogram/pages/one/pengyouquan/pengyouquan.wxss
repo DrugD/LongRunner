@@ -1,0 +1,43 @@
+.container{
+   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+}
+
+
+.itemRoot {
+  margin-left: 50rpx;
+  border: 2rpx solid rgb(218, 189, 189);
+}
+
+.imgRoot {
+  margin-left: 40rpx;
+}
+
+.imgList {
+  display: inline-block;
+}
+
+.img {
+  margin: 5rpx;
+  position: relative;
+  width: 155rpx;
+  height: 155rpx;
+}
+
+
+.userinfo{
+  display: flex;
+  flex-direction: row;
+  height: 90rpx;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.userinfo_avatar{
+  border-radius: 100%;
+}

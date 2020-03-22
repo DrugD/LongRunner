@@ -1,0 +1,138 @@
+<!--pages/two/two.wxml-->
+
+
+<view></view>
+
+<view class="view_all" style="height:100vh;">
+  <navigationBar id="navigationBar" color="#61677C" title="" back="{{false}}" background="#ebecf0"></navigationBar>
+
+  <view style="width:100%;height:35vh;" class="row_line">
+    <view style="width:50%;height:100%;" class="center_display">
+      <view bindtap='plan_manage' class="  button text_big" style="margin-left: 20vw;margin-bottom: 10vh;height:300rpx;width:150rpx;font-size: 60rpx;">
+        <text style="width:10rpx;margin-right: 3vw;">新建</text>
+      </view>
+    </view>
+    <view style="width:50%;height:35vh;" class="column_line">
+      <view style="height:30%;width:90%;margin:auto;">
+        <image src="/images/two/one.svg" style="width:100%;height:100%;margin:auto;"></image>
+      </view>
+      <view style="height:20%;width:90%;margin:auto;" class="text">训练计划管理器</view>
+      <view  bindtap='plan_manage_history'class="  button_2 text_big" style="height:300rpx;width:150rpx;margin-right: 25vw;font-size: 60rpx;">
+        <text style="width:10rpx;margin-right: 8vw;">查看</text>
+      </view>
+    </view>
+  </view>
+
+
+  <view style="width:100%;height:50vh;" class="column_line">
+    <!-- 有图的按钮 -->
+    <view style="height:30rpx;"></view>
+    <view class="button div row_line" style="height:23.3%;width:400rpx; border-radius: 37px;" bindtap="clockin">
+      <image style="height:37px;width:37px;" src="../../images/two/two.svg"></image>
+      <view class="" style="margin-left:15rpx;">训练打卡器</view>
+    </view>
+
+
+      <view style="height:37px;"></view>
+    <!-- 有图的按钮 -->
+    <view bindtap="runcalculator" class="button div row_line" style="height:23.3%;width:400rpx; border-radius: 37px;" >
+      <image style="height:100rpx;width:100rpx;" src="../../images/two/three.svg"></image>
+      <view class="" style="margin-left:15rpx;">配速换算器</view>
+    </view>
+
+
+    <view style="height:37px;"></view>
+    <!-- 有图的按钮 -->
+    <view bindtap="runcalendar"class="button div row_line" style="height:23.3%;width:400rpx; border-radius: 37px;">
+      <image style="height:37px;width:37px;" src="../../images/two/four.svg"></image>
+      <view class="" style="margin-left:15rpx;">赛事日程表</view>
+    </view>
+      <view style="height:50rpx;"></view>
+
+  </view>
+
+
+
+
+
+
+  <!-- <view class="view_1">
+    <image mode="widthFix" style="width:70%;" src="/images/two/v1.png" bindtap="clickImg"></image>
+  </view>
+
+  <view class="view_2">
+    <view class="view_2_1">
+      <image mode="widthFix" style="width:90%;height:100%;margin-left:50rpx;" src="/images/two/v3.png" bindtap=""></image>
+    </view>
+
+    <view class="view_2_2">
+      <image bindtap="clockin" mode="widthFix" style="width:150rpx;height:150rpx;" src="/images/two/v2.png" ></image>
+    </view>
+  </view>
+
+
+  <view class="view_3">
+    <view class="view_3_1" bindtap="runcalculator">
+      <view class="icon_name">配速换算器</view>
+      <image style="height:200rpx;;width:200rpx;" src="/images/two/v41.png" ></image>
+    </view>
+
+    <view class="view_3_2" bindtap="runcalendar">
+    <view class="icon_name">赛事日程表</view>
+     <image style="height:200rpx;;width:200rpx;" src="/images/two/v42.png"></image>
+    </view>
+  </view> -->
+  <!-- <image style=" position: fixed;height: 100%; width: 100%; display:flex; flex-direction:column; align-items:center;justify-content: center;" mode="widthFix" src="/images/two.jpg"></image> -->
+
+
+</view>
+
+
+
+
+<!-- <view>
+  <view class='tool_view'>
+    <view class='tool_view_1'>
+      <image src='/images/1.png' class='tool_icon'></image>
+      <view style='height:10rpx;width:100%;'></view>
+      <view class='tool_name'>
+        训练计划管理器
+      </view>
+    </view>
+    <view class='tool_view_2'>
+      <button class='tool_view_2_btn' bindtap='plan_manage'>
+        新增
+      </button>
+      <button class='tool_view_2_btn' bindtap='plan_manage_history'>
+        查看
+      </button>
+    </view>
+
+  </view>
+
+
+
+
+
+  <view class='tool_view2'>
+    <view class='tool_view_1' bindtap='runcalculator'>
+      <image src='/images/4.png' class='tool_icon'></image>
+      <view style='height:10rpx;width:100%;'></view>
+      <view class='tool_name'>
+        跑步换算器
+      </view>
+    </view>
+     <view class='tool_view_1' bindtap='runcalendar'>
+      <image src='/images/2.png' class='tool_icon'></image>
+      <view style='height:10rpx;width:100%;'></view>
+      <view class='tool_name'>
+        赛事日历管理器
+      </view>
+    </view>
+   
+  </view>
+
+
+
+
+</view> -->

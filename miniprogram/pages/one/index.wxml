@@ -1,0 +1,116 @@
+<!--miniprogram/pages/one/index.wxml-->
+
+
+<wxs src="../../utils/util.wxs" module="date" />
+
+<!-- <topbar param_barColor1='#3c64d0' param_barColor2='#3c64d0' param_bartitle=""   param_searchShow="true"
+></topbar>   -->
+
+ <navigationBar id="navigationBar" color="{{color}}" title="{{title}}" back="{{false}}" background="{{barBg}}" search_flag="true"></navigationBar>
+
+
+
+<view class="bg_blue"></view>
+<view class="tab_image">
+
+  <view class="tab_image1" bindtap="gotoCalendar">
+    <image style="height:260rpx;width:260rpx;" src="/images/t1.png"></image>
+    <view class="tab_image_text text">赛事日历</view>
+  </view>
+
+  <view class="tab_image1" bindtap="gotoSearch">
+    <image style="height:260rpx;width:260rpx;" src="/images/t2.png"></image>
+    <view class="tab_image_text text">赛事查询</view>
+  </view>
+
+  <view class="tab_image1" bindtap="gotoCommunity">
+    <image style="height:260rpx;width:260rpx;" src="/images/t3.png"></image>
+    <view class="tab_image_text text">志愿者招募</view>
+  </view>
+</view>
+
+<view style="height:0px;"></view>
+
+
+
+<view style="background: #ebecf0;" wx:if="{{block_index==1}}">
+
+  <!-- <view class="search">
+    <image bindtap="toSearch" class="search_input" src="/images/search_input.png"></image>
+    <input style="width:100%;margin:auto;text-align: left;" type='text' placeholder='请输入检索词' confirm-type='search' value="{{inputValue}}" bindinput="input_to_search"></input>
+  </view> -->
+
+
+  <view class="loading_view" wx:if="{{showLoading}}">
+    <image class="loading" src="/images/loading.gif"></image>
+  </view>
+
+
+  <view style='height:30rpx;'></view>
+
+  <!-- <view bindtap="load">点击加载</view> -->
+  <view style="width:100%;" wx:for="{{table_1}}" wx:key="item" >
+
+
+    <view class='malasong_item_nt'>
+
+      <view class='malasong_item_img'>
+        <image style="height:100%;width:100%;" src="/images/tar.png" model="scaleToFill"></image>
+      </view>
+
+      <view class="malasong_text_n">
+        <view style='height:9px;'></view>
+        <view class="malasong_text_nm">
+          {{item.state==1?"比赛时间延后":date.year(item.malasong_time)+"."+date.month(item.malasong_time)+"."+date.day(item.malasong_time)}}
+        </view>
+        <view class="malasong_text_nm">
+          {{item.booking_end_date&&date.fromnow_day(item.booking_end_date)?'据报名截止还有：'+date.fromnow_day(item.booking_end_date)+"天"+date.fromnow_hour(item.booking_end_date)+"小时":"报名已结束..."}}
+        </view>
+        <view class='malasong_item_n' bindtap='lookin' data-detail='{{index}}'>
+          <image class='malasong_img_n' src="{{item.bg_img_url}}" model="scaleToFill"></image>
+
+
+        </view>
+        <view class='content_n'>{{item.malasong_name}}</view>
+      </view>
+
+
+    </view>
+
+    <view style='height:30rpx;'></view>
+
+
+  </view>
+
+</view>
+
+
+
+<!-- 马拉松赛事 -->
+<view wx:if="{{block_index==3}}">
+
+  <view class="search">
+    <image bindtap="toSearch" class="search_input" src="/images/search_input.png"></image>
+    <input style="width:100%;margin:auto;text-align: left;" type='text' placeholder='请输入检索词' confirm-type='search' value="{{inputValue}}" bindinput="input_to_search"></input>
+  </view>
+
+  <view class="loading_view" wx:if="{{showLoading}}">
+    <!-- <image class="loading" src="/images/loading.gif"></image> -->
+  </view>
+
+  <!-- <view bindtap="load">点击加载</view> -->
+  <view wx:for="{{table_1}}" wx:key="item" class='malasong_item' bindtap='lookin' data-detail='{{index}}'>
+    <image class='malasong_img' src="{{item.bg_img_url}}" model="scaleToFill"></image>
+    <view style='height:10rpx;'></view>
+    <view class='content'>{{item.malasong_name}}</view>
+    <view class='content_'>
+      {{item.booking_end_date&&date.fromnow_day(item.booking_end_date)?'据报名截止还有：'+date.fromnow_day(item.booking_end_date)+"天"+date.fromnow_hour(item.booking_end_date)+"小时":"已结束"}} 比赛时间：{{date.year(item.malasong_time)}}年{{date.month(item.malasong_time)}}月{{date.day(item.malasong_time)}}日
+    </view>
+
+    <view style='height:10rpx;'></view>
+
+  </view>
+
+  <!-- <> -->
+  <view style='height:50rpx;'></view>
+</view>

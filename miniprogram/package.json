@@ -1,0 +1,25 @@
+{
+  "name": "sm-crypto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "wx-server-sdk":"latest",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "miniprogram-sm-crypto": "^0.1.0"
+  },
+  "permissions": {
+  
+    "openapi": [
+      "templateMessage.send",
+      "security.msgSecCheck",
+      "security.imgSecCheck"
+     
+    ],
+   
+  }
+}

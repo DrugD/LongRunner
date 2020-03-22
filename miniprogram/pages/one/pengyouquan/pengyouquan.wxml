@@ -1,0 +1,24 @@
+ <navigationBar id="navigationBar" color="#fff" title="" back="{{true}}" background="#3c64d0"  backStyle="simple" ></navigationBar>
+
+<view class="container">
+
+  <block wx:for="{{dataList}}" wx:key="index">
+    <view class="itemRoot">
+      <view class="userinfo">
+        <view>{{item.user_info.nickName}}</view>
+        <image class="userinfo_avatar" style="height:60rpx;width:60rpx;" src="{{item.user_info.avatarUrl}}"></image>
+      </view>
+      <view>
+        <text class="desc">{{item.desc}}</text>
+
+      </view>
+      <view class="imgRoot">
+        <block class="imgList" wx:for="{{item.fileIDs}}" wx:for-item="itemImg" wx:key="index">
+          <image class="img" src='{{itemImg}}' mode='aspectFill' data-img='{{[itemImg,item.fileIDs]}}' bindtap="previewImg"></image>
+        </block>
+      </view>
+    </view>
+  </block>
+
+</view>
+

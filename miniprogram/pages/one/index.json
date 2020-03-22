@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+      "navigationBar": "/components/navigationBar/index"
+  },
+  "navigationBarTitleText": "跑者聚集地",
+    "disableSwipeBack": true
+}

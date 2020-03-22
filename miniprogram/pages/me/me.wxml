@@ -1,0 +1,124 @@
+<!--pages/me/me.wxml-->
+
+
+<navigationBar id="navigationBar" color="#fff" title="" back="{{false}}" background="#3c64d0"></navigationBar>
+
+
+<view class='userInfo'>
+  <!-- <image class='bgImage' src='../../images/bg_2.png' mode='aspectFill'></image> -->
+  <view wx:if="{{userInfo}}" class='show_user'>
+
+    <view class="info">
+      <image class='avatar' src='{{userInfo.avatarUrl}}' mode='aspectFill'></image>
+      <view class='name'>{{userInfo.nickName}}</view>
+      <view class='state'>认证状态：{{!user_state?"未认证":"已认证"}}</view>
+    </view>
+
+
+  </view>
+  <view wx:if="{{!userInfo}}" class='show_user'>
+ <view class="info">
+    <image class='avatar' src='/images/unkonwUser.jpg' mode='aspectFill'></image>
+    <view class='name'>游客</view>
+    <view class='state'>认证状态：未认证</view></view>
+  </view>
+</view>
+<view style="height:100rpx;"></view>
+<view class="item">
+  <view class="item_1">
+    <!-- <view class="item_2">
+      订阅服务
+    </view>
+    <switch type="checkbox" checked="{{switchChecked}}" bindchange="switchChange" /> -->
+  </view>
+
+  <view class="item_1">
+    <view class="item_2">
+      订阅服务
+    </view>
+    <switch style="color:red;zoom: 0.7;" type="switch" checked="{{switchChecked}}" bindchange="switchChange" />
+  </view>
+
+</view>
+
+
+<!-- <view bindtap="check_subscribe"></view> -->
+
+<view wx:if="{{!userInfo}}">
+  <button open-type='getUserInfo' bindgetuserinfo="getUserInfo" class="btn_login">点击开通个人中心</button>
+</view>
+
+<!-- <button class="btn_subscribe" bindtap="subscribe">订阅服务</button> -->
+
+
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+
+
+<view class="modalDlg" wx:if="{{showModal}}">
+  <view style="height:20rpx;"></view>
+  <image class="img_1" style="width:{{help_gif_1?'580rpx':'100rpx'}}" src="{{help_gif_1?help_gif_1:'/images/timing.gif'}}" mode="aspectFit" />
+  <view style="height:10rpx;"></view>
+
+  <text class="modalDlg_text">在弹出推送申请提示框时，请勾选“总是保持以上选择”以享受实时的消息推送服务。</text>
+  <view style="height:10rpx;"></view>
+
+  <!-- <view style="height:10rpx;"></view> -->
+  <image class="modalDlg_btn" bindtap="know" src="/images/close.png"></image>
+</view>
+
+
+
+
+<view class="view_1">
+
+  <view class="view_1_1" bindtap="toMyauthentication">
+    <image class="view_1_1_img" src="/images/me/1.png" mode="aspectFit"></image>
+    <view class="view_1_1_text">我的认证</view>
+    <image class="view_1_2_img" src="/images/me/7.png" mode="aspectFit"></image>
+  </view>
+
+  <!-- <view class="view_1_1" bindtap="toMytiezi">
+    <image class="view_1_1_img" src="/images/me/1.png" mode="aspectFit"></image>
+    <view class="view_1_1_text">我的动态</view>
+    <image class="view_1_2_img" src="/images/me/7.png" mode="aspectFit"></image>
+  </view> -->
+
+
+  <!-- <view class="view_1_1">
+    <image class="view_1_1_img" src="/images/me/2.png" mode="aspectFit"></image>
+    <view class="view_1_1_text">我的圈子</view>
+    <image class="view_1_2_img" src="/images/me/7.png" mode="aspectFit"></image>
+  </view>
+
+
+  <view class="view_1_1">
+    <image class="view_1_1_img" src="/images/me/3.png" mode="aspectFit"></image>
+    <view class="view_1_1_text">我的收藏</view>
+    <image class="view_1_2_img" src="/images/me/7.png" mode="aspectFit"></image>
+  </view> -->
+
+  <view class="view_1_1" bindtap="myQuestion">
+    <image class="view_1_1_img" src="/images/me/4.png" mode="aspectFit"></image>
+    <view class="view_1_1_text">常见问题</view>
+    <image class="view_1_2_img" src="/images/me/7.png" mode="aspectFit"></image>
+  </view>
+
+
+  <view class="view_1_1" bindtap="aboutUs">
+    <image class="view_1_1_img" src="/images/me/5.png" mode="aspectFit"></image>
+    <view class="view_1_1_text">关于我们</view>
+    <image class="view_1_2_img " src="/images/me/7.png" mode="aspectFit"></image>
+  </view>
+
+  <view class="view_1_1" bindtap="gotoShop">
+    <image class="view_1_1_img" src="/images/me/5.png" mode="aspectFit"></image>
+    <view class="view_1_1_text">runner商城</view>
+    <image class="view_1_2_img " src="/images/me/7.png" mode="aspectFit"></image>
+  </view>
+
+  <!-- <view class="view_1_1">
+    <image class="view_1_1_img" src="/images/me/6.png" mode="aspectFit"></image>
+    <view class="view_1_1_text">联系我们</view>
+    <image class="view_1_2_img" src="/images/me/7.png" mode="aspectFit"></image>
+  </view> -->
+</view>

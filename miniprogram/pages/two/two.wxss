@@ -1,0 +1,267 @@
+/* pages/two/two.wxss */
+
+page {
+  /* 
+  background: url("http://music.163.com/api/img/blur/109951163240732641") no-repeat;
+
+  background-position: 50%;
+
+  background-size: auto 100%; */
+  background: #f6f6f6;
+  height: 100%;
+  /* overflow: hidden; */
+}
+
+.tool_view2 {
+  height: 300rpx;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  /* flex-direction: column; */
+}
+
+.tool_view_2_1 {
+  height: 300rpx;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  flex-direction: column;
+}
+
+.tool_view_1 {
+  height: 300rpx;
+  width: 9%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  flex-direction: column;
+}
+
+.tool_view_2 {
+  height: 300rpx;
+  /* width: 37%; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  flex-direction: column;
+}
+
+.tool_view_2_btn {
+  width: 100%;
+  margin: auto;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  /* width: 80%;
+  margin-top: 20rpx; */
+  background-color: burlywood;
+  color: white;
+  border-radius: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool_icon {
+  height: 200rpx;
+  width: 200rpx;
+}
+
+.tool_icon {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.tool_name {
+  width: 500rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.view_all {
+  background: #ebecf0;
+ 
+  display: flex;
+  flex-direction: column;
+}
+
+.view_1 {
+  height: 34%;
+  width: 100%;
+  background: #3c64d0;
+  display: flex;
+  justify-content: center;
+}
+
+.view_2 {
+  height: 33%;
+  width: 100%;
+  background: #749eff;
+  display: flex;
+  flex-direction: row;
+}
+
+.view_3 {
+  height: 33%;
+  width: 100%;
+  background: #B1D2FF;
+  display: flex;
+  flex-direction: row;
+}
+
+.view_2_1 {
+  width: 55%;
+  height: 100%;
+  /* position: relative; */
+  top: 0vh;
+
+}
+
+.view_2_2 {
+  width:45%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+
+.view_3_1{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.view_3_2{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon_name{
+  color:#000D80;
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  align-items: center;
+  font-size: 37rpx;
+  font-weight: bolder;
+}
+
+.center_display{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.row_line {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.column_line {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  text-align: center;
+  font-size: 40rpx;
+  color: #babecc;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+.text_big {
+  text-align: center;
+  font-size: 45rpx;
+  color: #babecc;
+  text-shadow: 1px 1px 1px #fff;
+  /* padding-top: 30rpx; */
+}
+
+.text_small {
+  text-align: left;
+  font-size: 30rpx;
+  color: #babecc;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+
+
+.shadow {
+  /* box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc; */
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+}
+
+.button {
+  color: #61677c;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 45rpx;
+  /* letter-spacing:15px; *//* cursor: pointer; */
+  /* border-radius: 25px; */
+
+   border-bottom-left-radius: 150rpx;
+  border-top-left-radius: 150rpx;
+  writing-mode: horizontal-tb;
+
+}
+
+.button:hover {
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+
+.button:active {
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+.button_2 {
+  color: #61677c;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  transition: all 0.2s ease-in-out;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 45rpx;
+  /* letter-spacing:15px; *//* cursor: pointer; */
+  /* border-radius: 25px; */
+
+  border-bottom-right-radius: 150rpx;
+  border-top-right-radius: 150rpx;
+  writing-mode: horizontal-tb;
+
+}
+
+.button_2:hover {
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+
+.button_2:active {
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}

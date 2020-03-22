@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+      "navigationBar": "/components/navigationBar/index"
+    },
+    "disableSwipeBack": true,
+  "navigationBarTextStyle": "black"
+}

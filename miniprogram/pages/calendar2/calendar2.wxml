@@ -1,0 +1,151 @@
+
+<!-- <topbar param_barColor1='#3c64d0' param_barColor2='#3c64d0' param_bartitle="日历" param_back="true"  
+></topbar>   -->
+
+ <navigationBar id="navigationBar"  backStyle="simple" color="#fff" title="" back="{{true}}" background="#3c64d0" ></navigationBar>
+
+
+<view class="canlendarBgView">
+  <view class="canlendarView">
+
+
+    <view class="canlendarTopView">
+      <!-- <view class="leftBgView" bindtap="handleCalendar" data-handle="prev">
+        <view class="leftView">《</view>
+      </view> -->
+      <!-- <view class="centerView" >{{cur_year || "--"}} 年 {{cur_month || "--"}} 月</view> -->
+
+      <!-- <view class="rightBgView" bindtap="handleCalendar" data-handle="next">
+        <view class="rightView">》</view>
+      </view> -->
+
+      <view class="centerView">{{cur_month_show?cur_month_show:ketboard}} {{ketboard}} {{cur_year}}</view>
+      <!-- <view style="width:75px;"></view> -->
+      <view class="leftBgView" bindtap="handleCalendar" data-handle="prev">
+        <view class="leftView">
+          <image class="img_icon" src="/images/left.svg" style="width: 30rpx;height: 30rpx;"></image>
+        </view>
+      </view>
+      <view class="rightBgView" bindtap="handleCalendar" data-handle="next">
+        <view class="rightView">
+
+          <image class="img_icon" src="/images/right.svg" style="width: 30rpx;height: 30rpx;"></image>
+        </view>
+      </view>
+
+
+    </view>
+
+
+
+    <view class="weekBgView">
+      <view class="weekView" wx:for="{{weeks_ch}}" wx:key="index" data-idx="{{index}}">{{item}}</view>
+    </view>
+    <view class="dateBgView">
+      <view wx:if="{{hasEmptyGrid}}" class="dateEmptyView" wx:for="{{empytGrids}}" wx:key="index" data-idx="{{index}}">
+      </view>
+
+
+      <view class="dateView" wx:for="{{days}}" wx:key="index" data-idx="{{index}}" bindtap="dateSelectAction">
+
+        <view class="datesView {{index == today&&cur_month==today_month&&cur_year==today_year &&index != todayIndex ? 'TruetodayView' : ''}} {{index == today&&cur_month==today_month&&cur_year==today_year &&index == todayIndex ? 'todayView' : ''}}  {{index == todayIndex ? 'todayView' : ''}}  ">{{index == today&&cur_month==today_month&&cur_year==today_year ? "今":item.date}}</view>
+        <view wx:if="{{item.haveRace}}" class="raceView"></view>
+
+      </view>
+
+
+    </view>
+  </view>
+  <!-- <view>点击日期选择</view> -->
+</view>
+
+<view class="inform_top">当前日期：{{cur_year}}年{{cur_month}}月{{todayIndex +1==0?'':todayIndex +1+'日'}}</view>
+
+<!-- <view class="news"> 该月赛事信息：{{monthRaceData.length}}条</view>
+
+
+<view wx:for="{{monthRaceData}}" wx:key="index">
+  <block bindtap="lookin">
+    <view class="malasong_name">{{item.malasong_time}}</view>
+    <view class="malasong_name">{{item.malasong_name}}</view>
+
+  </block>
+</view>
+
+
+<view class="news"> 当天赛事信息：{{item_show.length}}条</view>
+
+
+<view wx:for="{{item_show}}" wx:key="index">
+  <block bindtap="lookin">
+    <view class="malasong_name">{{item.malasong_time}}</view>
+    <view class="malasong_name">{{item.malasong_name}}</view>
+    <view class="malasong_name">booking_end_date:{{item.booking_end_date}}</view>
+    <view>查看详情</view>
+
+  </block>
+</view> -->
+
+<view style="height:30rpx;"></view>
+
+
+<view class="showBar">
+  <view class="show1">
+    <image style="height:50rpx;width:50rpx;" src="/images/icon/calendar.png"></image>
+  </view>
+  <view class="show2">
+    本日赛事信息
+  </view>
+  <view class="show3" animation="{{animationData1}}" bindtap="tap_show1">
+    <image style="height:35rpx;width:35rpx;" src="/images/icon/sanjiao.png"></image>
+  </view>
+</view>
+
+<view style="width:550rpx;margin:auto;background:rgba(114, 114, 114, 0.2);height:2rpx;"></view>
+
+<view class="day_race_data" wx:if="{{showdata_1}}">
+  <view wx:for="{{item_show}}" wx:key="index">
+    <block >
+      <view style="height:10rpx;"> </view>
+      <view class="malasong_name" bindtap="lookin">{{item.malasong_name}}</view>
+      <view style="height:10rpx;"> </view>
+    </block>
+  </view>
+  <view style="height:10rpx;" wx:if="{{!item_show.length}}"> </view>
+  <view class="malasong_name" wx:if="{{!item_show.length}}">
+    空
+  </view>
+  <view style="height:10rpx;" wx:if="{{!item_show.length}}"> </view>
+</view>
+
+
+
+<view class="showBar">
+  <view class="show1">
+    <image style="height:50rpx;width:50rpx;" src="/images/icon/calendar.png"></image>
+  </view>
+  <view class="show2">
+    本月赛事信息
+  </view>
+  <view class="show3" animation="{{animationData2}}" bindtap="tap_show2">
+    <image style="height:35rpx;width:35rpx;" src="/images/icon/sanjiao.png"></image>
+  </view>
+</view>
+
+<view style="width:550rpx;margin:auto;background:rgba(114, 114, 114, 0.2);height:2rpx;"></view>
+
+<view class="month_race_data" wx:if="{{showdata_2}}">
+  <view wx:for="{{monthRaceData}}" wx:key="index">
+    <block >
+      <view style="height:10rpx;"> </view>
+      <view class="malasong_name" bindtap="lookin">{{item.malasong_name}}</view>
+      <view style="height:10rpx;"> </view>
+
+    </block>
+  </view>
+  <view style="height:10rpx;" wx:if="{{!monthRaceData.length}}"> </view>
+  <view class="malasong_name" wx:if="{{!monthRaceData.length}}">
+    空
+  </view>
+  <view style="height:10rpx;" wx:if="{{!monthRaceData.length}}"> </view>
+</view>

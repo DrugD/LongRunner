@@ -1,0 +1,81 @@
+/* pages/planmanage/history.wxss */
+
+.text_small {
+  text-align: center;
+  font-size: 25rpx;
+  color: #babecc;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+.item {
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+  /* background: rgba(228, 172, 172, 0.315); */
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 80rpx;
+  /* box-shadow: 5px 0px 10px 5px rgba(238, 238, 238, 0.171); */
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.item2 {
+   width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+  /* background: rgba(167, 224, 181, 0.315); */
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  border-radius: 80rpx;
+  /* box-shadow: 5px 0px 10px 5px rgba(238, 238, 238, 0.171); */
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.item_1 {
+  margin-left: 60rpx;
+  font-family: 'FangSong_GB2312';
+  font-size: 30rpx;
+}
+
+.title {
+  font-family: 'FangSong_GB2312';
+  font-weight: bold;
+  font-size: 35rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.input_text {
+  text-align: center;
+  font-size: 40rpx;
+  color: #808080;
+  text-shadow: 1px 1px 1px #fff;
+  /* font-family:"微软雅黑"; */
+}
+
+.input {
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+  /* height: 80rpx; */
+  border-radius: 50rpx;
+}
+
+.input:hover {
+  box-shadow: inset 1px 1px 2px #babecc, inset -1px -1px 2px #fff;
+}
+
+input::-webkit-input-placeholder {
+  color: #999;
+  font-size: 14px;
+  font-family: "微软雅黑";
+}

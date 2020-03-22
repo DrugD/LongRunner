@@ -1,0 +1,174 @@
+<!--pages/planmanage/plandetail.wxml-->
+
+<!-- <view>
+  组织者:
+  <view class='user'>
+    <view>
+      <image src="https://wx.qlogo.cn/mmopen/vi_32/KlO0XlYEGxdf0sJcvW94H3MrDRAqso20icBmFazrm3nJjKTnO1x0tW07vDoveWpHtZeR6YGC4UYmfQxAavd9ZVQ/132" class='user_avatar' mode='scaleToFill'>
+      </image>
+    </view>
+    <view class="user_nickname">{{userInfo.nickName}}</view>
+  </view>
+</view>
+
+
+参与者：
+<view class='join' wx:for="{{join_data.join}}">
+  <image src="https://wx.qlogo.cn/mmopen/vi_32/KlO0XlYEGxdf0sJcvW94H3MrDRAqso20icBmFazrm3nJjKTnO1x0tW07vDoveWpHtZeR6YGC4UYmfQxAavd9ZVQ/132" class='user_avatar2' mode='scaleToFill'>
+  </image>
+
+  <view class='join_1'>
+    {{item.user.nickname}}
+  </view>
+  <view class='join_2'>
+    备注：{{item.detail}}
+  </view> 
+</view> -->
+
+
+
+<!--pages/planmanage/planmanage.wxml-->
+
+<!-- <topbar param_barColor1='#f6f6f6' param_barColor2='#f6f6f6' param_bartitle="详情"  param_back_black="true"param_title_text_color="black"
+></topbar>  -->
+
+<navigationBar id="navigationBar" placeholderBg="" color="{{color}}" title="{{title}}" back="{{true}}" background="#f6f6f6" fixed="{{fixed}}" backConfirm="{{backConfirm}}" backStyle="simple" backEvent="{{backEvent}}" bind:back="backEvent" backHomeEvent="{{backHomeEvent}}"
+  bind:backHome="backHomeEvent"></navigationBar>
+
+<view class=''>
+
+  <view class='item_1'>
+    <view class='item_1_1'>种类：</view>
+    <input bindinput='plan_type_Input' value='{{plan_type}}' maxlength="20" class="item_1_2" placeholder='{{plan_type}}' disabled='true'></input>
+  </view>
+
+
+  <view class='item_1'>
+    <view class='item_1_1'>配速：</view>
+    <input bindinput='plan_speed_Input' disabled='true' value='{{plan_speed}}' maxlength="20" class="item_1_2" placeholder='{{plan_speed}}'></input>
+  </view>
+
+  <view class='item_1'>
+    <view class='item_1_1'>距离：</view>
+    <input bindinput='plan_mileage_Input' disabled='true' value='{{plan_mileage}}' maxlength="20" class="item_1_2" placeholder='{{plan_mileage}}'></input>
+
+  </view>
+
+
+  <view class='item_1'>
+    <view class='item_1_1'>地点：</view>
+    <input bindinput='plan_place_Input' disabled='true' value='{{plan_place}}' maxlength="20" class="item_1_2" placeholder='{{plan_place}}'></input>
+  </view>
+
+  <view class='item_1'>
+    <view class='item_1_1'>时间：</view>
+    <input bindinput='plan_time_Input' disabled='true' value='{{plan_time}}' maxlength="20" class="item_1_2" placeholder='{{plan_time}}'></input>
+  </view>
+
+  <!-- <view class='item_1'>
+    <view class='item_1_1'>内容：</view>
+    <input bindinput='plan_content_Input' value='{{plan_content}}' maxlength="20" class="item_1_2" placeholder='请输入计划内容'></input>
+  </view> -->
+
+  <view class='item_1'>
+    <view class='item_1_1'>内容：</view>
+    <input bindinput='plan_content_Input' disabled='true' value='{{plan_content}}' maxlength="-1" class="item_1_2" placeholder='{{plan_content}}'></input>
+  </view>
+
+  <!-- <textarea class="textarea" bindinput='plan_content_Input' disabled='true' value="{{plan_content}}" placeholder="{{plan_content}}" placeholder-class="placeholder" maxlength="{{maxlength}}" focus="{{focus}}" auto-height="{{auto-height}}" show-confirm-bar="{{show-confirm-bar}}"></textarea> -->
+
+
+  <view class='item_1 '>
+    <view class='item_1_1'>组织者：</view>
+    <view class="item_1_2">{{plan_manager}}</view>
+  </view>
+
+  <view class='line'></view>
+
+  <view class='item_1_1_1 text'>参与人员{{join_data?":"+join_data.length+"人":":0人"}}</view>
+
+  <!-- 高度之后再调 -->
+  <scroll-view class='item_2 input_text_small' scroll-y>
+    <view style='height:30rpx;'></view>
+    <view class='join' wx:for="{{join_data}}">
+      <image src="{{item.joiner_avatarUrl}}" class='user_avatar2' mode='scaleToFill'>
+      </image>
+      <view class='join_1'>
+        {{item.joiner_nickName}}
+      </view>
+      <view class='join_2'>
+        {{item.plan.walletPsd}}
+      </view>
+    </view>
+    <view style='height:30rpx;'></view>
+  </scroll-view>
+</view>
+
+
+<view style="height:30rpx;"></view>
+
+
+<view wx:if="{{!joined }}">
+  <!-- <view class='toast-main'>
+    <view class='toast-input'>
+      <input placeholder='输入备注' bindinput='setValue' data-name='stuEidtName'></input>
+    </view>
+  </view> -->
+
+   <input   class="input_text_small input" style="width:80%;" placeholder="输入备注" maxlength="40" bindinput='setValue' data-name='stuEidtName'></input>
+<view style="height:30rpx;"></view>
+
+  <button catchtap='joinPlan' class="btn1 change_to_my_btn button text_small" style="height:80rpx;width:100px;font-size:35rpx;">
+    参与
+  </button>
+</view>
+
+
+
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{getUser_info}}"></view>
+<view class="modal-dialog" wx:if="{{getUser_info}}"> 
+  <view class="modal-content">
+   请先登陆授权
+  </view>
+  <view class="modal-footer">
+    <!-- <view class="btn-cancel" bindtap="hideModal" data-status="cancel">取消</view> -->
+    <button  open-type='getUserInfo' bindgetuserinfo='getuserinfo' class="btn-confirm" bindtap="onConfirm" data-status="confirm">登陆</button> 
+  </view>
+</view> 
+
+
+
+<view wx:if="{{joined }}">
+
+  <!-- <view class='toast-main'>
+    <view class='toast-input'>
+      <input placeholder='输入备注' bindinput='setValue' data-name='stuEidtName'></input>
+    </view>
+  </view> -->
+  <input   class="input_text_small input" style="width:80%;" placeholder="输入备注" maxlength="40" bindinput='setValue' data-name='stuEidtName'></input>
+<view style="height:30rpx;"></view>
+
+  <view class="row_line">
+    <button catchtap='changePlan' class="btn2 change_to_my_btn button text_small" style="height:80rpx;width:100px;font-size:35rpx;">
+      备注修改
+    </button>
+    <button catchtap='deleteJoinPlan' class="btn2 change_to_my_btn button text_small" style="height:80rpx;width:100px;font-size:35rpx;">
+      取消参与
+    </button>
+  </view>
+</view>
+
+<view style="height:30rpx;"></view>
+
+
+<view class="row_line">
+  <button catchtap='deletePlan' class=" btn1 change_to_my_btn button text_small" style="height:80rpx;width:100px;font-size:35rpx;" wx:if="{{plan_state==0}}">
+    删除计划
+  </button>
+
+
+  <button bindtap='share_plan' class=" btn1 change_to_my_btn button text_small" style="height:80rpx;width:100px;font-size:35rpx;" open-type="share">
+    转发计划
+  </button>
+</view>

@@ -1,0 +1,306 @@
+@import '/style/font.wxss';
+
+.canlendarBgView {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.canlendarView {
+  color: rgb(129, 129, 129);
+  display: flex;
+  flex-direction: column;
+}
+
+.canlendarTopView {
+  height: 180rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: center; */
+  font-family: 'Avenir LT Std';
+  letter-spacing: 15rpx;
+  font-size: 37rpx;
+}
+
+.leftBgView {
+  text-align: right;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.leftView {
+  width: 80rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.centerView {
+  text-transform: capitalize;
+  width: 50%;
+  height: 80rpx;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  font-family: "calendar";
+  margin-left: 50rpx;
+}
+
+.centerView:first-letter {
+  font-size: 50rpx;
+}
+
+
+.rightBgView {
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.rightView {
+  width: 80rpx;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.img_icon {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 25rpx;
+  box-shadow: -5px -5px 20px #fff, 5px 5px 20px #babecc;
+  transition: all 0.2s ease-in-out;
+}
+
+.img_icon:active {
+  box-shadow: -2px -2px 5px #fff, 2px 2px 5px #babecc;
+}
+
+.weekBgView {
+  height: 50rpx;
+  line-height: 50rpx;
+  opacity: 0.5;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.weekView {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.dateBgView {
+  height: 500rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.dateEmptyView {
+  width: 107.1428571429rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dateView {
+  width: 107.1428571429rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.datesView {
+  width: 60rpx;
+  height: 60rpx;
+  color: #66c;
+  font-size: 26rpx;
+  font-weight: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dateSelectView {
+  border-radius: 50%;
+  position: relative;
+  left: 0;
+  top: 0;
+  color: #fff;
+  background-color: #66c;
+}
+
+.todayView {
+  border-radius: 50%;
+  position: relative;
+  left: 0;
+  top: 0;
+  color: #fff;
+  background-color: rgb(16, 16, 192);
+}
+
+.TruetodayView {
+  border-radius: 50%;
+  position: relative;
+  left: 0;
+  top: 0;
+  color: #fff;
+  background-color: rgb(164, 164, 179);
+}
+
+.raceView {
+  /* border-radius: 50%;
+  position: relative;
+  left: 0;
+  top: 0;
+  color: #fff; *//* background-color: rgb(255, 158, 166); */
+  width: 7rpx;
+  height: 7rpx;
+  border-radius: 100%;
+  /* border-radius: 100%;
+position: relative;
+top: 0;
+left: 0; *//* font-size: 23rpx; *//* color: rgb(255, 0, 0); */
+  background: #647edf;
+  margin-top: -7rpx;
+  z-index: 0;
+}
+
+.news {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+}
+
+/* @font-face{
+  font-family: "calendar";
+  src:url('https://runner-whu.oss-cn-hangzhou.aliyuncs.com/AvenirLTStd-Light.otf')
+} */
+
+.inform_top {
+  width: 100%;
+  height: 50rpx;
+  background: rgba(62, 103, 214, 0.37);
+  padding: 0rpx 35rpx;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.fadeInRight {
+  animation-name: fadeInRight;
+}
+
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.rubberBand {
+  animation-name: rubberBand;
+}
+
+.month_race_data {
+  animation: fadeInRight 1.5s;
+  text-align-last: center;
+}
+
+.day_race_data {
+  animation: fadeInRight 1.5s;
+  text-align-last: center;
+}
+
+.showBar {
+  display: flex;
+  flex-direction: row;
+  width: 510rpx;
+  height: 90rpx;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+
+.show1 {
+  width: 60rpx;
+  /* height: 60rpx; *//* background: rgba(114, 114, 114, 0.5); */
+}
+
+.show2 {
+  width: 370rpx;
+  /* height: 60rpx; */
+}
+
+.show1 {
+  width: 80rpx;
+  /* height: 60rpx; */
+}
+
+.malasong_name {
+  width: 70%;
+  height: 70rpx;
+  text-align: center;
+  margin: auto;
+  background: rgb(243, 243, 243);
+  border-radius: 30rpx;
+  -moz-box-shadow: 2px 2px 5px #6e6e6e;
+  -webkit-box-shadow: 2px 2px 5px #8a8888;
+  box-shadow: 2px 2px 5px #666;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

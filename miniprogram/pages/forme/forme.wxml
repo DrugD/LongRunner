@@ -1,0 +1,78 @@
+<!--miniprogram/pages/forme/forme.wxml-->
+<!-- <topbar param_barColor1='#3c64d0' param_barColor2='#3c64d0' param_bartitle="配色速成" param_back="true"  
+></topbar>   -->
+
+<!-- <view class="custom flex_center" style="padding-top:{{statusBarHeight}}px">
+  <text class="title" style="margin-left:50rpx; top: {{statusBarHeight*1.5}}px;" bindtap="back">返回</text>
+</view>
+<view class="empty_custom" style="padding-top:{{statusBarHeight}}px"></view> -->
+
+
+<view>
+  <navigationBar id="navigationBar" placeholderBg="" color="{{color}}" back="{{true}}" background="{{barBg}}" fixed="{{fixed}}" backConfirm="{{backConfirm}}"  backStyle="simple"  backEvent="{{backEvent}}" bind:back="backEvent" backHomeEvent="{{backHomeEvent}}"
+    bind:backHome="backHomeEvent"></navigationBar>
+  <view id="container" bindtouchstart='touchstart' bindtouchmove='touchmove' style='height:0vh;'>
+    <view style="position:absolute;top:0;left:0;width:100vw;">
+      <!-- 页面内部 -->
+      <view>在进行深度学习图像语义分割时，对不同的类别进行颜色赋值，但是没有合适的颜色-类别的图例，很难受，因此简单制作一个。</view>
+      <view class="btn_view">
+
+        <button bindtap="save_item">保存</button>
+        <button bindtap="load_item">加载历史方案</button>
+      </view>
+
+      <view class="btn_view">
+        <button bindtap="add_item">类别+1</button>
+        <button bindtap="delete_item">类别-1</button>
+        <button bindtap="color_item" style="width:60vw;font-size: 30rpx;">{{color2?'关闭':'生成'}}配色表</button>
+      </view>
+
+      <view wx:for="{{color_class}}" wx:key="item">
+        <view class="item_input" wx:if="{{color1}}">
+          <view class="input"> R：
+            <input placeholder="0" value="{{item.r}}" bindinput="r_input" maxlength="3" data-index="{{index}}"></input>
+          </view>
+          <view class="input"> G：
+            <input placeholder="0" value="{{item.g}}" bindinput="g_input" maxlength="3" data-index="{{index}}"></input>
+          </view>
+          <view class="input"> B：
+            <input placeholder="0" value="{{item.b}}" bindinput="b_input" maxlength="3" data-index="{{index}}"></input>
+          </view>
+          <!-- background: rgb(red, green, blue); -->
+          <view class="color_block" style="background:rgb({{item.r?item.r:'0'}},{{item.g?item.g:'0'}},{{item.b?item.b:'0'}});height:60rpx;width:60rpx;"> </view>
+          <!-- <view  style="background:rgb({{item.r}},{{item.g}},{{item.b}});height:60rpx;width:60rpx;"> </view> -->
+          <input style="margin-left:30rpx;width:20vw;" placeholder="类别" maxlength="8" value="{{item.classify}}" data-index="{{index}}" bindinput="class_input">{{item.classify}}</input>
+        </view>
+      </view>
+
+
+
+      <view wx:for="{{color_view}}" wx:key="item">
+        <view class="item_input" wx:if="{{color2}}">
+          <view class="input"> R：
+            <input placeholder="0" value="{{item.r}}" bindinput="r_input_view" maxlength="3" data-index="{{index}}"></input>
+          </view>
+          <view class="input"> G：
+            <input placeholder="0" value="{{item.g}}" bindinput="g_input_view" maxlength="3" data-index="{{index}}"></input>
+          </view>
+          <view class="input"> B：
+            <input placeholder="0" value="{{item.b}}" bindinput="b_input_view" maxlength="3" data-index="{{index}}"></input>
+          </view>
+
+          <!-- background: rgb(red, green, blue); -->
+          <view class="color_block" style="background:rgb({{item.r?item.r:'0'}},{{item.g?item.g:'0'}},{{item.b?item.b:'0'}});height:60rpx;width:60rpx;"> </view>
+          <!-- <view  style="background:rgb({{item.r}},{{item.g}},{{item.b}});height:60rpx;width:60rpx;"> </view> -->
+          <input style="margin-left:30rpx;width:20vw;" placeholder="类别" maxlength="8" data-index="{{index}}" bindinput="class_input_view">{{item.classify}}</input>
+        </view>
+      </view>
+
+
+      <view style="height:100rpx;"></view>
+      <!-- <view class="text">提供改进建议可以联系我</view> -->
+      <!-- <view  class="text">Emile：2016302590230@whu.edu.cn</view> -->
+      <contact-button class="text" type="default" size="20" session-from="weapp">客服联系
+      </contact-button>
+       <view style="height:50rpx;"></view>
+    </view>
+  </view>
+</view>

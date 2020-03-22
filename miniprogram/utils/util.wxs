@@ -1,0 +1,161 @@
+var year = function (val) {
+  if (val.length == 0 || val == undefined) {
+    return 'TIME ERR';
+  } else if(val.length<25) {
+    // console.log(val.length,val[0])
+    var year = val[0] + val[1] + val[2] + val[3]
+    // var month = val[5] + val[6]
+    // var 
+    return year;
+  }
+}
+
+var month = function (val) {
+  if (val.length == 0 || val == undefined) {
+    return 'TIME ERR';
+  } else if (val.length < 25) {
+    // var year = val[0] + val[1] + val[2] + val[3]
+    var month = val[5] + val[6]
+    // var 
+    return month;
+  }
+}
+
+var day = function (val) {
+  if (val.length == 0 || val == undefined) {
+    return 'TIME ERR';
+  } else if (val.length < 25) {
+    // var year = val[0] + val[1] + val[2] + val[3]
+    var day = val[8] + val[9]
+    // var 
+    return day;
+  }
+}
+
+
+var fromnow_day = function (val) {
+  if (val.length == 0 || val == undefined) {
+    return 1;
+  } else if (val.length < 25) {
+    // var last = new Date.now()
+    // console.log(last)
+    // var timestamp = Date.getDate();
+    // var date = new Date(timestamp);
+    // //获取年份  
+    // var Y = date.getFullYear();
+    // //获取月份  
+    // var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    // //获取当日日期 
+    // var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    // console.log("当前时间：" + Y + '年' + M + '月' + D + '日'); 
+
+    var now = getDate()
+    // var now_sc = getTime(now)
+    // console.log(val,now)
+    var startDate = Date.parse(now);
+    var endDate = Date.parse(val);
+    // console.log(startDate, endDate)
+    var days = Math.floor((endDate - startDate) / (1 * 24 * 60 * 60 * 1000));
+    // console.log(days)
+    if(days>=0)
+      return days;
+    else 
+      return;
+  }
+}
+
+var fromnow_hour = function (val) {
+  if (val.length == 0 || val == undefined) {
+    return 1;
+  } else if (val.length < 25) {
+    // var last = new Date.now()
+    // console.log(last)
+    // var timestamp = Date.getDate();
+    // var date = new Date(timestamp);
+    // //获取年份  
+    // var Y = date.getFullYear();
+    // //获取月份  
+    // var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    // //获取当日日期 
+    // var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    // console.log("当前时间：" + Y + '年' + M + '月' + D + '日'); 
+
+    var now = getDate()
+    // var now_sc = getTime(now)
+    // console.log(val,now)
+    var startDate = Date.parse(now);
+    var endDate = Date.parse(val);
+    // console.log(startDate, endDate)
+    var days = (endDate - startDate) / (1 * 24 * 60 * 60 * 1000);
+    // console.log(days)
+    var days_int = Math.floor(days)
+    var hours = Math.floor((days - Math.floor(days)) *24)
+    if (hours >= 0 && days>=0)
+      return hours;
+    else
+      return;
+  }
+}
+
+
+
+// var format_ymd = function (val) {
+//   // if (val.length == 0 || val == undefined) {
+//   //   return 1;
+//   // } else if (val.length < 25) {
+//     // var last = new Date.now()
+//     // console.log(last)
+//     // var timestamp = Date.getDate();
+//     // var date = new Date(timestamp);
+//     // //获取年份  
+//     // var Y = date.getFullYear();
+//     // //获取月份  
+//     // var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+//     // //获取当日日期 
+//     // var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+//     // console.log("当前时间：" + Y + '年' + M + '月' + D + '日'); 
+
+//   var temp_data = getDate(val)
+//   temp_data = temp_data.getTime()
+//   console.log('hhhh:', temp_data)
+//   return temp_data
+//   // }
+// }
+
+
+var threeNum = function (num) {  //参数是数字
+  var thisNum = (num || 0).toString().split('.');//判断如果有小数点就分割这个数为一个数组
+  var num = thisNum[0]; //截取小数点前面的部分保存
+  var fuNum = thisNum[0]; //如果是负数先保存备用
+  var result = ''; //最后结果
+  if (fuNum < 0) {
+    num = num.slice(1); //是负数先把负号截取掉
+  }
+  while (num.length > 3) {  //循环每三位添加一个逗号
+    result = ',' + num.slice(-3) + result;
+    num = num.slice(0, num.length - 3);
+  }
+  if (num) { result = num + result; }
+  if (fuNum < 0) { result = '-' + result } //负数加上负号
+  if (thisNum[1]) { result = result + '.' + thisNum[1]; } //拼接上小数
+  return result;
+}
+
+
+var filters = {
+  toFix: function (value) {
+    return value.toFixed(2)//此处2为保留两位小数
+  }
+}
+
+
+
+module.exports.threeNum =threeNum;
+module.exports.year = year;
+module.exports.month = month;
+module.exports.day = day;
+module.exports.fromnow_day = fromnow_day;
+module.exports.fromnow_hour = fromnow_hour;
+module.exports.toFix = filters.toFix;
+
+// module.exports.format_ymd = format_ymd;

@@ -1,0 +1,75 @@
+<navigationBar id="navigationBar" backStyle="simple" color="#808080" title="" back="{{true}}" background="#ebecf0"></navigationBar>
+
+
+<!-- 文字 -->
+
+
+<view style="height:30rpx;"></view>
+
+
+<!-- 输入框 -->
+<view class="label row_line" style="heigt:300rpx;">
+  <view class="text" style="width:30%;">运动时长</view>
+  <input type="digit" class="input_text input" style="width:50%;" placeholder="输入数字"  bindinput="input1"  value="{{input1_value}}"></input>
+  <view class="text_small" style="width:20%;">min</view>
+</view>
+
+
+<view style="height:30rpx;"></view>
+
+
+
+<!-- 输入框 -->
+<view class="label row_line" style="heigt:300rpx;">
+  <view class="text" style="width:30%;">运动距离</view>
+  <input type="digit" class="input_text input" style="width:50%;" placeholder="输入数字" bindinput="input2"  value="{{input2_value}}"></input>
+  <view class="text_small" style="width:20%;">km</view>
+</view>
+
+
+<view style="height:30rpx;"></view>
+
+
+<!-- 输入框 -->
+<view class="label row_line" style="heigt:300rpx;">
+  <view class="text" style="width:30%;">团体ID</view>
+  <input type="number" class="input_text_small input" style="width:50%;" placeholder="输入数字(非必填)" maxlength="4"  bindinput="input3"  value="{{input3_value}}"></input>
+  <view class="text_small" style="width:20%;">4位数字</view>
+</view>
+
+
+<view style="height:10rpx;"></view>
+<view class="text_small_inform" animation="{{ani}}" style="opacity:{{opacity_id}};" >
+ {{input3_value?"（您的运动信息将在团队中公布）":""}}
+ <!-- （您的运动信息将在团队中公布） -->
+ </view>
+
+<view style="height:30rpx;"></view>
+
+
+<!-- 上传图片 -->
+<view class="shadow label" style="height:700rpx;width:75%;margin:auto;border-radius: 20rpx;">
+  <view bindtap="ChooseImage" wx:if="{{imgList.length==0}}" class="text_big">点击此处上传凭证</view>
+  <!-- <view class="imgList" wx:for="{{itemImg}}" wx:for-item="itemImg" wx:key="index">
+    <image bindload="onImageLoad" class="img" src='{{itemImg}}' mode='aspectFill' data-img='{{[itemImg,item.fileIDs]}}' bindtap="previewImg"></image>
+  </view> -->
+  <image class="img" src='{{imgList}}' mode='aspectFill'  bindtap="previewImage"src='{{imgList}}' mode='aspectFill' data-img='{{[imgList,imgList[0].fileIDs]}}'  ></image>
+</view>
+
+
+<view style="height:100rpx;"></view>
+
+<!-- 写字按钮 -->
+
+<view class="row_line">
+<view class="button div " bindtap="DeleteImg" style="height:100rpx;width:180rpx;margin:auto;">删除</view>
+<view class="button div " bindtap="upload" style="height:100rpx;width:180rpx;margin:auto;">上传</view>
+<view class="button div " bindtap="upload" style="height:100rpx;width:180rpx;margin:auto;">导入</view>
+</view>
+
+<view style="height:100rpx;"></view>
+
+<!-- 有图的按钮 -->
+<!-- <view class="button div " style="height:100rpx;width:100rpx;margin:auto; border-radius: 50rpx;">
+  <image style=" border-radius: 50rpx;height:50rpx;width:50rpx;" src="../../images/two/clockin.svg"></image>
+</view> -->
