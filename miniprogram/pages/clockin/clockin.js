@@ -135,11 +135,21 @@ Page({
 
   //上传数据
   upload() {
+
+
     let input1 = this.data.input1_value
     let input2 = this.data.input2_value
     let input3 = this.data.input3_value
     let imgList = this.data.imgList
-    if (input1 && input2 && imgList.length!=0) {
+
+
+    if (this.data.user_state == '00' && input3){  
+      wx.showToast({
+        icon: "none",
+        title: '请先绑定跑团'
+      })
+    }
+    else if (input1 && input2 && imgList.length!=0) {
 
       wx.showLoading({
         title: '发布中...',
@@ -238,7 +248,7 @@ Page({
           })
         })
 
-      } else if (this.data.imgList && this.data.user_state==2) {
+      } else  {
         //保证所有图片都上传成功
         Promise.all(promiseArr).then(res => {
 

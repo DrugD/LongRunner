@@ -388,7 +388,11 @@ Page({
       wx.showModal({
         title: '未认证',
         content: '为了平台良好运营环境和互联网运营条例，请您先进行认证，谢谢',
-        success: function(res) {}
+        success: function(res) {
+          wx.navigateTo({
+            url: '/pages/me/authentication/authentication',
+          })
+        }
       })
     } else {
 
