@@ -191,9 +191,35 @@ Page({
 
 
   clockin:function(){
-    wx.navigateTo({
-      url: '/pages/clockin/clockin_main',
-    })
+    if (app.globalData.userInfo) {
+
+      // wx.requestSubscribeMessage({
+      //   tmplIds: ['1gLqsI1LzhAoNJPoQthXZIxUNsgAqoBAwXipqUOHIjM', 'suNOTi13l4w9UVrq2JJGrAPxWeXquGttllhFIEYwA5A'],
+      //   success(res) {
+      //     console.log("requestSubscribeMessage:", res)
+      //   }
+      // })
+
+      wx.navigateTo({
+        url: '/pages/clockin/clockin_main',
+      })
+    } else {
+      wx.showModal({
+        title: '未登录',
+        content: '请先登陆，谢谢',
+        success: function (res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/me/me',
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+
+          }
+        }
+      })
+    }
+
   },
 
   clickImg:function(e){

@@ -1,0 +1,21 @@
+<navigationBar id="navigationBar" placeholderBg="" color="{{color}}" title="{{title}}" back="{{true}}" background="#f6f6f6" fixed="{{fixed}}" backConfirm="{{backConfirm}}" backStyle="simple" backEvent="{{backEvent}}" bind:back="backEvent" backHomeEvent="{{backHomeEvent}}"
+  bind:backHome="backHomeEvent">
+</navigationBar>
+
+
+<view wx:if="{{canIUse}}">
+  <view class='header'>
+    <image src='/images/me/User.svg'></image>
+  </view>
+
+  <view class='content'>
+    <view>申请获取以下权限</view>
+    <text>获得你的公开信息(昵称，头像等)</text>
+  </view>
+
+  <button class='bottom' type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="getUserInfo">
+    授权登录
+  </button>
+</view>
+
+<view wx:else>请升级微信版本</view>

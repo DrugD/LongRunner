@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "navigationBar": "/components/navigationBar/index"
+  },
+  "navigationBarTitleText": "授权登录",
+  "disableSwipeBack": true,
+  "navigationBarTextStyle": "black"
+}

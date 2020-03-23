@@ -11,7 +11,7 @@
     <view class="info">
       <image class='avatar' src='{{userInfo.avatarUrl}}' mode='aspectFill'></image>
       <view class='name'>{{userInfo.nickName}}</view>
-      <view class='state'>认证状态：{{!user_state?"未认证":"已认证"}}</view>
+      <view class='state'>认证状态：{{user_state==2?"已认证":"未认证"}}</view>
     </view>
 
 

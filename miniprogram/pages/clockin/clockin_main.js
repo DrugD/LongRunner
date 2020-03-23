@@ -19,17 +19,18 @@ Page({
     input_value: "",
     team_data: "",
     user_data: "",
-    page_state: 2, //页面默认是展示个人打卡记录--1，2--团体记录
-    page_share:"no",
+    page_state: 1, //页面默认是展示个人打卡记录--1，2--团体记录
+    user_state: 0, //用户认证2，登陆1，啥都没0
+    page_share: "no",
     //团队成员的信息的统计
-    team_member_inform_openid: [], 
-    team_member_inform_name: [], 
-    team_member_inform_avatarUrl: [], 
-    team_member_inform_distance: [], 
-    team_member_inform_spent_time: [], 
-    team_member_inform_clockin_time: [], 
+    team_member_inform_openid: [],
+    team_member_inform_name: [],
+    team_member_inform_avatarUrl: [],
+    team_member_inform_distance: [],
+    team_member_inform_spent_time: [],
+    team_member_inform_clockin_time: [],
 
-    today_clockin_flag:[],
+    today_clockin_flag: [],
 
   },
 
@@ -41,31 +42,30 @@ Page({
     })
   },
 
-  create_User: function (userInfo) {
+  create_User: function(userInfo) {
     const _ = db.command
     db.collection('User').where({
       userInfo: _.eq(userInfo)
-    }).get(
-      {
-      success: function (res) {
-        // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
-        console.log("已建立")
-      },
-      fail: console.error,
-      complete: console.log
+    }).get({
+        success: function(res) {
+          // res 是一个对象，其中有 _id 字段标记刚创建的记录的 id
+          console.log("已建立")
+        },
+        fail: console.error,
+        complete: console.log
       }
 
     )
-     
- 
+
+
 
 
     db.collection('User').add({
-      // data 字段表示需新增的 JSON 数据
-      data: {
-        userInfo: userInfo
-      }
-    })
+        // data 字段表示需新增的 JSON 数据
+        data: {
+          userInfo: userInfo
+        }
+      })
       .then(res => {
         console.log(res)
       })
@@ -85,9 +85,9 @@ Page({
     // options.page_share = 'yes'
     // options.team_id='0001'
 
-    if (options.page_share=='yes'){
+    if (options.page_share == 'yes') {
 
-    
+
 
       this.setData({
         input_value: options.team_id,
@@ -101,6 +101,7 @@ Page({
     //   title: '正在加载..',
 
     // })
+    this.getUserState()
     this.getTeamInform()
     this.getUserRunningInform()
     this.calculateTeamStatic()
@@ -150,24 +151,24 @@ Page({
   },
 
   /**
-  * 用户点击右上角分享
-  */
-  onShareAppMessage: function () {
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function() {
     console.log(this.data)
-    var str =  this.data.team_data.name+'邀你打卡健身！'
+    var str = this.data.team_data.name + '邀你打卡健身！'
     return {
       title: str,
       path: '/pages/clockin/clockin_main?team_id=' + this.data.team_data.team_id +
-        '&team_id_id=' + this.data.team_data._id+
-        '&page_share='+'yes' //0表示从正常进入，1表示从分享的进入
+        '&team_id_id=' + this.data.team_data._id +
+        '&page_share=' + 'yes' //0表示从正常进入，1表示从分享的进入
         ,
 
       imageUrl: 'https://7275-runner-xei7u-1301166162.tcb.qcloud.la/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B5%84%E6%BA%90%E5%9B%BE/share.jpg?sign=f20f412b94d2a4df6abfe7c772acc113&t=1581768315', //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径。支持PNG及JPG。显示图片长宽比是 5:4。
-      success: function (res) {
+      success: function(res) {
         // 转发成功
         console.log("转发成功:" + JSON.stringify(res));
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
         console.log("转发失败:" + JSON.stringify(res));
       }
@@ -232,7 +233,7 @@ Page({
   },
 
   calculateTeamStatic: function() {
-    var that= this
+    var that = this
     db.collection('clockin_team').where({
       sport_team_id: this.data.team_data.team_id
     }).get({
@@ -314,7 +315,7 @@ Page({
           team_member_inform_spent_time: spent_time,
           team_member_inform_clockin_time: clockin_time,
         })
-        console.log("data:",that.data)
+        console.log("data:", that.data)
       },
       fail: res => {
         console.log(res)
@@ -324,86 +325,138 @@ Page({
 
   clockin: function() {
     if (!app.globalData.userInfo) {
-      console.log("获取用户信息")
-      this.getUserLogin()
+      wx.showModal({
+        title: '未登录',
+        content: '请先登陆，谢谢',
+        success: function(res) {
+          if (res.confirm) {
+            wx.switchTab({
+              url: '/pages/me/me',
+            })
+          } else if (res.cancel) {
+            console.log('用户点击取消')
+
+          }
+        }
+      })
+    } else {
+      wx.navigateTo({
+        url: 'clockin?user_state=' + this.data.user_state,
+      })
     }
-    wx.navigateTo({
-      url: 'clockin',
-    })
+
+
+  },
+  getUserState: function() {
+
+    var that = this
+
+    wx.cloud.database().collection('User').where({
+        _openid: app.globalData.openid
+      })
+      .get({
+        success: function(res) {
+          console.log(res.data)
+          if (res.data[0].user_state == 2) {
+            //若认证
+            that.setData({
+              user_state: res.data[0].user_state
+            })
+
+          } else {
+
+            that.setData({
+              user_state: "00"
+            })
+          }
+          console.log("user_state:", that.data.user_state)
+        },
+        fail: console.error
+      })
+
+
   },
 
   binding: function() {
 
-    if (!app.globalData.userInfo){
+    if (!app.globalData.userInfo) {
       console.log("获取用户信息")
       this.getUserLogin()
     }
 
-    this.create_User(app.globalData.userInfo)
+    if (this.data.user_state != 2) {
+      wx.showModal({
+        title: '未认证',
+        content: '为了平台良好运营环境和互联网运营条例，请您先进行认证，谢谢',
+        success: function(res) {}
+      })
+    } else {
 
-    var that =this
-    var team_id = this.data.input_value
-    var user_info = app.globalData.userInfo
-    var openid = app.globalData.openid
-
-    // var user_info = 514
-
-    // console.log(openid)
-
-    db.collection('team').where({
-      team_id: team_id,
-    }).get({
-      success: function(res) {
-        console.log(res.data)
-     
-        // that.setData({
-        //   team_data: res.data
-        // })
-
-        // that.load()
-        wx.cloud.callFunction({
-          // 要调用的云函数名称
-          name: 'joinTeam',
-          // 传递给云函数的event参数
-          data: {
-            _id: res.data[0]._id,
-            user_info: user_info,
-            openid: openid,
-
-          }
-        }).then(res => {
-        
-          console.log("res--joinTeam",res)
-
-        }).catch(err => {
-          // handle error
-        })
+      var that = this
+      var team_id = this.data.input_value
+      var user_info = app.globalData.userInfo
+      var openid = app.globalData.openid
 
 
-        wx.cloud.callFunction({
-          // 要调用的云函数名称
-          name: 'updateUserState',
-          // 传递给云函数的event参数
-          data: {
+
+      db.collection('team').where({
+        team_id: team_id,
+      }).get({
+        success: function(res) {
+          console.log(res.data)
+
+          // that.setData({
+          //   team_data: res.data
+          // })
+
+          // that.load()
+          wx.cloud.callFunction({
+            // 要调用的云函数名称
+            name: 'joinTeam',
+            // 传递给云函数的event参数
+            data: {
+              _id: res.data[0]._id,
+              user_info: user_info,
+              openid: openid,
+
+            }
+          }).then(res => {
+
+            console.log("res--joinTeam", res)
+
+          }).catch(err => {
+            // handle error
+          })
 
 
-            team_id: res.data[0]._id,
-            openid: openid,
-          }
-        }).then(res => {
-          console.log("res--updateUserState", res)
-          that.load()
-         
-          console.log("res--data", that.data)
-        }).catch(err => {
-          // handle error
-        })
+          wx.cloud.callFunction({
+            // 要调用的云函数名称
+            name: 'updateUserState',
+            // 传递给云函数的event参数
+            data: {
 
 
-      }
-    })
+              team_id: res.data[0]._id,
+              openid: openid,
+            }
+          }).then(res => {
+            console.log("res--updateUserState", res)
+            that.load()
 
-   
+            console.log("res--data", that.data)
+          }).catch(err => {
+            // handle error
+          })
+
+
+        }
+      })
+
+    }
+
+    // this.create_User(app.globalData.userInfo)
+
+
   },
 
 
@@ -415,7 +468,7 @@ Page({
   },
 
 
-  refrash:function(){
+  refrash: function() {
     console.log("刷新")
     this.getTeamInform()
     this.getUserRunningInform()
@@ -440,7 +493,7 @@ Page({
 
   },
 
-  getUserLogin:function(){
+  getUserLogin: function() {
     const self = this;
     wx.getSetting({
       success: res => {
@@ -463,16 +516,18 @@ Page({
         var openid = res.result.openid;
         app.globalData.openid = res.result.openid
         // wx.hideLoading();
+
+
       }
     })
-    
+
     this.create_User(app.globalData.userInfo)
   },
 
-  gotoTeamDetail:function(){
+  gotoTeamDetail: function() {
     var team = JSON.stringify(this.data.team_data)
     wx.navigateTo({
-      url: 'team?team='+team,
+      url: 'team?team=' + team,
     })
   },
 })

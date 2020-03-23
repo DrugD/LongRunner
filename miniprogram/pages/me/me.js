@@ -65,6 +65,12 @@ Page({
               wx.hideLoading();
             },
           });
+        }else{
+          wx.hideLoading();
+          wx.showToast({
+            title: '太皮了嘿嘿嘿',
+            icon:"none"
+          })
         }
       },
     });

@@ -1,0 +1,5 @@
+/* miniprogram/pages/clockin_new/clockin_new.wxss */
+page {
+  background-color: #ebecf0;
+  letter-spacing: -0.2px;
+}
