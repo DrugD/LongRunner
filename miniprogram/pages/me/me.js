@@ -284,4 +284,20 @@ Page({
    
   },
 
+  teamManager:function(){
+    if (this.data.user_state == '00') {
+      wx.showModal({
+        title: '未认证',
+        content: '为了平台良好运营环境和互联网运营条例，请您先进行认证，谢谢',
+        success: function (res) {
+
+        }
+      })
+    } else if (this.data.user_state == 2 ) {
+      
+      wx.navigateTo({
+        url: 'teamManager/teamManager',
+      })
+    }
+  }
 })
