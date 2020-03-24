@@ -79,8 +79,8 @@ Page({
       })
       .catch(console.error)
 
-    wx.navigateBack({
-      delta:1
+    wx.switchTab({
+      url: '/pages/two/two',
     })
 
   },

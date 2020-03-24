@@ -48,7 +48,7 @@
 <!-- 输入框 -->
 <view class="label row_line" style="heigt:300rpx;" wx:if="{{team_data}}" >
 <!-- <view class="label row_line" style="heigt:300rpx;" wx:if="{{team_data.name}}"> -->
-  <view class="text" style="width:30%;">团队邀请</view>
+  <view class="text" style="width:30%;">团队ID</view>
 
 
   <view style="width:70%;" class="row_line">

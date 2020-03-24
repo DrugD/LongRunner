@@ -117,7 +117,7 @@ Page({
     if (app.globalData.userInfo){
 
       wx.requestSubscribeMessage({
-        tmplIds: ['1gLqsI1LzhAoNJPoQthXZIxUNsgAqoBAwXipqUOHIjM','suNOTi13l4w9UVrq2JJGrAPxWeXquGttllhFIEYwA5A'],
+        tmplIds: ['1gLqsI1LzhAoNJPoQthXZIxUNsgAqoBAwXipqUOHIjM', 'suNOTi13l4w9UVrq2JJGrAPxWeXquGttllhFIEYwA5A', 'qTljktJWu0vqCwmaT5_1PLtPQ4DYcPBDEwksh_Lrmm4'],
         success(res) {
           console.log("requestSubscribeMessage:", res)
         }
@@ -150,7 +150,7 @@ Page({
     // console.log("two2page--now!")
     if (app.globalData.userInfo) {
       wx.requestSubscribeMessage({
-        tmplIds: [ 'suNOTi13l4w9UVrq2JJGrAPxWeXquGttllhFIEYwA5A','qTljktJWu0vqCwmaT5_1PLtPQ4DYcPBDEwksh_Lrmm4'],
+        tmplIds: ['1gLqsI1LzhAoNJPoQthXZIxUNsgAqoBAwXipqUOHIjM','suNOTi13l4w9UVrq2JJGrAPxWeXquGttllhFIEYwA5A','qTljktJWu0vqCwmaT5_1PLtPQ4DYcPBDEwksh_Lrmm4'],
         success(res) {
           console.log("requestSubscribeMessage:", res)
         }

@@ -243,6 +243,7 @@ Page({
             delta: 1, // 返回上一级页面 
             success: function() {
               beforePage.getUserState(); // 执行前一个页面的onLoad方法
+              beforePage.load(); // 执行前一个页面的onLoad方法
             }
           })
         },

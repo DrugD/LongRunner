@@ -1,12 +1,13 @@
 {
   "pages": [
-      "pages/two/two",
+    "pages/getUser",
+    "pages/two/two",
     "pages/me/runnersSettle/runnersSettle",
     
     "pages/clockin/clockin_main",
     "pages/clockin/clockin",
   
-    "pages/getUser",
+    
     "pages/one/detail/detail",
     "pages/one/index",
     "pages/me/me",
