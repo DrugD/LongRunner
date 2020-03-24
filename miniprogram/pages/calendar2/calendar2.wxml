@@ -107,7 +107,7 @@
   <view wx:for="{{item_show}}" wx:key="index">
     <block >
       <view style="height:10rpx;"> </view>
-      <view class="malasong_name" bindtap="lookin">{{item.malasong_name}}</view>
+      <view class="malasong_name" bindtap="lookin" data-index="{{index}}" data-type="1">{{item.malasong_name}}</view>
       <view style="height:10rpx;"> </view>
     </block>
   </view>
@@ -138,7 +138,7 @@
   <view wx:for="{{monthRaceData}}" wx:key="index">
     <block >
       <view style="height:10rpx;"> </view>
-      <view class="malasong_name" bindtap="lookin">{{item.malasong_name}}</view>
+      <view class="malasong_name" bindtap="lookin" data-index="{{index}}" data-type="2">{{item.malasong_name}}</view>
       <view style="height:10rpx;"> </view>
 
     </block>

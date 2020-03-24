@@ -1,4 +1,4 @@
-<navigationBar id="navigationBar" backStyle="simple" color="#808080" title="" back="{{true}}" background="#ebecf0"></navigationBar>
+  <navigationBar id="navigationBar" backStyle="simple" color="#808080" title="" back="{{true}}" background="#ebecf0"></navigationBar>
 
 
 <view style="height:30rpx;"></view>
@@ -30,11 +30,11 @@
 
 
   <view wx:if="{{!team_data}}" style="width:{{!team_data?'70%':''}};" class="row_line" animation="{{show_easy}}">
-    <input  wx:if="{{!team_data}}"  type="number" class="input_text_small input" style="width:60%;" placeholder="输入ID..." maxlength="4" bindinput="input_teambinding" value="{{input_value}}"></input>
-    <view   wx:if="{{!team_data}}" style="width:40%;">
+    <!-- <input  wx:if="{{!team_data}}"  type="number" class="input_text_small input" style="width:60%;" placeholder="输入ID..." maxlength="4" bindinput="input_teambinding" value="{{input_value}}"></input> -->
+    <view   wx:if="{{!team_data}}" style="width:100%;">
       <!-- <view bindtap="binding" class=" button text_small" style="height:70rpx;width:150rpx;margin-left:10rpx;font-size:35rpx;">绑定 </view> -->
-      <button bindtap="binding" open-type='getUserInfo' class="change_to_my_btn button text_small" style="height:70rpx;width:150rpx;margin-left:10rpx;font-size:35rpx;">
-        绑定
+      <button bindtap="binding" open-type='getUserInfo' class="change_to_my_btn button text_small" style="height:70rpx;width:250rpx;margin-left:10rpx;font-size:35rpx;">
+        团体绑定
       </button>
     </view>
   </view>
@@ -57,7 +57,7 @@
     <!-- <view bindtap="shareMember" class="button text_small" wx:if="{{team_data.name}}" style="height:70rpx;width:70rpx;margin-left:10rpx;font-size:35rpx;">
       <image src="/images/two/share.svg" style="width:60%;height:60%;"></image>
     </view> -->
-    <button bindtap="shareMember" open-type="share" class="change_to_my_btn button text_small" style="height:70rpx;width:70rpx;font-size:35rpx;">
+    <button bindtap="shareMember" class="change_to_my_btn button text_small" style="height:70rpx;width:70rpx;font-size:35rpx;">
       <image src="/images/two/share.svg" style="width:60%;height:60%;"></image>
     </button>
   </view>

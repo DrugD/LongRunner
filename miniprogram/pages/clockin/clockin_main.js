@@ -196,6 +196,21 @@ Page({
   },
 
 
+  shareMember:function(){
+ 
+    var that = this;
+    wx.setClipboardData({
+      //准备复制的数据
+      data: this.data.team_data.name + "邀请你来打卡，ID号☞" + this.data.team_data.team_id,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+        });
+      }
+    });
+   
+  },
+
   getTeamInform: function() {
     var that = this
     db.collection('User').where({
@@ -340,8 +355,9 @@ Page({
         }
       })
     } else {
+      var team_flag = this.data.team_data ? '1' : '0'
       wx.navigateTo({
-        url: 'clockin?user_state=' + this.data.user_state,
+        url: 'clockin?team_flag=' + team_flag,
       })
     }
 
@@ -395,66 +411,68 @@ Page({
         }
       })
     } else {
-
-      var that = this
-      var team_id = this.data.input_value
-      var user_info = app.globalData.userInfo
-      var openid = app.globalData.openid
-
-
-
-      db.collection('team').where({
-        team_id: team_id,
-      }).get({
-        success: function(res) {
-          console.log(res.data)
-
-          // that.setData({
-          //   team_data: res.data
-          // })
-
-          // that.load()
-          wx.cloud.callFunction({
-            // 要调用的云函数名称
-            name: 'joinTeam',
-            // 传递给云函数的event参数
-            data: {
-              _id: res.data[0]._id,
-              user_info: user_info,
-              openid: openid,
-
-            }
-          }).then(res => {
-
-            console.log("res--joinTeam", res)
-
-          }).catch(err => {
-            // handle error
-          })
-
-
-          wx.cloud.callFunction({
-            // 要调用的云函数名称
-            name: 'updateUserState',
-            // 传递给云函数的event参数
-            data: {
-
-
-              team_id: res.data[0]._id,
-              openid: openid,
-            }
-          }).then(res => {
-            console.log("res--updateUserState", res)
-            that.load()
-
-            console.log("res--data", that.data)
-          }).catch(err => {
-            // handle error
-          })
-
-
-        }
+      wx.navigateTo({
+        url: '/pages/me/runnersSettle/runnersSettle',
       })
+      // var that = this
+      // var team_id = this.data.input_value
+      // var user_info = app.globalData.userInfo
+      // var openid = app.globalData.openid
+
+
+
+      // db.collection('team').where({
+      //   team_id: team_id,
+      // }).get({
+      //   success: function(res) {
+      //     console.log(res.data)
+
+      //     // that.setData({
+      //     //   team_data: res.data
+      //     // })
+
+      //     // that.load()
+      //     wx.cloud.callFunction({
+      //       // 要调用的云函数名称
+      //       name: 'joinTeam',
+      //       // 传递给云函数的event参数
+      //       data: {
+      //         _id: res.data[0]._id,
+      //         user_info: user_info,
+      //         openid: openid,
+
+      //       }
+      //     }).then(res => {
+
+      //       console.log("res--joinTeam", res)
+
+      //     }).catch(err => {
+      //       // handle error
+      //     })
+
+
+      //     wx.cloud.callFunction({
+      //       // 要调用的云函数名称
+      //       name: 'updateUserState',
+      //       // 传递给云函数的event参数
+      //       data: {
+
+
+      //         team_id: res.data[0]._id,
+      //         openid: openid,
+      //       }
+      //     }).then(res => {
+      //       console.log("res--updateUserState", res)
+      //       that.load()
+
+      //       console.log("res--data", that.data)
+      //     }).catch(err => {
+      //       // handle error
+      //     })
+
+
+      //   }
+      // })
 
     }
 

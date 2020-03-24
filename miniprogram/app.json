@@ -1,6 +1,11 @@
 {
   "pages": [
-    "pages/two/two",
+      "pages/two/two",
+    "pages/me/runnersSettle/runnersSettle",
+    
+    "pages/clockin/clockin_main",
+    "pages/clockin/clockin",
+  
     "pages/getUser",
     "pages/one/detail/detail",
     "pages/one/index",
@@ -14,9 +19,7 @@
     "pages/me/aboutUs/aboutUs",
     "pages/me/shop/shop",
     "pages/planmanage/history",
-    "pages/clockin/clockin_main",
     "pages/clockin/team",
-    "pages/clockin/clockin",
     "pages/test/test",
     "pages/one/one",
     "pages/forme/forme",
@@ -28,7 +31,6 @@
     "pages/planmanage/plandetail",
     "pages/one/detail2/detail2",
     "pages/one/detail/web",
-    "pages/me/runnersSettle/runnersSettle",
     "pages/clockin_new/clockin_new"
   ],
   "window": {

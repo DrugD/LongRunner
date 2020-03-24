@@ -118,7 +118,7 @@ page {
 
 .input_text {
   text-align: center;
-  font-size: 40rpx;
+  font-size: 35rpx;
   color: #808080;
   text-shadow: 1px 1px 1px #fff;
   /* font-family:"微软雅黑"; */
@@ -141,6 +141,7 @@ page {
   -webkit-appearance: none;
   height: 80rpx;
   border-radius: 50rpx;
+  padding: 0rpx 20rpx 0rpx 20rpx;
 }
 
 .input:hover {
@@ -221,3 +222,79 @@ input::-webkit-input-placeholder {
   width: 100%;
   height: 100%;
 }
+
+
+.picker{
+  /* margin-right: 10%; */
+  /* box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff; */
+  width: 70%;
+  box-sizing: border-box;
+  /* transition: all 0.2s ease-in-out; */
+  appearance: none;
+  -webkit-appearance: none;
+  height: 80rpx;
+  /* border-radius: 50rpx; */
+  display: flex;
+  align-items: center;
+}
+
+
+.picker_text_small {
+  text-align: center;
+  font-size: 35rpx;
+  color: #808080;
+  text-shadow: 1px 1px 1px #fff;
+}
+
+
+.picker_item{
+  /* background: black;
+  width: 50%;
+  height: 100rpx; */
+}
+
+
+
+.iamgeRootAll {
+  /* margin: auto; */
+  /* margin-top: 0rpx;
+  margin-bottom: 0rpx; */
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.imgItem {
+  margin: 6rpx;
+  position: relative;
+  width: 230rpx;
+  height: 230rpx;
+  /* background: gainsboro; */
+  border-radius: 15rpx;
+  box-shadow: inset 2px 2px 5px #babecc, inset -5px -5px 10px #fff;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+}
+
+.closeImg {
+  position: absolute;
+  right: -5px;
+  width: 32rpx;
+  height: 32rpx;
+  top: -5rpx;
+}
+
+.photo {
+  width: 50%;
+  height: 50%;
+  margin: 25%;
+}
+

@@ -342,10 +342,19 @@ Page({
     }
   },
 
-  lookin: function() {
+  lookin: function(e) {
+    console.log("日历：", e)
+    var id
+
+    if(e.currentTarget.dataset.type=='1'){
+      id = this.data.item_show[e.currentTarget.dataset.index]._id
+    } else if (e.currentTarget.dataset.type=='2'){
+      id = this.data.monthRaceData[e.currentTarget.dataset.index]._id
+    }
+
     wx.navigateTo({
       // url: '/pages/one/detail?data=' + data,
-      url: '/pages/one/detail/detail'
+      url: '/pages/one/detail/detail?race_id='+id,
     })
 
   },

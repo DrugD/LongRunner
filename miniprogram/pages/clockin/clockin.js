@@ -14,8 +14,19 @@ Page({
     input3_value: "",
     ani: "",
     opacity_id: 0,
-    user_state:0,
+    team_flag: 0,
+    sport: ['跑步', '力量', '瑜伽', '其他'],
+    sport_index: 0,
+    imgList: [],
   },
+
+  bindPickerChange: function(e) {
+    console.log(e)
+    this.setData({
+      sport_index: e.detail.value
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -23,7 +34,7 @@ Page({
   onLoad: function(options) {
     console.log(options)
     this.setData({
-      user_state: options.user_state
+      team_flag: options.team_flag
     })
 
   },
@@ -73,16 +84,14 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
 
-  },
 
 
   //选择图片
   ChooseImage() {
     wx.chooseImage({
       // count: 8 - this.data.imgList.length, //默认9,我们这里最多选择8张
-      count: 1 - this.data.imgList.length,
+      count: 3 - this.data.imgList.length,
       sizeType: ['original', 'compressed'], //可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], //从相册选择
       success: (res) => {
@@ -135,21 +144,58 @@ Page({
 
   //上传数据
   upload() {
+    
+    //获取当前时间戳  
+    var timestamp = Date.parse(new Date());
+    timestamp = timestamp / 1000;
+    console.log("当前时间戳为：" + timestamp);
+    var n = timestamp * 1000;
+    var date = new Date(n);
+    //年  
+    var Y = date.getFullYear();
+    //月  
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+    //日  
+    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+    //时  
+    var h = date.getHours();
+    //分  
+    var m = date.getMinutes();
+    //秒  
+    var s = date.getSeconds();
+
+    var lasttime_upload
+
+    try {
+      // 同步接口立即返回值
+      lasttime_upload = wx.getStorageSync('lasttime_upload')
+    } catch (e) {
+      console.log('读取lasttime_upload发生错误')
+    }
+    
+    if (this.data.input3_value&&lasttime_upload==D+h){
+      wx.showModal({
+        title: '温馨提醒',
+        content: '您今日已经打过卡了',
+        success: function (res) {
+        }
+      })
+      return 
+    }
 
 
     let input1 = this.data.input1_value
-    let input2 = this.data.input2_value
+    let input2 = this.data.input2_value ? this.data.input2_value:0
     let input3 = this.data.input3_value
     let imgList = this.data.imgList
 
 
-    if (this.data.user_state == '00' && input3){  
+    if (this.data.team_flag == '0' && input3) {
       wx.showToast({
         icon: "none",
         title: '请先绑定跑团'
       })
-    }
-    else if (input1 && input2 && imgList.length!=0) {
+    } else if (input1  && imgList.length != 0) {
 
       wx.showLoading({
         title: '发布中...',
@@ -179,24 +225,7 @@ Page({
       }
 
 
-      //获取当前时间戳  
-      var timestamp = Date.parse(new Date());
-      timestamp = timestamp / 1000;
-      console.log("当前时间戳为：" + timestamp);
-      var n = timestamp * 1000;
-      var date = new Date(n);
-      //年  
-      var Y = date.getFullYear();
-      //月  
-      var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
-      //日  
-      var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-      //时  
-      var h = date.getHours();
-      //分  
-      var m = date.getMinutes();
-      //秒  
-      var s = date.getSeconds();
+      
 
 
       if (!input3) {
@@ -217,10 +246,20 @@ Page({
 
               sport_time: input1,
               sport_distance: input2,
-
+              sport_type: this.data.sport[this.data.sport_index] ,
               fileIDs: this.data.fileIDs,
             },
             success: res => {
+              // wx.setStorage({
+              //   key: "lasttime_upload",
+              //   data: D+h,
+              //   success: function() {
+              //     console.log('写入lasttime_upload成功', D + h)
+              //   },
+              //   fail: function() {
+              //     console.log('写入lasttime_upload发生错误', D + h)
+              //   }
+              // })
               wx.hideLoading()
               wx.showToast({
                 title: '发布成功',
@@ -248,7 +287,7 @@ Page({
           })
         })
 
-      } else  {
+      } else {
         //保证所有图片都上传成功
         Promise.all(promiseArr).then(res => {
 
@@ -266,10 +305,21 @@ Page({
               sport_time: input1,
               sport_distance: input2,
               sport_team_id: input3,
-
+              sport_type: this.data.sport[this.data.sport_index],
+              
               fileIDs: this.data.fileIDs,
             },
             success: res => {
+              wx.setStorage({
+                key: "lasttime_upload",
+                data: D + h,
+                success: function () {
+                  console.log('写入lasttime_upload成功', D + h)
+                },
+                fail: function () {
+                  console.log('写入lasttime_upload发生错误', D + h)
+                }
+              })
               wx.hideLoading()
               wx.showToast({
                 title: '发布成功',
@@ -298,8 +348,7 @@ Page({
         })
 
       }
-    } 
-    else{
+    } else {
       wx.hideLoading()
       wx.showToast({
         icon: "none",
@@ -345,4 +394,11 @@ Page({
 
 
   },
+
+  upload2: function() {
+    wx.showModal({
+      title: '功能预定',
+      content: '你有啥想法请与我们联系~',
+    })
+  }
 })

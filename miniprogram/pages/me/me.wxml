@@ -105,7 +105,7 @@
 
    <view class="view_1_1" bindtap="runnersSettle">
     <image class="view_1_1_img" src="/images/me/settle.png" mode="aspectFit"></image>
-    <view class="view_1_1_text">跑团入驻</view>
+    <view class="view_1_1_text">我的跑团</view>
     <image class="view_1_2_img" src="/images/me/7.png" mode="aspectFit"></image>
   </view>
 

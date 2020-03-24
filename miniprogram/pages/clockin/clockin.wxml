@@ -19,13 +19,34 @@
 
 
 
+
+
+<view class='label row_line'>
+  <view class='item_1_1 text' style="width:30%;">运动类型</view>
+  <!-- <input bindinput='plan_speed_Input' value='{{plan_speed}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入配速'></input> -->
+  <picker bindchange="bindPickerChange" value="{{sport_index}}" range="{{sport}}" class="item_1_2   picker picker_text_small">
+    <view style="width:100%;" class="picker_item">
+      {{sport[sport_index]}}
+    </view>
+  </picker>
+</view>
+
+
+<view style="height:30rpx;"></view>
+
 <!-- 输入框 -->
-<view class="label row_line" style="heigt:300rpx;">
+<view wx:if="{{sport_index==0}}" class="label row_line" style="heigt:300rpx;">
   <view class="text" style="width:30%;">运动距离</view>
   <input type="digit" class="input_text input" style="width:50%;" placeholder="输入数字" bindinput="input2"  value="{{input2_value}}"></input>
   <view class="text_small" style="width:20%;">km</view>
 </view>
 
+<!-- 输入框 -->
+<!-- <view wx:if="{{sport_index==3}}" class="label row_line" style="heigt:300rpx;">
+  <view class="text" style="width:30%;">运动项目</view>
+  <input  class="input_text input" style="width:70%;" placeholder="扎马步、拉伸..." bindinput="input2"  value="{{input2_value}}"></input>
+  <view class="text_small" style="width:0%;"></view>
+</view> -->
 
 <view style="height:30rpx;"></view>
 
@@ -33,7 +54,7 @@
 <!-- 输入框 -->
 <view class="label row_line" style="heigt:300rpx;">
   <view class="text" style="width:30%;">团体ID</view>
-  <input type="number" class="input_text_small input" style="width:50%;" placeholder="输入数字(非必填)" maxlength="4"  bindinput="input3"  value="{{input3_value}}"></input>
+  <input type="number" class="input_text_small input" style="width:50%;" placeholder="输入数字(非必填)" maxlength="4"  bindinput="input3"  value="{{input3_value}}" disabled="{{team_flag=='0'}}"></input>
   <view class="text_small" style="width:20%;">4位数字</view>
 </view>
 
@@ -48,13 +69,25 @@
 
 
 <!-- 上传图片 -->
-<view class="shadow label" style="height:700rpx;width:75%;margin:auto;border-radius: 20rpx;">
+<!-- <view class="shadow label" style="height:200rpx;width:75%;margin:auto;border-radius: 20rpx;">
   <view bindtap="ChooseImage" wx:if="{{imgList.length==0}}" class="text_big">点击此处上传凭证</view>
-  <!-- <view class="imgList" wx:for="{{itemImg}}" wx:for-item="itemImg" wx:key="index">
-    <image bindload="onImageLoad" class="img" src='{{itemImg}}' mode='aspectFill' data-img='{{[itemImg,item.fileIDs]}}' bindtap="previewImg"></image>
-  </view> -->
   <image class="img" src='{{imgList}}' mode='aspectFill'  bindtap="previewImage"src='{{imgList}}' mode='aspectFill' data-img='{{[imgList,imgList[0].fileIDs]}}'  ></image>
+</view> -->
+
+<view class="iamgeRootAll">
+  <block wx:for="{{imgList}}" wx:key="index">
+    <view class="imgItem">
+      <image class="img" src='{{item}}' mode='aspectFill'></image>
+      <image class="closeImg" bindtap="DeleteImg" src="/images/close.svg" data-index="{{index}}"></image>
+    </view>
+  </block>
+  <!-- 选择图片按钮 -->
+  <view wx:if="{{imgList.length<3}}" class="imgItem" bindtap="ChooseImage">
+    <image class="photo" src="/images/addphoto.svg"></image>
+  </view>
 </view>
+
+
 
 
 <view style="height:100rpx;"></view>
@@ -62,14 +95,15 @@
 <!-- 写字按钮 -->
 
 <view class="row_line">
-<view class="button div " bindtap="DeleteImg" style="height:100rpx;width:180rpx;margin:auto;">删除</view>
+<!-- <view class="button div " bindtap="DeleteImg" style="height:100rpx;width:180rpx;margin:auto;">删除</view> -->
 <view class="button div " bindtap="upload" style="height:100rpx;width:180rpx;margin:auto;">上传</view>
-<view class="button div " bindtap="upload" style="height:100rpx;width:180rpx;margin:auto;">导入</view>
+<!-- <view class="button div " bindtap="upload2" style="height:100rpx;width:180rpx;margin:auto;">导入</view> -->
 </view>
 
-<view style="height:100rpx;"></view>
+<view style="height:50rpx;"></view>
 
 <!-- 有图的按钮 -->
 <!-- <view class="button div " style="height:100rpx;width:100rpx;margin:auto; border-radius: 50rpx;">
   <image style=" border-radius: 50rpx;height:50rpx;width:50rpx;" src="../../images/two/clockin.svg"></image>
 </view> -->
+

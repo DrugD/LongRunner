@@ -8,9 +8,12 @@
 <view class="text_big">{{team_data.name}}</view>
 <view style="height:30rpx;"></view>
 <view class="text_big">团体介绍</view>
-<view class="text">团体共有{{team_data.member.length}}人，由{{team_data.member[0].user_info.nickName}}发起</view>
+
+<view class="text">{{team_data.introduce}}</view>
+<!-- <view style="height:10rpx;"></view>
+<view class="text">团体共有{{team_data.member.length}}人</view> -->
 <view style="height:30rpx;"></view>
-<view class="text_big">团体成员</view>
+<view class="text_big">团体成员共{{team_data.member.length}}人</view>
 <view class="column_line" wx:for="{{team_data.member}}">
  
   <view class="row_line" style="width:100%;">

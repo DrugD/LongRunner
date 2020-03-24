@@ -485,7 +485,7 @@ Page({
   // },
 
   lookin: function(e) {
-    console.log(e)
+   
     wx.navigateTo({
       // url: '/pages/one/detail?data=' + data,
       url: '/pages/one/detail/detail?race_id=' + this.data.queryResult[e.currentTarget.dataset.detail]._id

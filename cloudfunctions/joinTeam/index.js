@@ -18,7 +18,8 @@ exports.main = async (event, context) => {
         // member: event.member
         member: _.push({
           "user_info": event.user_info,
-          "openid": event.openid
+          "openid": event.openid,
+          "user_data": event.user_data,
         })
       }
     })

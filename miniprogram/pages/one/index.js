@@ -421,33 +421,45 @@ Page({
   gotoCommunity:function(){
     // this.setData({
     //   block_index:3
-    // })
-
-    wx.navigateTo({
-      url: '/pages/one/community/community',
+    // }) 
+    wx.showModal({
+      title: '提示',
+      content: '受疫情影响，暂不开放。加油！',
     })
+    // wx.navigateTo({
+    //   url: '/pages/one/community/community',
+    // })
   },
 
   gotoSearch:function(){
-    wx.navigateTo({
-      url: '/pages/one/search/search',
+    wx.showModal({
+      title: '提示',
+      content: '受疫情影响，暂不开放。加油！',
     })
+    // wx.navigateTo({
+    //   url: '/pages/one/search/search',
+    // })
   },
 
   toSearch: function () {
-    console.log(this.data.input_content)
-    if (this.data.input_content =='color'){
+    wx.showModal({
+      title: '提示',
+      content: '受疫情影响，暂不开放。加油！',
+    })
 
-      wx.navigateTo({
-        url: '/pages/forme/forme',
-      })
+    // console.log(this.data.input_content)
+    // if (this.data.input_content =='color'){
 
-    }else{
+    //   wx.navigateTo({
+    //     url: '/pages/forme/forme',
+    //   })
+
+    // }else{
       
-      wx.navigateTo({
-        url: '/pages/one/search/search?input_content=' + this.data.input_content,
-      })
-    }
+    //   wx.navigateTo({
+    //     url: '/pages/one/search/search?input_content=' + this.data.input_content,
+    //   })
+    // }
    
   },
 
