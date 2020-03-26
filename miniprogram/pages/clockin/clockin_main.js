@@ -153,28 +153,28 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
-    console.log(this.data)
-    var str = this.data.team_data.name + '邀你打卡健身！'
-    return {
-      title: str,
-      path: '/pages/clockin/clockin_main?team_id=' + this.data.team_data.team_id +
-        '&team_id_id=' + this.data.team_data._id +
-        '&page_share=' + 'yes' //0表示从正常进入，1表示从分享的进入
-        ,
+  // onShareAppMessage: function() {
+  //   console.log(this.data)
+  //   var str = this.data.team_data.name + '邀你打卡健身！'
+  //   return {
+  //     title: str,
+  //     path: '/pages/clockin/clockin_main?team_id=' + this.data.team_data.team_id +
+  //       '&team_id_id=' + this.data.team_data._id +
+  //       '&page_share=' + 'yes' //0表示从正常进入，1表示从分享的进入
+  //       ,
 
-      imageUrl: 'https://7275-runner-xei7u-1301166162.tcb.qcloud.la/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B5%84%E6%BA%90%E5%9B%BE/share.jpg?sign=f20f412b94d2a4df6abfe7c772acc113&t=1581768315', //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径。支持PNG及JPG。显示图片长宽比是 5:4。
-      success: function(res) {
-        // 转发成功
-        console.log("转发成功:" + JSON.stringify(res));
-      },
-      fail: function(res) {
-        // 转发失败
-        console.log("转发失败:" + JSON.stringify(res));
-      }
-    }
+  //     imageUrl: 'https://7275-runner-xei7u-1301166162.tcb.qcloud.la/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%B5%84%E6%BA%90%E5%9B%BE/share.jpg?sign=f20f412b94d2a4df6abfe7c772acc113&t=1581768315', //自定义图片路径，可以是本地文件路径、代码包文件路径或者网络图片路径。支持PNG及JPG。显示图片长宽比是 5:4。
+  //     success: function(res) {
+  //       // 转发成功
+  //       console.log("转发成功:" + JSON.stringify(res));
+  //     },
+  //     fail: function(res) {
+  //       // 转发失败
+  //       console.log("转发失败:" + JSON.stringify(res));
+  //     }
+  //   }
 
-  },
+  // },
 
   getUserRunningInform: function() {
     var that = this
@@ -398,85 +398,29 @@ Page({
     if (!app.globalData.userInfo) {
       console.log("获取用户信息")
       this.getUserLogin()
-    }
-
-    if (this.data.user_state != 2) {
-      wx.showModal({
-        title: '未认证',
-        content: '为了平台良好运营环境和互联网运营条例，请您先进行认证，谢谢',
-        success: function(res) {
-          wx.navigateTo({
-            url: '/pages/me/authentication/authentication',
-          })
-        }
-      })
-    } else {
+    }else{
       wx.navigateTo({
         url: '/pages/me/runnersSettle/runnersSettle',
       })
-      // var that = this
-      // var team_id = this.data.input_value
-      // var user_info = app.globalData.userInfo
-      // var openid = app.globalData.openid
-
-
-
-      // db.collection('team').where({
-      //   team_id: team_id,
-      // }).get({
-      //   success: function(res) {
-      //     console.log(res.data)
-
-      //     // that.setData({
-      //     //   team_data: res.data
-      //     // })
-
-      //     // that.load()
-      //     wx.cloud.callFunction({
-      //       // 要调用的云函数名称
-      //       name: 'joinTeam',
-      //       // 传递给云函数的event参数
-      //       data: {
-      //         _id: res.data[0]._id,
-      //         user_info: user_info,
-      //         openid: openid,
-
-      //       }
-      //     }).then(res => {
-
-      //       console.log("res--joinTeam", res)
-
-      //     }).catch(err => {
-      //       // handle error
-      //     })
-
-
-      //     wx.cloud.callFunction({
-      //       // 要调用的云函数名称
-      //       name: 'updateUserState',
-      //       // 传递给云函数的event参数
-      //       data: {
-
-
-      //         team_id: res.data[0]._id,
-      //         openid: openid,
-      //       }
-      //     }).then(res => {
-      //       console.log("res--updateUserState", res)
-      //       that.load()
-
-      //       console.log("res--data", that.data)
-      //     }).catch(err => {
-      //       // handle error
-      //     })
-
-
-      //   }
-      // })
-
     }
 
-    // this.create_User(app.globalData.userInfo)
+    // if (this.data.user_state != 2) {
+    //   wx.showModal({
+    //     title: '未认证',
+    //     content: '为了平台良好运营环境和互联网运营条例，请您先进行认证，谢谢',
+    //     success: function(res) {
+    //       wx.navigateTo({
+    //         url: '/pages/me/authentication/authentication',
+    //       })
+    //     }
+    //   })
+    // } else {
+    //   wx.navigateTo({
+    //     url: '/pages/me/runnersSettle/runnersSettle',
+    //   })
+    // }
+
+ 
 
 
   },

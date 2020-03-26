@@ -23,13 +23,13 @@
       <!-- <view style="width:75px;"></view> -->
       <view class="leftBgView" bindtap="handleCalendar" data-handle="prev">
         <view class="leftView">
-          <image class="img_icon" src="/images/left.svg" style="width: 30rpx;height: 30rpx;"></image>
+          <image class="img_icon" src="/images/left.svg" style="width: 30rpx;height: 30rpx;padding: 10rpx 10rpx 10rpx 10rpx;"></image>
         </view>
       </view>
       <view class="rightBgView" bindtap="handleCalendar" data-handle="next">
         <view class="rightView">
 
-          <image class="img_icon" src="/images/right.svg" style="width: 30rpx;height: 30rpx;"></image>
+          <image class="img_icon" src="/images/right.svg" style="width: 30rpx;height: 30rpx;padding: 10rpx 10rpx 10rpx 10rpx;"></image>
         </view>
       </view>
 

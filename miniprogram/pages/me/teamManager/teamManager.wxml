@@ -35,10 +35,16 @@
 <view class="zan-dialog {{ showDialog ? 'zan-dialog--show' : '' }}">
   <view class="zan-dialog__mask" bindtap="toggleDialog" />
   <view class="zan-dialog__container">
-   <image bindtap="closeModel" style="width:50rpx;height:50rpx;" src="/images/close.png"></image>
-    <view style="padding-top:152rpx;padding-left:12rpx;"> {{show_data.user_data.input_name}} {{show_data.user_data.sex}} {{show_data.user_data.input_school}} {{show_data.user_data.input_school_id}} {{show_data.user_data.input_telephone}}
+    <image bindtap="closeModel" style="width:50rpx;height:50rpx;" src="/images/close.png"></image>
+    <view style="padding-top:20rpx;padding-left:20rpx;">
+     
+      <view> {{show_data.user_data.input_name}}</view>
+      <view> {{show_data.user_data.sex}}</view>
+      <view> {{show_data.user_data.input_school}}</view>
+      <view> {{show_data.user_data.input_school_id}}</view>
+      <view> {{show_data.user_data.input_telephone}}</view>
+       
     </view>
   </view>
- 
-</view>
 
+</view>

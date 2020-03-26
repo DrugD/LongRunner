@@ -91,7 +91,7 @@
 </view>
 
 <view style="height:30rpx;"></view>
-<button class="button" bindtap="query">查询</button>
+<button class="button" bindtap="query_fake">查询</button>
 
 
 

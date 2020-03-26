@@ -38,11 +38,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    wx.showLoading({
+      title: '加载中...',
+    })
     this.getTeamInform()
   },
 
 
   getTeamInform: function () {
+    
     var that = this
     db.collection('User').where({
       _openid: app.globalData.openid,
@@ -64,6 +68,7 @@ Page({
             },
             fail: res => {
               console.log(res)
+              wx.hideLoading()
             },
 
           })
@@ -72,6 +77,7 @@ Page({
           that.setData({
             team_data:null
           })
+          wx.hideLoading()
         }
 
 
@@ -81,6 +87,7 @@ Page({
       },
 
     })
+
   },
 
   

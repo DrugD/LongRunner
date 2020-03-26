@@ -326,13 +326,13 @@ page {
 }
 
 .loading {
-  width: 100rpx;
-  height: 100rpx;
+  width: 300rpx;
+  height: 300rpx;
 }
 
 .loading_view {
   width: 100%;
-  height: 5000rpx;
+  height: 1000rpx;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -11,7 +11,7 @@
     <view class="info">
       <image class='avatar' src='{{userInfo.avatarUrl}}' mode='aspectFill'></image>
       <view class='name'>{{userInfo.nickName}}</view>
-      <view class='state'>认证状态：{{user_state==2?"已认证":"未认证"}}</view>
+      <view class='state'>认证状态：{{userstate==2?"已认证":"未认证"}} </view>
     </view>
 
 
@@ -44,9 +44,15 @@
 
 <!-- <view bindtap="check_subscribe"></view> -->
 
-<view wx:if="{{!userInfo}}">
+<view wx:if="{{!userInfo && user_state!=2}}">
   <button open-type='getUserInfo' bindgetuserinfo="getUserInfo" class="btn_login">点击开通个人中心</button>
 </view>
+
+<view wx:if="{{user_state==2}}">
+  <button open-type='getUserInfo' bindgetuserinfo="updateUserInfo" class="btn_login">点击完善个人中心</button>
+</view>
+
+
 
 <!-- <button class="btn_subscribe" bindtap="subscribe">订阅服务</button> -->
 
@@ -115,7 +121,7 @@
     <image class="view_1_2_img " src="/images/me/7.png" mode="aspectFit"></image>
   </view>
   
-  <view class="view_1_1" bindtap="teamManager">
+  <view class="view_1_1" bindtap="getManager">
     <image class="view_1_1_img" src="/images/me/manager.png" mode="aspectFit"></image>
     <view class="view_1_1_text">团队管理</view>
     <image class="view_1_2_img " src="/images/me/7.png" mode="aspectFit"></image>
@@ -133,3 +139,29 @@
     <image class="view_1_2_img" src="/images/me/7.png" mode="aspectFit"></image>
   </view> -->
 </view>
+
+
+<block wx:if="{{isShowConfirm}}">
+<!-- <block > -->
+      <view class='toast-box'>
+        <view class='toastbg'></view>
+        <view class='showToast'>
+            <view class='toast-title'>
+                <text>管理员密钥</text>
+            </view>
+            <view class='toast-main'>
+                <view class='toast-input'>
+                    <input type='password' placeholder='输入密钥' bindinput='setValue'> </input>
+                </view>
+            </view>
+            <view class='toast-button' style="width: 100%;">
+                <view class='button552'>
+                    <button style="width: auto;margin: 20rpx 20rpx 20rpx 20rpx;background: #ebecf0;" catchtap='cancel' class="button">取消</button>
+                </view>
+                <view class='button551'>
+                    <button  style="width: auto;margin: 20rpx 20rpx 20rpx 20rpx;background: #ebecf0;"  catchtap='confirmAcceptance'  class="button">确定</button>
+                </view>
+            </view>
+        </view>
+    </view>
+  </block>

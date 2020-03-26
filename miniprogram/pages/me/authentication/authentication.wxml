@@ -108,7 +108,11 @@
 </view>
 
 <view hidden="{{user_state!=2}}">
-  <view class="text_big">您已认证，感谢您的认证</view>
+  <view class="text_big">感谢您的认证！</view>
+   <view class="text_small">将为您提供赛事订阅、训练信息通知等服务。</view>
+   <view style="height:100rpx;width:100%;"></view>
+   <view class="text_big">徽章认证系统即将上线</view>
+   <image style="width: 100%;margin-top:30rpx;" src="/images/icon/huizhang.svg"></image>
 </view>
 
 

@@ -72,7 +72,7 @@ Page({
         table_1: res.result.data,
         showLoading: false,
       })
-
+      // wx.hideLoading()
     }).catch(err => {
       console.error(err)
     })
@@ -149,7 +149,9 @@ Page({
   onLoad: function (options) {
     // //初始化图片预加载组件，并指定统一的加载完成回调
     // this.imgLoader = new ImgLoader(this, this.imageOnLoad.bind(this))
-
+    // wx.showLoading({
+    //   title: '加载中',
+    // })
     this.load()
 
 
@@ -416,9 +418,19 @@ Page({
       url: '/pages/one/detail2/detail2',
     })
   },
-
-
   gotoCommunity:function(){
+      wx.showModal({
+      title: '提示',
+      content: '受疫情影响，暂不开放。加油！',
+    })
+    // wx.navigateTo({
+    //   url: '/pages/one/pengyouquan/pengyouquan',
+    // })
+  },
+  
+
+
+  gotoVolunteer:function(){
     // this.setData({
     //   block_index:3
     // }) 
@@ -432,13 +444,13 @@ Page({
   },
 
   gotoSearch:function(){
-    wx.showModal({
-      title: '提示',
-      content: '受疫情影响，暂不开放。加油！',
-    })
-    // wx.navigateTo({
-    //   url: '/pages/one/search/search',
+    // wx.showModal({
+    //   title: '提示',
+    //   content: '受疫情影响，暂不开放。加油！',
     // })
+    wx.navigateTo({
+      url: '/pages/one/search/search',
+    })
   },
 
   toSearch: function () {

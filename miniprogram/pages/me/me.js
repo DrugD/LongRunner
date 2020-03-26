@@ -19,7 +19,11 @@ Page({
     switchChecked: false,
     showModal: false,
     help_gif_1: '',
-    userstate: "",
+    userstate: "", //用户认证情况
+    user_state: "", //用户登陆时User情况
+    isShowConfirm: false, //展示管理登陆密码窗口
+    manager_password: "", //管理员密钥
+    manager_password_true: "", //系统给定密钥
   },
 
   /**
@@ -29,10 +33,81 @@ Page({
     console.log(app.globalData)
     this.setData({
       userInfo: app.globalData.userInfo,
+      user_state: app.globalData.user_state
     })
     this.getSubscribe_state()
     this.getUserState()
+    this.checkManagerInform()
   },
+
+
+  //获取管理员表，查看是否是管理员
+  checkManagerInform: function() {
+    var that = this
+    const db = wx.cloud.database()
+    db.collection('Manager').where({
+      _openid: app.globalData.openid // 填入当前用户 openid
+    }).get().then(res => {
+      console.log('Manager:', res.data)
+      for (var i = 0; i < res.data.length; i++) {
+        if (app.globalData.openid == res.data[i]._openid) {
+          that.setData({
+            manager_password_true: res.data[i].password
+          })
+        }
+      }
+    })
+  },
+
+  getManager: function() {
+
+    this.setData({
+      isShowConfirm: true
+    })
+  },
+
+  setValue: function(e) {
+    this.setData({
+      manager_password: e.detail.value
+    })
+  },
+
+  cancel: function() {
+    var that = this
+    that.setData({
+      isShowConfirm: false,
+    })
+  },
+
+  confirmAcceptance: function() {
+    var that = this
+    console.log(this.data.manager_password_true, this.data.manager_password)
+    if (this.data.manager_password_true == this.data.manager_password && this.data.manager_password && this.data.manager_password_true) {
+      that.setData({
+        isShowConfirm: false,
+        // manager_password: this.data.manager_password
+      })
+
+      this.teamManager()
+
+    } else if (!this.data.manager_password) {
+      wx.showToast({
+        title: '需要输入密钥',
+        icon: "none"
+      })
+    } else if (!this.data.manager_password_true) {
+      wx.showToast({
+        title: '您还不是管理员',
+        icon: "none"
+      })
+    } else {
+      wx.showToast({
+        title: '密钥有误',
+        icon: "none"
+      })
+    }
+  },
+
 
   getSubscribe_state: function() {
     var that = this;
@@ -42,6 +117,39 @@ Page({
       switchChecked: eee
     })
     app.globalData.switchChecked = eee
+  },
+
+  updateUserInfo: function() {
+    wx.showLoading({
+      title: '数据加载中...',
+    });
+
+    const self = this;
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting["scope.userInfo"]) {
+          console.log(res.authSetting);
+          wx.getUserInfo({
+            success: res => {
+              console.log(res.userInfo);
+              self.setData({
+                userInfo: res.userInfo,
+              });
+              app.globalData.userInfo = res.userInfo
+              self.update_User(res.userInfo)
+              wx.hideLoading();
+            },
+          });
+        } else {
+          wx.hideLoading();
+          wx.showToast({
+            title: '太皮了嘿嘿嘿',
+            icon: "none"
+          })
+        }
+      },
+    });
+
   },
 
   getUserInfo: function() {
@@ -65,11 +173,11 @@ Page({
               wx.hideLoading();
             },
           });
-        }else{
+        } else {
           wx.hideLoading();
           wx.showToast({
             title: '太皮了嘿嘿嘿',
-            icon:"none"
+            icon: "none"
           })
         }
       },
@@ -78,7 +186,109 @@ Page({
 
   },
 
+  update_User: function(userInfo) {
+    var that = this
+    console.log("res.userInfo:", userInfo)
+    console.log("user_id:", app.globalData.user_id)
+    console.log("openid:", app.globalData.openid)
+
+    wx.cloud.database().collection('User').where({
+        _openid: app.globalData.openid
+      }).update({
+        data: {
+          userInfo: _.remove()
+        }
+
+      })
+      .then(
+        console.log("删除userInfo字段后--"),
+
+
+        wx.cloud.database().collection('User').where({
+          _openid: app.globalData.openid
+        }).update({
+          data: {
+            userInfo: _.set({
+              "nickName": userInfo.nickName,
+              "avatarUrl": userInfo.avatarUrl,
+              "city": userInfo.city,
+              "country": userInfo.country,
+              "gender": userInfo.gender,
+             
+              "language": userInfo.language,
+              
+              "province": userInfo.province,
+
+            })
+
+          },
+          success: res => {
+            console.log("update:", res) // 3
+            if (res.stats.updated == 1) {
+              wx.showToast({
+                title: '已完善信息',
+                icon: 'success',
+                duration: 1000
+              })
+
+              that.setData({
+                user_state: 1
+              })
+            } else {
+              wx.showToast({
+                title: '网络故障..',
+                icon: "none"
+              })
+            }
+
+          },
+          fail: err => {
+
+            console.error('失败', err)
+          }
+        })
+
+
+        // that.create_User(userInfo)
+
+
+        // wx.cloud.callFunction({
+        //   // 云函数名称
+        //   name: 'updateUserInfo',
+        //   // 传给云函数的参数
+        //   data: {
+        //     // _id: JSON.stringify(app.globalData.user_id),
+        //     openid: JSON.stringify(app.globalData.openid),
+        //     userInfo: JSON.stringify(userInfo)
+
+        //     // _id: app.globalData.user_id,
+        //     // userInfo:userInfo
+        //   },
+        //   success: function(res) {
+        //     console.log("update:", res) // 3
+        //     // if(res.result.stats.updated==1){
+        //     //   that.setData({
+        //     //     user_state: 1
+        //     //   })
+        //     // }else{
+        //     //   wx.showToast({
+        //     //     title: '网络故障..',
+        //     //     icon:"none"
+        //     //   })
+        //     // }
+
+        //   },
+        //   fail: console.error
+        // })
+      )
+      .catch(console.error)
+
+
+  },
+
   create_User: function(userInfo) {
+
+    var that = this
     //获取当前时间戳  
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
@@ -107,6 +317,9 @@ Page({
       })
       .then(res => {
         console.log(res)
+        that.setData({
+          user_state: 1
+        })
       })
       .catch(console.error)
   },
@@ -213,7 +426,7 @@ Page({
 
   toMyauthentication: function() {
     wx.navigateTo({
-      url: '/pages/me/authentication/authentication?user_state=' + this.data.user_state,
+      url: '/pages/me/authentication/authentication?user_state=' + this.data.userstate,
     })
   },
 
@@ -223,13 +436,13 @@ Page({
       url: 'aboutUs/aboutUs',
     })
   },
-  gotoShop: function () {
+  gotoShop: function() {
     wx.navigateTo({
       url: 'shop/shop',
     })
   },
 
-  myQuestion: function () {
+  myQuestion: function() {
     wx.navigateTo({
       url: 'question/question',
     })
@@ -237,7 +450,7 @@ Page({
 
 
   getUserState: function() {
-    
+
     var that = this
 
     wx.cloud.database().collection('User').where({
@@ -249,16 +462,18 @@ Page({
           if (res.data[0].user_state == 2) {
             //若认证
             that.setData({
-              user_state: res.data[0].user_state
+              userstate: res.data[0].user_state,
+              userInfo: res.data[0].userInfo
             })
 
-          } else {
+          } else if (res.data[0]) {
 
             that.setData({
-              user_state: "00"
+              userstate: "00",
+              userInfo: res.data[0].userInfo
             })
           }
-          console.log("user_state:",that.data.user_state)
+          console.log("userstate:", res.data[0].userInfo, that.data.userstate)
         },
         fail: console.error
       })
@@ -267,34 +482,48 @@ Page({
   },
 
 
-  runnersSettle:function(){
-    if (this.data.user_state=='00'){
-      wx.showModal({
-        title: '未认证',
-        content: '为了平台良好运营环境和互联网运营条例，请您先进行认证，谢谢',
-        success: function (res) {
-          
-        }
-      })
-    } else if (this.data.user_state == 2){
+  runnersSettle: function() {
+    // if (this.data.user_state=='00'){
+    //   wx.showModal({
+    //     title: '未认证',
+    //     content: '为了平台良好运营环境和互联网运营条例，请您先进行认证，谢谢',
+    //     success: function (res) {
+
+    //     }
+    //   })
+    // } else if (this.data.user_state == 2){
+    //   wx.navigateTo({
+    //     url: 'runnersSettle/runnersSettle',
+    //   })
+    // }
+    if (app.globalData.userInfo) {
       wx.navigateTo({
         url: 'runnersSettle/runnersSettle',
       })
-    }
-   
-  },
-
-  teamManager:function(){
-    if (this.data.user_state == '00') {
+    } else {
       wx.showModal({
-        title: '未认证',
-        content: '为了平台良好运营环境和互联网运营条例，请您先进行认证，谢谢',
-        success: function (res) {
+        title: '未登陆',
+        content: '为了平台良好运营环境和互联网运营条例，请您先进行登陆，谢谢',
+        success: function(res) {
 
         }
       })
-    } else if (this.data.user_state == 2 ) {
-      
+    }
+
+
+  },
+
+  teamManager: function() {
+    if (this.data.userstate == '00') {
+      wx.showModal({
+        title: '未认证',
+        content: '为了平台良好运营环境和互联网运营条例，请您先进行认证，谢谢',
+        success: function(res) {
+
+        }
+      })
+    } else if (this.data.userstate == 2) {
+
       wx.navigateTo({
         url: 'teamManager/teamManager',
       })

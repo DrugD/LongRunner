@@ -172,8 +172,8 @@ Page({
     } catch (e) {
       console.log('读取lasttime_upload发生错误')
     }
-    
-    if (this.data.input3_value&&lasttime_upload==D+h){
+    console.log("读取lasttime_upload：", lasttime_upload)
+    if (this.data.input3_value&&lasttime_upload== String(Y) + String(M)){
       wx.showModal({
         title: '温馨提醒',
         content: '您今日已经打过卡了',
@@ -312,12 +312,12 @@ Page({
             success: res => {
               wx.setStorage({
                 key: "lasttime_upload",
-                data: D + h,
+                data: String(Y) + String(M),
                 success: function () {
-                  console.log('写入lasttime_upload成功', D + h)
+                  console.log('写入lasttime_upload成功', String(Y) + String(M))
                 },
                 fail: function () {
-                  console.log('写入lasttime_upload发生错误', D + h)
+                  console.log('写入lasttime_upload发生错误', String(Y) + String(M))
                 }
               })
               wx.hideLoading()

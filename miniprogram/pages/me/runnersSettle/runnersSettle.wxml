@@ -1,76 +1,78 @@
 <navigationBar id="navigationBar" backStyle="simple" color="#808080" title="" back="{{true}}" background="#ebecf0">
 </navigationBar>
 
-<view class="text">跑团加入申请表</view>
+<view wx:if="{{!team_data}}">
 
-<!-- <view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">向下方邮箱中发送以下信息</text></view>
+  <view class="text">跑团加入申请表</view>
+
+  <!-- <view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">向下方邮箱中发送以下信息</text></view>
 <view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">负责人的微信号、社团名称、社团介绍、手机号码</text></view>
 <view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">E-mail：2016302590230@whu.edu.cn</text></view>
 <view><text selectable='true' class="text_small" style="width:90%;  margin-left: 5%; margin-right: 5%;text-align: center;">*我们会在1个工作日内审核并回复</text></view>
 <view style="height:30rpx;"></view> -->
 
-<view style="height:30rpx;width:100%;"></view>
-
-<view class='item_1'>
-  <view class='item_1_1 text'>团队：</view>
-  <!-- <input bindinput='plan_speed_Input' value='{{plan_speed}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入配速'></input> -->
-  <picker bindchange="bindPickerChange1" value="{{team_index}}" range="{{team}}" range-key="name" class="item_1_2 picker picker_text_small">
-    <view style="width:100%;">
-      {{team[team_index].name}}
-    </view>
-  </picker>
-</view>
-
-
-<view class='item_1'>
-  <view class='item_1_1 text'>姓名：</view>
-  <input bindinput='input_name' value='{{input_name}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入姓名'></input>
-</view>
-
-<!-- <view style="height:30rpx;width:100%;"></view> -->
-
-<view class='item_1'>
-  <view class='item_1_1 text'>性别：</view>
-  <!-- <input bindinput='plan_speed_Input' value='{{plan_speed}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入配速'></input> -->
-  <picker bindchange="bindPickerChange2" value="{{sex_index}}" range="{{sex}}" class="item_1_2   picker picker_text_small">
-    <view style="width:100%;">
-      {{sex[sex_index]}}
-    </view>
-  </picker>
-</view>
-
-<view style="height:30rpx;width:100%;"></view>
-
-
-
-<view class="text_small label " style="height:50rpx;width:100%;">
-  *以下信息将由跑团收录，平台不会备份
-</view>
-
-<view style="height:10rpx;width:100%;"></view>
-<view wx:if="{{team[team_index].type=='student'}}">
-  <view class='item_1'>
-    <view class='item_1_1 text'>学院：</view>
-    <input bindinput='input_school' value='{{input_school}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入学院信息' placeholder-class="placeholder"></input>
-  </view>
   <view style="height:30rpx;width:100%;"></view>
-  <view class='item_1'>
-    <view class='item_1_1 text'>学号：</view>
-    <input bindinput='input_school_id' value='{{input_school_id}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入学号'></input>
 
+  <view class='item_1'>
+    <view class='item_1_1 text'>团队：</view>
+    <!-- <input bindinput='plan_speed_Input' value='{{plan_speed}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入配速'></input> -->
+    <picker bindchange="bindPickerChange1" value="{{team_index}}" range="{{team}}" range-key="name" class="item_1_2 picker picker_text_small">
+      <view style="width:100%;">
+        {{team[team_index].name}}
+      </view>
+    </picker>
+  </view>
+
+
+  <view class='item_1'>
+    <view class='item_1_1 text'>姓名：</view>
+    <input bindinput='input_name' value='{{input_name}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入姓名'></input>
+  </view>
+
+  <!-- <view style="height:30rpx;width:100%;"></view> -->
+
+  <view class='item_1'>
+    <view class='item_1_1 text'>性别：</view>
+    <!-- <input bindinput='plan_speed_Input' value='{{plan_speed}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入配速'></input> -->
+    <picker bindchange="bindPickerChange2" value="{{sex_index}}" range="{{sex}}" class="item_1_2   picker picker_text_small">
+      <view style="width:100%;">
+        {{sex[sex_index]}}
+      </view>
+    </picker>
   </view>
 
   <view style="height:30rpx;width:100%;"></view>
 
 
-  <view class='item_1'>
-    <view class='item_1_1 text'>手机号：</view>
-    <input bindinput='input_telephone' value='{{input_telephone}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入您的手机号'></input>
+
+  <view class="text_small label " style="height:50rpx;width:100%;">
+    *以下信息将由跑团收录，平台不会备份
   </view>
 
-</view>
-<view wx:if="{{team[team_index].type=='society'}}">
-  <!-- <view class='item_1'>
+  <view style="height:10rpx;width:100%;"></view>
+  <view wx:if="{{team[team_index].type=='student'}}">
+    <view class='item_1'>
+      <view class='item_1_1 text'>学院：</view>
+      <input bindinput='input_school' value='{{input_school}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入学院信息' placeholder-class="placeholder"></input>
+    </view>
+    <view style="height:30rpx;width:100%;"></view>
+    <view class='item_1'>
+      <view class='item_1_1 text'>学号：</view>
+      <input bindinput='input_school_id' value='{{input_school_id}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入学号'></input>
+
+    </view>
+
+    <view style="height:30rpx;width:100%;"></view>
+
+
+    <view class='item_1'>
+      <view class='item_1_1 text'>手机号：</view>
+      <input bindinput='input_telephone' value='{{input_telephone}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入您的手机号'></input>
+    </view>
+
+  </view>
+  <view wx:if="{{team[team_index].type=='society'}}">
+    <!-- <view class='item_1'>
     <view class='item_1_1 text'>学院：</view>
     <input bindinput='plan_time_Input' value='{{plan_time}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入学院' placeholder-class="placeholder"></input>
   </view>
@@ -84,26 +86,34 @@
   <view style="height:30rpx;width:100%;"></view> -->
 
 
-  <view class='item_1'>
-    <view class='item_1_1 text'>手机号：</view>
-    <input bindinput='input_telephone' value='{{input_telephone}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入您的手机号'></input>
-    <!-- <view style='height:100%;width:50rpx;'>
+    <view class='item_1'>
+      <view class='item_1_1 text'>手机号：</view>
+      <input bindinput='input_telephone' value='{{input_telephone}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入您的手机号'></input>
+      <!-- <view style='height:100%;width:50rpx;'>
       <image style="height:100%;width:100%;" src="/images/exclamation.svg"></image>
     </view> -->
+    </view>
+
   </view>
- 
+  <view wx:if="{{team[team_index]._id=='9a393e025e774f62001908836782f89f'}}" bindtap="showRules" class="text_small label" style="width:100%;height:100rpx;"> 《用户信息须知》 </view>
+
+
+
+  <view style="height:100rpx;width:100%;"></view>
+  <button bindtap="binding" class="change_to_my_btn button text_small label" style="height:70rpx;width:150rpx;font-size:35rpx;">
+    绑定
+  </button>
+
+  <view style="height:30rpx;width:100%;"></view>
+
+
 </view>
- <view wx:if="{{team[team_index]._id=='9a393e025e774f62001908836782f89f'}}" bindtap="showRules" class="text_small label" style="width:100%;height:100rpx;"> 《用户信息须知》 </view>
 
+<view wx:if="{{team_data}}" class="text label " style="height:50rpx;width:100%;">
+  您已经加入了{{team_data.name}}。
+</view>
+ <view style="height:30rpx;width:100%;"></view>
 
-
-<view style="height:100rpx;width:100%;"></view>
-<button bindtap="binding" class="change_to_my_btn button text_small label" style="height:70rpx;width:150rpx;font-size:35rpx;">
-  绑定
-</button>
-
-<view style="height:30rpx;width:100%;"></view>
-
-<view wx:if="{{team_data}}" class="text_small label " style="height:50rpx;width:100%;">
-  查询到您已有加入跑团组织，暂时不开放多跑团参与功能。
+ <view wx:if="{{team_data}}" class="text_small label " style="height:50rpx;width:100%;">
+  近期将举办线上团队战力赛，请多多支持！
 </view>

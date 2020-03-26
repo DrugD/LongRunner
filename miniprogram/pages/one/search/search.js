@@ -174,7 +174,16 @@ Page({
 
   // },
 
+  query_fake:function(){
+    wx.showModal({
+      title: '遗憾',
+      content: '受疫情影响，今年暂无马拉松赛事，请您移步吧。',
+    })
+  },
+
   query: function() {
+  
+
     wx.showLoading({
       title: '查询中...',
     })

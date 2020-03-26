@@ -1,21 +1,22 @@
 {
   "pages": [
+    "pages/one/index",
+    "pages/one/luntan/luntan",
     "pages/two/two",
+    "pages/me/question/question",
     "pages/me/teamManager/teamManager",
-    
     "pages/me/runnersSettle/runnersSettle",
     "pages/clockin/clockin_main",
     "pages/clockin/clockin",
     "pages/getUser",
     "pages/one/detail/detail",
-    "pages/one/index",
+    
     "pages/me/me",
     "pages/test/test2",
     "pages/me/authentication/authentication",
     "pages/runningcalculator/runningcalculator",
     "pages/one/community/community",
     "pages/one/search/search",
-    "pages/me/question/question",
     "pages/me/aboutUs/aboutUs",
     "pages/me/shop/shop",
     "pages/planmanage/history",

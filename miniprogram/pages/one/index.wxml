@@ -13,9 +13,9 @@
 <view class="bg_blue"></view>
 <view class="tab_image">
 
-  <view class="tab_image1" bindtap="gotoCalendar">
+  <view class="tab_image1" bindtap="gotoCommunity">
     <image style="height:260rpx;width:260rpx;" src="/images/t1.png"></image>
-    <view class="tab_image_text text">赛事日历</view>
+    <view class="tab_image_text text">不止步社区</view>
   </view>
 
   <view class="tab_image1" bindtap="gotoSearch">
@@ -23,7 +23,7 @@
     <view class="tab_image_text text">赛事查询</view>
   </view>
 
-  <view class="tab_image1" bindtap="gotoCommunity">
+  <view class="tab_image1" bindtap="gotoVolunteer">
     <image style="height:260rpx;width:260rpx;" src="/images/t3.png"></image>
     <view class="tab_image_text text">志愿者招募</view>
   </view>

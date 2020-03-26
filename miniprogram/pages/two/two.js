@@ -10,7 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:null,
+    userInfo: "",
     // help_gif_1:'',
     height:"",
     width:"",
@@ -21,25 +21,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  
-
     this.setData({
-      height: wx.getSystemInfoSync().windowHeight,
-      width: wx.getSystemInfoSync().windowWidth,
-      tableBar: app.globalData.statusBarHeight*2
+      userInfo:app.globalData.userInfo
     })
 
-  console.log(this.data.width)
-
-
-  
-    // console.log("twopage--now!")
-    // this.setData({
-    //   userInfo:app.globalData.userInfo,
-    // })
-
-    // this.getHelpGif()
 
   },
 
