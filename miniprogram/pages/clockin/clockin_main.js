@@ -104,7 +104,7 @@ Page({
     this.getUserState()
     this.getTeamInform()
     this.getUserRunningInform()
-    this.calculateTeamStatic()
+   
   },
 
   /**
@@ -196,19 +196,19 @@ Page({
   },
 
 
-  shareMember:function(){
- 
+  shareMember: function() {
+
     var that = this;
     wx.setClipboardData({
       //准备复制的数据
       data: this.data.team_data.name + "邀请你来打卡，ID号☞" + this.data.team_data.team_id,
-      success: function (res) {
+      success: function(res) {
         wx.showToast({
           title: '复制成功',
         });
       }
     });
-   
+
   },
 
   getTeamInform: function() {
@@ -248,13 +248,21 @@ Page({
   },
 
   calculateTeamStatic: function() {
+    // event.team_id
     var that = this
-    db.collection('clockin_team').where({
-      sport_team_id: this.data.team_data.team_id
-    }).get({
-      success: res => {
-        console.log("团队打卡信息：", res.data)
-        let temp = res.data
+    console.log("teamid__:", this.data.team_data.team_id)
+    wx.cloud.callFunction({
+      // 云函数名称
+      name: 'getTeamClockin',
+      // 传给云函数的参数
+      data: {
+        team_id: that.data.team_data.team_id,
+
+      },
+      success: function(res) {
+        console.log(res)
+        console.log("团队打卡信息：", res.result.data)
+        let temp = res.result.data
 
         var team_member_inform = {}
 
@@ -331,11 +339,98 @@ Page({
           team_member_inform_clockin_time: clockin_time,
         })
         console.log("data:", that.data)
+        wx.hideLoading()
       },
-      fail: res => {
-        console.log(res)
-      },
+      fail: console.error
     })
+
+    // db.collection('clockin_team').where({
+    //   sport_team_id: this.data.team_data.team_id
+    // }).get({
+    //   success: res => {
+    //     console.log("团队打卡信息：", res.data)
+    //     let temp = res.data
+
+    //     var team_member_inform = {}
+
+    //     var name = []
+    //     var avatarUrl = []
+    //     var distance = [] //运动距离
+    //     var spent_time = [] //运动所花时长
+    //     var clockin_time = [] //运动打卡次数
+    //     var _openid = []
+
+    //     for (var i = 0; i < temp.length; i++) {
+    //       // console.log("第",i+1,'次')
+
+    //       var indexof = _openid.indexOf(temp[i]._openid)
+    //       // console.log(_openid,"temp[i]._openid:", temp[i]._openid)
+    //       //查询临时已有的用户数组中是不是已经有这个用户了？有的话返回的是数组索引下标，没有返回-1
+    //       // console.log(indexof)
+    //       if (indexof == -1) {
+    //         //新用户信息
+    //         _openid.push(temp[i]._openid)
+    //         name.push(temp[i].user_info.nickName)
+    //         avatarUrl.push(temp[i].user_info.avatarUrl)
+
+    //         distance.push(Number(temp[i].sport_distance))
+    //         spent_time.push(Number(temp[i].sport_time))
+    //         clockin_time.push(1)
+
+    //       } else if (indexof >= 0) {
+    //         //已有的用户信息
+    //         distance[indexof] += Number(temp[i].sport_distance)
+    //         spent_time[indexof] += Number(temp[i].sport_time)
+    //         clockin_time[indexof] += 1
+    //       }
+
+
+    //       // distance += Number(temp[i].sport_distance) 
+    //       // time += Number(temp[i].sport_time) 
+    //       // console.log(_openid)
+    //       // console.log(name)
+    //       // console.log(avatarUrl)
+    //       // console.log(distance)
+    //       // console.log(spent_time)
+    //       // console.log(clockin_time)
+    //     }
+
+
+
+    //     console.log(_openid)
+    //     console.log(name)
+    //     console.log(avatarUrl)
+    //     console.log(distance)
+    //     console.log(spent_time)
+    //     console.log(clockin_time)
+
+    //     // //拼接多个数组为一个
+    //     // for (var i = 0; i < distance.length; i++) {
+    //     //   console.log("hhhh:",i)
+    //     //   team_member_inform[i].name = name[i]
+    //     //   team_member_inform[i]._openid = _openid[i]
+    //     //   team_member_inform[i].avatarUrl = avatarUrl[i]
+    //     //   team_member_inform[i].distance = distance[i]
+    //     //   team_member_inform[i].spent_time = spent_time[i]
+    //     //   team_member_inform[i].clockin_time = clockin_time[i]
+    //     //   // team_member_inform = [name, _openid, avatarUrl, distance, spent_time, clockin_time]
+    //     // }
+    //     // console.log("team_member_inform:", team_member_inform)
+
+    //     that.setData({
+    //       team_member_inform_openid: _openid,
+    //       team_member_inform_name: name,
+    //       team_member_inform_avatarUrl: avatarUrl,
+    //       team_member_inform_distance: distance,
+    //       team_member_inform_spent_time: spent_time,
+    //       team_member_inform_clockin_time: clockin_time,
+    //     })
+    //     console.log("data:", that.data)
+    //   },
+    //   fail: res => {
+    //     console.log(res)
+    //   },
+    // })
   },
 
   clockin: function() {
@@ -398,7 +493,7 @@ Page({
     if (!app.globalData.userInfo) {
       console.log("获取用户信息")
       this.getUserLogin()
-    }else{
+    } else {
       wx.navigateTo({
         url: '/pages/me/runnersSettle/runnersSettle',
       })
@@ -420,7 +515,7 @@ Page({
     //   })
     // }
 
- 
+
 
 
   },
@@ -451,6 +546,10 @@ Page({
       this.setData({
         page_state: 2
       })
+      wx.showLoading({
+        title: '加载ing..',
+      })
+      this.calculateTeamStatic()
     } else {
       this.setData({
         page_state: 1

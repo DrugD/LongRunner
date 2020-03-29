@@ -2,8 +2,18 @@
 </navigationBar>
 
 
+<view>
+  <view class="text">跑团管理</view>
+  <view style="height:50rpx;"></view>
+  <view class="row_line">
+    <view class="button" style="width:30%;height:90rpx;margin:auto;" bindtap="copy_data1">打卡数据</view>
+    <view class="button" style="width:30%;height:90rpx;margin:auto;" bindtap="copy_data2">成员数据</view>
+  </view>
 
-<view class="text">跑团管理</view>
+</view>
+
+
+
 <!-- <view class='item_1'>
   <view class='item_1_1 text'>ID：</view>
   <input bindinput='input_team_id' value='{{input_team_id}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入ID'></input>
@@ -24,11 +34,14 @@
 </view>
 
 <view class=" label row_line  text_small" wx:for="{{team_clockin_data}}" wx:key="index" data-openid="{{item._openid}}" style="height:100rpx;">
-  <view style="width:20%;" bindtap="show_inform" data-openid="{{item._openid}}">{{item.user_info.nickName}}</view>
+  <view style="width:20%;" bindtap="show_inform" data-openid="{{item._openid}}" data-images="{{item.images}}">{{item.user_info.nickName}}</view>
   <view style="width:20%;">{{item.sport_distance}}</view>
   <view style="width:20%;">{{item.sport_time}}</view>
   <view style="width:20%;">{{item.sport_type}}</view>
-  <view style="width:20%;" bindtap="show_picture">{{item.date}}{{item.createTime}}</view>
+  <view style="width:20%;" >{{item.date}}{{item.createTime}}</view>
+  <!-- <view wx:for="{{img_url}}">
+    <image src="{{item}}"></image>
+  </view> -->
 </view>
 
 
@@ -37,14 +50,16 @@
   <view class="zan-dialog__container">
     <image bindtap="closeModel" style="width:50rpx;height:50rpx;" src="/images/close.png"></image>
     <view style="padding-top:20rpx;padding-left:20rpx;">
-     
+
       <view> {{show_data.user_data.input_name}}</view>
       <view> {{show_data.user_data.sex}}</view>
       <view> {{show_data.user_data.input_school}}</view>
       <view> {{show_data.user_data.input_school_id}}</view>
       <view> {{show_data.user_data.input_telephone}}</view>
-       
+      
     </view>
   </view>
 
 </view>
+
+

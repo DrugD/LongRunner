@@ -40,9 +40,9 @@
     <input style="width:100%;margin:auto;text-align: left;" type='text' placeholder='请输入检索词' confirm-type='search' value="{{inputValue}}" bindinput="input_to_search"></input>
   </view> -->
 
-
-  <view class="loading_view" wx:if="{{showLoading}}">
-    <image class="loading" src="/images/loading.gif"></image>
+<!-- wx:if="{{showLoading}}" -->
+  <view class="loading_view"  wx:if="{{showLoading}}">
+    <image class="loading" src="/images/loading.svg"></image>
   </view>
 
 
