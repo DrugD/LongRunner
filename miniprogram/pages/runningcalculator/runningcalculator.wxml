@@ -146,12 +146,12 @@
   </view>
 
   <view class="" style="height:50rpx;"></view>
-  <view bindtap="lookIMG" class="text">
+  <!-- <view bindtap="lookIMG" class="text">
     点击查看☞世界速度天梯图 (往下滑↓)
-  </view>
+  </view> -->
   
   <view class="" style="height:20rpx;"></view>
 </view>
 
 <!-- <view bindtap="">收起</view> -->
-<image class="img" style="width:95vw;height:330vh;margin: auto;" wx:if="{{img_1}}" src="{{img_1}}" mode="scaleToFill"></image>
+<!-- <image class="img" style="width:95vw;height:330vh;margin: auto;" wx:if="{{img_1}}" src="{{img_1}}" mode="scaleToFill"></image> -->
