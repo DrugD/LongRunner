@@ -39,7 +39,7 @@
     <input bindinput='plan_place_Input' value='{{plan_place}}' maxlength="20" class="item_1_2 input input_text_small" placeholder='请输入训练地点'></input>
   </view>
 
-  <view style="height:50rpx;width:100%;"></view>
+  <view style="height:30rpx;width:100%;"></view>
 
   <view class='item_1'>
     <view class='item_1_1 text'>时间：</view>

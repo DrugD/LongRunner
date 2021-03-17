@@ -3,16 +3,16 @@
 
 <view hidden="{{user_state==2}}">
 
-  <view class="text_big">跑者资质认证</view>
+  <view class="text_big">跑团入驻</view>
   <view style="height:20rpx;"></view>
-  <view class="text_small">*认证后，将为您提供跑者VIP服务</view>
+  <view class="text_small">*入驻后，将为您提供跑团VIP服务</view>
   <view style="height:30rpx;"></view>
 
 
   <!-- 输入框 -->
   <view class="label row_line" style="heigt:300rpx;">
-    <view class="text" style="width:30%;">真实姓名:</view>
-    <input class="input_text input" style="width:65%;" placeholder="输入您的姓名" bindinput="input1" value="{{inputVal1}}"></input>
+    <view class="text" style="width:40%;">跑团名称:</view>
+    <input class="input_text input" style="width:60%;padding: 10rpx 10rpx 10rpx 10rpx;"  placeholder="输入跑团名称" bindinput="input1" value="{{inputVal1}}"></input>
      
   </view>
   <view style="height:30rpx;"></view>
@@ -29,22 +29,39 @@
 
   <!-- 输入框 -->
   <view class="label row_line" style="heigt:300rpx;">
-    <view class="text" style="width:30%;">居住城市:</view>
-    <input  class="input_text input" style="width:65%;" placeholder="输入您的住地" bindinput="input2" value="{{inputVal2}}"></input>
+    <view class="text" style="width:40%;">跑团所属地:</view>
+    <input  class="input_text input" style="width:60%;padding: 10rpx 10rpx 10rpx 10rpx;" placeholder="请输入地名" bindinput="input2" value="{{inputVal2}}"></input>
   </view>
   <view style="height:30rpx;"></view>
 
+
+  <!-- 输入框 -->
+  <!-- <view class="label row_line" style="heigt:300rpx;">
+    <view class="text" style="width:40%;">跑团ID码:</view>
+    <input  class="input_text input" style="width:60%;padding: 10rpx 10rpx 10rpx 10rpx;" placeholder="输入四位数字" bindinput="input2" value="{{inputVal2}}"></input>
+  </view> -->
+<!-- 
+  <view style="height:10rpx;"></view>
+
+  <view class="text_small_inform"  style="opacity:1;margin-left: -3%;">
+    （将作为跑团打卡时必填信息）
+  </view>
+  <view style="height:30rpx;"></view> -->
+
   <!-- 输入框 -->
   <view class="label row_line" style="heigt:300rpx;">
-    <view class="text" style="width:30%;">跑马经历:</view>
-    <textarea class="input_area_text input_area" style="maxlength:300;width:65%;height: 300rpx;padding-left: 12px;padding-right: 12px;padding-top: 12px;padding-bottom: 12px;" placeholder="输入您的跑马经历" bindinput="input3" value="{{inputVal3}}"></textarea>
+    <view class="text" style="width:30%;">跑团介绍:</view>
+    <textarea class="input_area_text input_area" style="maxlength:300;width:65%;height: 300rpx;padding-left: 12px;padding-right: 12px;padding-top: 12px;padding-bottom: 12px;" placeholder="输入跑团介绍" bindinput="input3" value="{{inputVal3}}"></textarea>
   </view>
 
-
-  <view style="height:10rpx;"></view>
+ <view style="height:10rpx;"></view>
   <view class="text_small_inform" animation="{{ani}}" style="opacity:{{opacity_id}};">
-    （未参加过马拉松赛事可以填写其他比赛经历）
+    （将作为跑团展示页以供展示）
   </view>
+
+  
+
+
 
   <view style="height:30rpx;"></view>
 
@@ -87,7 +104,7 @@
 
   <!-- 上传图片 -->
   <view class="shadow label" style="height:700rpx;width:75%;margin:auto;border-radius: 20rpx;">
-    <view bindtap="ChooseImage" wx:if="{{imgList.length==0}}" class="text_big">点击此处上传凭证</view>
+    <view bindtap="ChooseImage" wx:if="{{imgList.length==0}}" class="text_big">点击此处上传跑团宣传图</view>
     <!-- <view class="imgList" wx:for="{{itemImg}}" wx:for-item="itemImg" wx:key="index">
     <image bindload="onImageLoad" class="img" src='{{itemImg}}' mode='aspectFill' data-img='{{[itemImg,item.fileIDs]}}' bindtap="previewImg"></image>
   </view> -->
@@ -117,10 +134,10 @@
 </view>
 
 <view hidden="{{user_state!=2}}">
-  <view class="text_big">感谢您的认证！</view>
-   <view class="text_small">将为您提供赛事订阅、训练信息通知等服务。</view>
+  <view class="text_big">感谢您的加入！</view>
+   <view class="text_small">将为贵跑团提供赛事订阅、训练信息通知等服务。</view>
    <view style="height:100rpx;width:100%;"></view>
-   <view class="text_big">徽章认证系统即将上线</view>
+   <view class="text_big">跑团擂台赛即将开赛，有机会赢得Nike、Adidas等运动大V万元赞助费！</view>
    <image style="width: 100%;margin-top:30rpx;" src="/images/icon/huizhang.svg"></image>
 </view>
 

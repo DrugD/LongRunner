@@ -1,5 +1,5 @@
   <navigationBar id="navigationBar" backStyle="simple" color="#808080" title="" back="{{true}}" background="#ebecf0"></navigationBar>
-
+<wxs src="../../utils/util.wxs" module="num2" />
 
 <view style="height:30rpx;"></view>
 
@@ -121,16 +121,16 @@
 
     <view class="row_line" style="width:100%;">
 
-      <view class="column_line" style="width:40%;">
+      <view class="column_line" style="width:35%;">
         <view class="text_inform " wx:for="{{team_member_inform_clockin_time}}" wx:key="index">{{item}}次打卡</view>
       </view>
 
       <view class="column_line" style="width:30%;">
-        <view class="text_inform" wx:for="{{team_member_inform_distance}}" wx:key="index"> {{item}}km</view>
+        <view class="text_inform" wx:for="{{team_member_inform_distance}}" wx:key="index"> {{num2.toFix2(item)}}km</view>
       </view>
 
-      <view class="column_line" style="width:30%;">
-        <view class="text_inform " wx:for="{{team_member_inform_spent_time}}" wx:key="index"> {{item}}min</view>
+      <view class="column_line" style="width:35%;">
+        <view class="text_inform " wx:for="{{team_member_inform_spent_time}}" wx:key="index"> {{num2.toFix1(item)}}min</view>
       </view>
 
 

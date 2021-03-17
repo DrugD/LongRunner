@@ -4,7 +4,7 @@
 <view class="text_big">常见问题</view>
 <view style="height:30rpx;"></view>
 
-<view wx:for="{{qa}}">
+<view wx:for="{{qa}}" wx:key="index">
   <view class="text" style="  text-align: left;margin-left:30rpx;">
     ★{{item.q}}
   </view>
@@ -13,8 +13,10 @@
   </view>
   <view style="height:30rpx;"></view>
 </view>
-
-<button class="button" open-type="contact">进入客服会话</button>
+ <view style="height:30rpx;"></view>
+<button class="button" open-type='feedback' >意见反馈</button>
+ <view style="height:30rpx;"></view>
+<button class="button" open-type="contact">联系客服</button>
 
 <!-- <view style="width:100%;height:200px;">
   <image style="width:100%;height:100%;" src="/images/me/baidu.svg"></image>

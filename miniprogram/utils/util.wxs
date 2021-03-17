@@ -148,7 +148,17 @@ var filters = {
   }
 }
 
+var filtersTo0 = {
+  toFix1: function (value) {
+    return value.toFixed(0)//此处2为保留0位小数
+  }
+}
 
+var filtersTo1 = {
+  toFix2: function (value) {
+    return value.toFixed(1)//此处2为保留1位小数
+  }
+}
 
 module.exports.threeNum =threeNum;
 module.exports.year = year;
@@ -157,5 +167,8 @@ module.exports.day = day;
 module.exports.fromnow_day = fromnow_day;
 module.exports.fromnow_hour = fromnow_hour;
 module.exports.toFix = filters.toFix;
+module.exports.toFix1 = filtersTo0.toFix1;
+module.exports.toFix2 = filtersTo1.toFix2;
+
 
 // module.exports.format_ymd = format_ymd;

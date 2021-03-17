@@ -13,11 +13,11 @@ Page({
     inputVal3: "",
     ani: "",
     opacity_id: 0,
-    user_state:"",
-    test_data:"",
+    user_state: "",
+    test_data: "",
   },
 
-  test:function(e){
+  test: function (e) {
     this.setData({
       test_data: this.data.test_data
     })
@@ -30,7 +30,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
       user_state: options.user_state
     })
@@ -40,49 +40,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
@@ -207,33 +207,37 @@ Page({
     var s = date.getSeconds();
 
 
-
+    // 这是一个真正热爱奔跑，愿意分享和传承的跑团，你若是孤独的，来到这里将不会孤独；你若是闹腾的，来到这里将不会凄清；你若是缄默的，来到这里将不会嘈杂。我们等你加入！
 
 
     //保证所有图片都上传成功
     Promise.all(promiseArr).then(res => {
 
 
-      wx.cloud.database().collection('User').where({
-        _openid: app.globalData.openid
-      }).update({
+      wx.cloud.database().collection('team').add({
         data: {
-          register_Time:Y+"/"+M+"/"+D+"-"+ h + ":" + m + ":" + s,
+          register_Time: Y + "/" + M + "/" + D + "-" + h + ":" + m + ":" + s,
 
           user_history_images: that.data.imgList,
           user_history_fileIDs: that.data.fileIDs,
-          user_realName: input1,
-          user_city: input2,
-          user_history: input3,
-          user_state:2,
-          //2表示最后的实名用户
+          name: input1,
+          city: input2,     //这个后期待议
+          introduce: input3,
+      
 
         },
         success: res => {
           wx.hideLoading()
-          wx.showToast({
-            title: '已提交，待审核',
+          var that = this
+          wx.showModal({
+            title: '亲爱的用户',
+            content: '您的入驻申请已提交，待工作人员审核后将与您联系并告知跑团ID码，跑团的打卡服务将通过此码进行。',
+           
+            confirmText: "我已知晓",
+            // success(res) {
+            // }
           })
+
           console.log('提交成功', res)
 
           var pages = getCurrentPages(); // 当前页面
@@ -241,7 +245,7 @@ Page({
 
           wx.navigateBack({
             delta: 1, // 返回上一级页面 
-            success: function() {
+            success: function () {
               beforePage.getUserState(); // 执行前一个页面的onLoad方法
               beforePage.load(); // 执行前一个页面的onLoad方法
             }
@@ -260,21 +264,21 @@ Page({
   },
 
 
-  input1: function(e) {
+  input1: function (e) {
     console.log(e)
     this.setData({
       inputVal1: e.detail.value
     })
   },
 
-  input2: function(e) {
+  input2: function (e) {
     console.log(e)
     this.setData({
       inputVal2: e.detail.value
     })
   },
 
-  input3: function(e) {
+  input3: function (e) {
     console.log(e.detail.value)
     this.setData({
       inputVal3: e.detail.value

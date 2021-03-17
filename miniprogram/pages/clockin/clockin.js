@@ -242,12 +242,12 @@ Page({
               createTime: h + ":" + m + ":" + s,
 
               images: this.data.imgList,
-
+              fileIDs: this.data.fileIDs,
 
               sport_time: input1,
               sport_distance: input2,
               sport_type: this.data.sport[this.data.sport_index] ,
-              fileIDs: this.data.fileIDs,
+             
             },
             success: res => {
               // wx.setStorage({

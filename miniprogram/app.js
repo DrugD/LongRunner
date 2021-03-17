@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function() {
-    wx.clearStorage()
+   
 
 
     wx.showLoading({
@@ -23,30 +23,14 @@ App({
       })
     }
 
+  
 
-
-
-
-    // const self = this;
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting["scope.userInfo"]) {
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           this.globalData.userInfo = res.userInfo 
-    //           console.log("用户信息：",this.globalData.userInfo ) 
-    //         },
-          
-    //       });
-
-    //     }
-    //   },
-    // });
 
     let that = this;
     wx.cloud.callFunction({
       name: 'getUserOpenid',
       complete: res => {
+        console.log('云函数获取到的res: ', res)
         console.log('云函数获取到的openid: ', res.result.openid)
         var openid = res.result.openid;
         that.globalData.openid = res.result.openid
@@ -57,21 +41,8 @@ App({
       }
     })
 
-    // const db = wx.cloud.database()
-    // const _ = db.command
-
-    // db.collection('User').add({
-    //     // data 字段表示需新增的 JSON 数据
-    //     data: {
-    //       userInfo: this.globalData.userInfo,
-    //       openid: this.globalData.openid,
-    //     }
-    //   })
-    //   .then(res => {
-    //     console.log(res)
-    //   })
-    //   .catch(console.error)
   },
+
 
 
   getUserInfo:function(openid){
@@ -85,6 +56,7 @@ App({
         that.globalData.userInfo = res.data[0].userInfo 
         that.globalData.user_id = res.data[0]._id 
         that.globalData.user_state = 1
+        that.globalData.user_credit = res.data[0].credit
         
       } else if (res.data.length != [] && !res.data[0].userInfo ){
         console.log("fake User")
@@ -102,40 +74,40 @@ App({
   },
 
 
-  create_User: function (userInfo) {
-    const db = wx.cloud.database()
+  // create_User: function (userInfo) {
+  //   const db = wx.cloud.database()
 
-    //获取当前时间戳  
-    var timestamp = Date.parse(new Date());
-    timestamp = timestamp / 1000;
-    console.log("当前时间戳为：" + timestamp);
-    var n = timestamp * 1000;
-    var date = new Date(n);
-    //年  
-    var Y = date.getFullYear();
-    //月  
-    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
-    //日  
-    var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
-    //时  
-    var h = date.getHours();
-    //分  
-    var m = date.getMinutes();
-    //秒  
-    var s = date.getSeconds();
+  //   //获取当前时间戳  
+  //   var timestamp = Date.parse(new Date());
+  //   timestamp = timestamp / 1000;
+  //   console.log("当前时间戳为：" + timestamp);
+  //   var n = timestamp * 1000;
+  //   var date = new Date(n);
+  //   //年  
+  //   var Y = date.getFullYear();
+  //   //月  
+  //   var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+  //   //日  
+  //   var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+  //   //时  
+  //   var h = date.getHours();
+  //   //分  
+  //   var m = date.getMinutes();
+  //   //秒  
+  //   var s = date.getSeconds();
 
-    db.collection('User').add({
-      // data 字段表示需新增的 JSON 数据
-      data: {
-        userInfo: this.globalData.userInfo,
-        user_create_time: Y + "/" + M + "/" + D + "-" + h + ":" + m + ":" + s,
-      }
-    })
-      .then(res => {
-        console.log(res)
-      })
-      .catch(console.error)
-  },
+  //   db.collection('User').add({
+  //     // data 字段表示需新增的 JSON 数据
+  //     data: {
+  //       userInfo: this.globalData.userInfo,
+  //       user_create_time: Y + "/" + M + "/" + D + "-" + h + ":" + m + ":" + s,
+  //     }
+  //   })
+  //     .then(res => {
+  //       console.log(res)
+  //     })
+  //     .catch(console.error)
+  // },
 
 
   globalData: {

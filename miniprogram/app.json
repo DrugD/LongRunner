@@ -1,22 +1,21 @@
 {
   "pages": [
-    "pages/two/two",
+        "pages/two/two",
+      "pages/test/test2",
+  "pages/me/me",
+
+      "pages/me/group/group",
+    "pages/me/authentication/authentication",
     "pages/me/teamManager/teamManager",
-    
     "pages/one/index",
     "pages/one/luntan/luntan",
-
     "pages/me/question/question",
-   
     "pages/me/runnersSettle/runnersSettle",
     "pages/clockin/clockin_main",
     "pages/clockin/clockin",
     "pages/getUser",
     "pages/one/detail/detail",
-    
-    "pages/me/me",
-    "pages/test/test2",
-    "pages/me/authentication/authentication",
+
     "pages/runningcalculator/runningcalculator",
     "pages/one/community/community",
     "pages/one/search/search",
@@ -50,12 +49,7 @@
     "backgroundColor": "#ebecf0",
     "color": "#61677c",
     "list": [
-      {
-        "pagePath": "pages/one/index",
-        "text": "资讯",
-        "iconPath": "images/icon/one.png",
-        "selectedIconPath": "images/icon/one_.png"
-      },
+ 
       {
         "pagePath": "pages/two/two",
         "text": "工具",
